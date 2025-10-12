@@ -10,7 +10,7 @@ import {
   Tooltip,
   InputAdornment,
 } from "@mui/material";
-import "../styles/SearchPage.css";
+
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -31,13 +31,37 @@ export default function SearchPage() {
   const navigate = useNavigate();
 
   return (
-    <Container maxWidth="md" className="searchpage-container">
-      <Box className="searchpage-box">
+    <Container
+      maxWidth="md"
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%)",
+        borderRadius: 4,
+        py: 6,
+      }}
+    >
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 600,
+          bgcolor: "rgba(255,255,255,0.95)",
+          boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.2)",
+          borderRadius: 4,
+          p: 5,
+          mx: "auto",
+          backdropFilter: "blur(4px)",
+          transition: "box-shadow 0.3s",
+          "&:hover": { boxShadow: "0 12px 40px 0 rgba(31, 38, 135, 0.25)" },
+        }}
+      >
         <Typography
           variant="h4"
           align="center"
           gutterBottom
-          className="searchpage-title"
+          sx={{ fontWeight: 700, color: "primary.main" }}
         >
           ✈️ Find Your Perfect Flight
         </Typography>
@@ -45,7 +69,7 @@ export default function SearchPage() {
           variant="subtitle1"
           align="center"
           gutterBottom
-          className="searchpage-subtitle"
+          sx={{ color: "#555" }}
         >
           Search and compare flights
         </Typography>
@@ -68,7 +92,7 @@ export default function SearchPage() {
                     ),
                   }}
                   helperText="Where are you flying from?"
-                  className="searchpage-field"
+                  sx={{ mb: 0 }}
                 >
                   {airports.map((airport) => (
                     <MenuItem key={airport.code} value={airport.code}>
@@ -94,7 +118,7 @@ export default function SearchPage() {
                     ),
                   }}
                   helperText="Where are you flying to?"
-                  className="searchpage-field"
+                  sx={{ mb: 0 }}
                 >
                   {airports.map((airport) => (
                     <MenuItem key={airport.code} value={airport.code}>
@@ -131,7 +155,7 @@ export default function SearchPage() {
                     ),
                   }}
                   helperText="Select your departure date"
-                  className="searchpage-field"
+                  sx={{ mb: 0 }}
                 />
               </Tooltip>
             </Grid>
@@ -152,7 +176,7 @@ export default function SearchPage() {
                     ),
                   }}
                   helperText="Select your return date (optional)"
-                  className="searchpage-field"
+                  sx={{ mb: 0 }}
                 />
               </Tooltip>
             </Grid>
@@ -166,7 +190,23 @@ export default function SearchPage() {
                   variant="contained"
                   color="primary"
                   size="large"
-                  className="searchpage-button"
+                  sx={{
+                    px: 5,
+                    py: 1.5,
+                    fontWeight: 600,
+                    fontSize: "1.15rem",
+                    borderRadius: 3,
+                    background:
+                      "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
+                    boxShadow: "0 4px 16px 0 rgba(33, 203, 243, 0.15)",
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      boxShadow: "0 8px 24px 0 rgba(33, 203, 243, 0.25)",
+                      background:
+                        "linear-gradient(90deg, #21cbf3 0%, #2196f3 100%)",
+                    },
+                  }}
                   onClick={() => navigate("/results")}
                 >
                   🔍 Search Flights

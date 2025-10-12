@@ -37,7 +37,8 @@
 .site-footer {
   border-top: 1px solid #eee;
   padding: 12px 0;
-  background: #f8f9fb;
+  background-color: #cfdef3;
+  border-radius: 4px;
 }
 
 .footer-inner {
