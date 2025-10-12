@@ -5,9 +5,10 @@
 }
 
 .site-header {
-  background-color: aqua;
+  background-color: #cfdef3;
   color: white;
   padding: 12px 0;
+  border-radius: 4px;
 }
 
 .header-inner {
@@ -45,7 +46,7 @@
   justify-content: center;
 }
 
-.logo{
+.logo {
   height: 36px;
   width: auto;
 }
