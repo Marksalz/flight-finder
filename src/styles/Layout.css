@@ -1,0 +1,46 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.site-header {
+  background: #0b5fff;
+  color: white;
+  padding: 12px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.main-nav a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+.site-main {
+  padding: 24px 0;
+  min-height: 60vh;
+}
+
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 12px 0;
+  background: #f8f9fb;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
