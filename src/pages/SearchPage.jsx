@@ -43,15 +43,17 @@ export default function SearchPage() {
       <Box
         sx={{
           width: "100%",
-          maxWidth: 600,
+          maxWidth: { xs: "90%", sm: 500, md: 600 }, // shrink on mobile
           bgcolor: "rgba(255,255,255,0.95)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.2)",
-          borderRadius: 4,
-          p: 5,
+          borderRadius: { xs: 2, sm: 3, md: 4 }, // less rounding on small screens
+          p: { xs: 2, sm: 3, md: 5 }, // less padding on mobile
           mx: "auto",
           backdropFilter: "blur(4px)",
           transition: "box-shadow 0.3s",
-          "&:hover": { boxShadow: "0 12px 40px 0 rgba(31, 38, 135, 0.25)" },
+          "&:hover": {
+            boxShadow: "0 12px 40px 0 rgba(31, 38, 135, 0.25)",
+          },
         }}
       >
         <Typography
@@ -110,7 +112,7 @@ export default function SearchPage() {
             <Grid
               container
               item
-              spacing={3} 
+              spacing={3}
               justifyContent="center"
               sx={{ mt: 0 }}
             >
