@@ -8,16 +8,17 @@ import appLogo from "../assets/app_logo2.png";
 export default function Layout() {
   return (
     <Box>
-      {/* ---------- HEADER ---------- */}
-      <header className="site-header">
+      <header>
         <Container
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            bgcolor: "#cfdef3",
+            borderRadius: 4,
             flexDirection: { xs: "column", sm: "row" }, // Stack on mobile
             gap: { xs: 1, sm: 0 },
-            maxWidth: "1000px",
+            minWidth: "95vw",
             margin: "0 auto",
             py: { xs: 1, sm: 2 },
             px: { xs: 2, sm: 4 },
@@ -41,7 +42,6 @@ export default function Layout() {
         </Container>
       </header>
 
-      {/* ---------- MAIN CONTENT ---------- */}
       <main className="site-main">
         <Container
           sx={{
@@ -55,19 +55,20 @@ export default function Layout() {
         </Container>
       </main>
 
-      {/* ---------- FOOTER ---------- */}
-      <footer className="site-footer">
+      <footer>
         <Container
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            bgcolor: "#cfdef3",
+            borderRadius: 4,
             flexDirection: { xs: "column", sm: "row" },
             textAlign: "center",
             gap: { xs: 1, sm: 2 },
             py: { xs: 1, sm: 2 },
             px: { xs: 2, sm: 4 },
-            maxWidth: "1000px",
+            minWidth: "95vw",
             margin: "0 auto",
           }}
         >
