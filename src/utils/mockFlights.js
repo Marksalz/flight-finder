@@ -1,4 +1,4 @@
-export const flights = [
+export const allFlights = [
   {
     id: "LY001",
     airline: "El Al Israel Airlines",
