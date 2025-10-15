@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/searchPage.css";
 import {
   Box,
   Button,
@@ -10,6 +11,8 @@ import {
   Tooltip,
   InputAdornment,
 } from "@mui/material";
+
+import appLogo from "../assets/app_logo3.png";
 
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
@@ -36,13 +39,15 @@ export default function SearchPage() {
       sx={{
         minHeight: "100vh",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%)",
+        background: "#cfdef3",
         borderRadius: 4,
         py: 6,
       }}
     >
+      <img className="app_logo" src={appLogo} alt="app logo" />
       <Box
         sx={{
           width: "100%",
