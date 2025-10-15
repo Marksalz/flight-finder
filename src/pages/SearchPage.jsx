@@ -110,7 +110,7 @@ export default function SearchPage() {
             <Grid
               container
               item
-              spacing={3}
+              spacing={3} 
               justifyContent="center"
               sx={{ mt: 0 }}
             >
