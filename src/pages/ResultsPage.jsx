@@ -36,18 +36,23 @@ export default function ResultsPage() {
   return (
     <Box
       sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        minHeight: "100vh",
         width: "100%",
-        maxWidth: "95vw",
-        bgcolor: "background.paper",
         padding: 0,
+        pt: 4, // Add some top padding
       }}
     >
-      <SearchSummaryBar
-        from={from}
-        to={to}
-        date={departDate.toLocaleString()}
-      />
-      <FlightCard flightInfo={allFlights[1]} />
+      <Box sx={{ width: "100%", maxWidth: "600px" }}>
+        <SearchSummaryBar
+          from={from}
+          to={to}
+          date={departDate.toLocaleString()}
+        />
+        <FlightCard flightInfo={allFlights[1]} />
+      </Box>
     </Box>
   );
 }
