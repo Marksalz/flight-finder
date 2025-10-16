@@ -1,18 +1,26 @@
 import { DatePicker } from "@mui/x-date-pickers";
-import { InputAdornment, TextField } from "@mui/material";
+import { InputAdornment } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
-export default function DateField({ label, value, onChange, required }) {
+export default function DateField({
+  label,
+  value,
+  onChange,
+  required,
+  minDate,
+}) {
   return (
     <DatePicker
       label={label}
       value={value}
       onChange={onChange}
+      minDate={minDate}
       format="DD/MM/YYYY"
       slotProps={{
         textField: {
           required,
           fullWidth: true,
+          sx: { maxWidth: "200px" },
           InputProps: {
             startAdornment: (
               <InputAdornment position="start">
@@ -21,9 +29,6 @@ export default function DateField({ label, value, onChange, required }) {
             ),
           },
         },
-      }}
-      sx={{
-        maxWidth: "180px",
       }}
     />
   );

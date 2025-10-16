@@ -5,7 +5,7 @@ import SelectField from "../components/SelectField";
 import DateField from "../components/DateField";
 import SubmitButton from "../components/SubmitButton";
 
-import appLogo from "../assets/app_logo3.png";
+import appLogo from "../assets/app_logo4.png";
 
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
@@ -35,7 +35,7 @@ export default function SearchPage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "#cfdef3",
+        background: "#CEDDF0",
         borderRadius: 4,
         py: 6,
       }}
@@ -47,14 +47,11 @@ export default function SearchPage() {
           maxWidth: { xs: "90%", sm: 500, md: 600 }, // shrink on mobile
           bgcolor: "rgba(255,255,255,0.95)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.2)",
-          borderRadius: { xs: 2, sm: 3, md: 4 }, // less rounding on small screens
-          p: { xs: 2, sm: 3, md: 5 }, // less padding on mobile
+          borderRadius: { xs: 2, sm: 3, md: 4 },
+          p: { xs: 2, sm: 3, md: 5 },
           mx: "auto",
           backdropFilter: "blur(4px)",
-          transition: "box-shadow 0.3s",
-          "&:hover": {
-            boxShadow: "0 12px 40px 0 rgba(31, 38, 135, 0.25)",
-          },
+          backgroundColor: "#a6c3e9ab",
         }}
       >
         <Typography
@@ -138,6 +135,7 @@ export default function SearchPage() {
                   value={returnDate}
                   onChange={setReturnDate}
                   required
+                  minDate={departDate}
                 />
               </Grid>
             </Grid>
@@ -154,3 +152,4 @@ export default function SearchPage() {
     </Container>
   );
 }
+//
