@@ -1,5 +1,11 @@
 import { Card, Container, Typography, Box } from "@mui/material";
 
+const formatDate = (dateStr) => {
+  if (!dateStr) return "";
+  const [year, month, day] = dateStr.split("-");
+  return `${day}/${month}/${year}`;
+};
+
 export default function SearchSummaryBar({ from, to, date }) {
   return (
     <>
@@ -17,7 +23,7 @@ export default function SearchSummaryBar({ from, to, date }) {
               {from} &rarr; {to}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {date ? new Date(date).toLocaleDateString() : "Select a date"}
+              {formatDate(date)}
             </Typography>
           </Box>
         </Card>

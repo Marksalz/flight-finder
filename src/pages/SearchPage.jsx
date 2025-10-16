@@ -16,13 +16,14 @@ const airports = [
   { code: "JFK", name: "New York (JFK)" },
   { code: "LAX", name: "Los Angeles (LAX)" },
   { code: "ORD", name: "Chicago (ORD)" },
+  { code: "TLV", name: "Tel-Aviv (TLV)" },
 ];
 
 export default function SearchPage() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [depart, setDepart] = useState("");
-  const [returnDate, setReturnDate] = useState("");
+  const [departDate, setDepartDate] = useState(null); // Dayjs object
+  const [returnDate, setReturnDate] = useState(null); // Dayjs object
   const navigate = useNavigate();
 
   return (
@@ -75,7 +76,14 @@ export default function SearchPage() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            navigate("/results");
+            navigate("/results", {
+              state: {
+                from,
+                to,
+                departDate: departDate ? departDate.format("YYYY-MM-DD") : "",
+                returnDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
+              },
+            });
           }}
           style={{ width: "100%" }}
         >
@@ -118,24 +126,18 @@ export default function SearchPage() {
             >
               <Grid item xs={12} sm={6}>
                 <DateField
-                  label="Depart"
-                  value={depart}
-                  onChange={(e) => setDepart(e.target.value)}
-                  icon={<CalendarMonthIcon color="primary" />}
-                  tooltip="Choose your departure date"
+                  label="Departure Date"
+                  value={departDate}
+                  onChange={setDepartDate}
                   required
-                  helperText="Select your departure date"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <DateField
-                  label="Return"
+                  label="Return Date"
                   value={returnDate}
-                  onChange={(e) => setReturnDate(e.target.value)}
-                  icon={<CalendarMonthIcon color="primary" />}
-                  tooltip="Choose your return date (optional)"
+                  onChange={setReturnDate}
                   required
-                  helperText="Select your return date"
                 />
               </Grid>
             </Grid>
