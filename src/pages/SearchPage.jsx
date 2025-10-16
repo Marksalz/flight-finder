@@ -4,9 +4,6 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import SelectField from "../components/SelectField";
 import DateField from "../components/DateField";
 import SubmitButton from "../components/SubmitButton";
-
-import appLogo from "../assets/app_logo4.png";
-
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -40,7 +37,7 @@ export default function SearchPage() {
         py: 6,
       }}
     >
-      <img className="app_logo" src={appLogo} alt="app logo" />
+      <img className="app_logo" src="/app_logo4.png" alt="app logo" />
       <Box
         sx={{
           width: "100%",
