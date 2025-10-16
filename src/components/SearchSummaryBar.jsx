@@ -9,25 +9,25 @@ const formatDate = (dateStr) => {
 export default function SearchSummaryBar({ from, to, date }) {
   return (
     <>
-      <Container maxWidth="sm" sx={{ mt: 2 }}>
-        <Card
-          sx={{
-            p: 2,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Box>
-            <Typography variant="h6" component="div">
-              {from} &rarr; {to}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {formatDate(date)}
-            </Typography>
-          </Box>
-        </Card>
-      </Container>
+      <Card
+        sx={{
+          p: 2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          gap: 2,
+          backgroundColor: "lightblue",
+          width: "100%",
+          borderRadius: 0,
+        }}
+      >
+        <Typography variant="h6" component="div">
+          {from} &rarr; {to}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {formatDate(date)}
+        </Typography>
+      </Card>
     </>
   );
 }

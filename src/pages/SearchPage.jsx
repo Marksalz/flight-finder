@@ -86,8 +86,8 @@ export default function SearchPage() {
         >
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
-            <Grid container item spacing={3} justifyContent="center">
-              <Grid item xs={12} sm={6}>
+            <Grid container spacing={3} justifyContent="center">
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <SelectField
                   label="From"
                   value={from}
@@ -99,7 +99,7 @@ export default function SearchPage() {
                   helperText="Where are you flying from?"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <SelectField
                   label="To"
                   value={to}
@@ -114,14 +114,8 @@ export default function SearchPage() {
             </Grid>
 
             {/* Second row: Date selectors */}
-            <Grid
-              container
-              item
-              spacing={3}
-              justifyContent="center"
-              sx={{ mt: 0 }}
-            >
-              <Grid item xs={12} sm={6}>
+            <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <DateField
                   label="Departure Date"
                   value={departDate}
@@ -129,7 +123,7 @@ export default function SearchPage() {
                   required
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <DateField
                   label="Return Date"
                   value={returnDate}
@@ -141,8 +135,8 @@ export default function SearchPage() {
             </Grid>
 
             {/* Third row: Search button */}
-            <Grid container item justifyContent="center" sx={{ mt: 2 }}>
-              <Grid item xs={12}>
+            <Grid container justifyContent="center" sx={{ mt: 2 }}>
+              <Grid size={{ xs: 12 }}>
                 <SubmitButton>🔍 Search Flights</SubmitButton>
               </Grid>
             </Grid>
