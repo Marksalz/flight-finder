@@ -47,6 +47,15 @@ export default function FlightCard({ flightInfo }) {
           />
         </Grid>
       </Grid>
+
+      {/* Vertical Divider */}
+      <Divider
+        orientation="vertical"
+        flexItem
+        sx={{ borderColor: "grey.600" }}
+      />
+
+      {/* price */}
       <Typography variant="body1" width={"5%"}>
         {formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
       </Typography>
