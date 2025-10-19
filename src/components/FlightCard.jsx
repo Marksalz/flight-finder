@@ -1,5 +1,4 @@
 import { Box, Card, Grid, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 
@@ -36,26 +35,7 @@ export default function FlightCard({ flightInfo }) {
         </Grid>
         {/* Long Arrow */}
         <Grid item xs>
-          <Box
-            display="flex"
-            alignItems="center"
-            sx={{
-              width: "100%",
-              position: "relative",
-              height: "2.5rem",
-            }}
-          >
-            <Box
-              sx={{
-                width: "100%",
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                zIndex: 1,
-              }}
-            />
-            <LongArrow />
-          </Box>
+          <LongArrow />
         </Grid>
         {/* Destination */}
         <Grid item>

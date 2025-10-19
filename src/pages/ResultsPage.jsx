@@ -19,10 +19,6 @@ export default function ResultsPage() {
   const { state } = useLocation();
   const { from, to, departDate, returnDate } = state || {};
 
-  console.log(`state: `, state);
-
-  console.log(`All flights: `, allFlights);
-
   const flights = allFlights.filter((flight) => {
     return (
       flight.origin.code === from &&
@@ -30,8 +26,6 @@ export default function ResultsPage() {
       flight.date === departDate
     );
   });
-
-  console.log(`Filtered flights: `, flights);
 
   return (
     <Box
@@ -42,7 +36,7 @@ export default function ResultsPage() {
         minHeight: "100vh",
         width: "100%",
         padding: 0,
-        pt: 4, // Add some top padding
+        pt: 4,
       }}
     >
       <Box sx={{ width: "100%", maxWidth: "600px" }}>
