@@ -2,15 +2,17 @@ import { Box, Card, Divider, Grid, Typography } from "@mui/material";
 import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
+import { useNavigate } from "react-router";
 
 export default function FlightCard({ flightInfo }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
+  const navigate = useNavigate();
 
   return (
     <Card
-      onClick={() => console.log("clicked!!")}
+      onClick={() => navigate(`flight/${flightInfo.id}`)}
       sx={{
         p: 1,
         display: "flex",
@@ -29,7 +31,6 @@ export default function FlightCard({ flightInfo }) {
           boxShadow: 6,
           zIndex: 2,
         },
-        // Ensure all cards have the same height by using flex and minHeight
         height: "100%",
       }}
     >
@@ -63,12 +64,39 @@ export default function FlightCard({ flightInfo }) {
         <Grid size="auto">
           <Box
             sx={{
+              position: "relative",
               display: "flex",
+              alignItems: "center",
               justifyContent: "center",
-              maxWidth: "100%",
+              width: "100%",
             }}
           >
+            {/* Arrow line */}
             <LongArrow />
+
+            {/* Duration badge centered on the arrow */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: "30%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                bgcolor: "transparent",
+                px: 1,
+                py: 0.25,
+                borderRadius: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{ color: "#8f8f8fff", fontWeight: 600 }}
+              >
+                {durationInHours(flightInfo.durationMinutes)}
+              </Typography>
+            </Box>
           </Box>
         </Grid>
         <Grid size="auto">
@@ -104,7 +132,7 @@ export default function FlightCard({ flightInfo }) {
           mt: { xs: 1, sm: 0 },
         }}
       >
-        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+        <Typography variant="body1" sx={{ color: "#4caf50", fontWeight: 600 }}>
           {formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
         </Typography>
       </Box>
@@ -127,4 +155,10 @@ function formatPrice(amount, currency) {
   }
 
   return formattedPrice;
+}
+
+function durationInHours(durationMinutes) {
+  const hours = Math.floor(durationMinutes / 60);
+  const minutes = durationMinutes % 60;
+  return `${hours}h ${minutes}`;
 }
