@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FlightCard from "../components/FlightCard";
+import FlightsList from "../components/FlightsList";
 
 export default function ResultsPage() {
   const { state } = useLocation();
@@ -15,7 +16,8 @@ export default function ResultsPage() {
     return (
       flight.origin.code === from &&
       flight.destination.code === to &&
-      flight.date === departDate
+      // compare strings consistently; departDate may be a Date or string
+      String(flight.date) === String(departDate)
     );
   });
 
@@ -28,19 +30,27 @@ export default function ResultsPage() {
         minHeight: "100vh",
         width: "100%",
         padding: 0,
-        pt: 4,
+        pt: 0,
       }}
     >
-      <Box sx={{ width: "100%", maxWidth: "800px" }}>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "800px",
+          px: { xs: 2, sm: 3 },
+          pt: { xs: 2, sm: 2 },
+        }}
+      >
         <SearchSummaryBar
           from={from}
           to={to}
-          date={departDate.toLocaleString()}
+          date={
+            departDate && typeof departDate.toLocaleString === "function"
+              ? departDate.toLocaleString()
+              : String(departDate || "")
+          }
         />
-        <FlightCard flightInfo={allFlights[1]} />
-        <FlightCard flightInfo={allFlights[2]} />
-        <FlightCard flightInfo={allFlights[3]} />
-        <FlightCard flightInfo={allFlights[4]} />
+        <FlightsList flights={allFlights} />
       </Box>
     </Box>
   );

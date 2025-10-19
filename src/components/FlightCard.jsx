@@ -13,34 +13,56 @@ export default function FlightCard({ flightInfo }) {
       sx={{
         p: 2,
         display: "flex",
-        alignItems: "center",
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: { xs: "stretch", sm: "center" },
         justifyContent: "flex-start",
-        gap: 8,
+        gap: { xs: 2, sm: 4 },
         backgroundColor: "lightblue",
         width: "100%",
-        borderRadius: 0,
+        borderRadius: 4,
       }}
     >
-      <img
-        className="airline_logo"
+      <Box
+        component="img"
         src={`/${airlineCode}.png`}
-        alt="Airline logo"
-        style={{ width: "10%" }}
+        alt={`${airlineCode} logo`}
+        sx={{
+          width: { xs: 80, sm: "10%" },
+          maxWidth: 80,
+          alignSelf: { xs: "center", sm: "auto" },
+          objectFit: "contain",
+        }}
       />
-      <Grid container alignItems="center" spacing={2} width={"60%"}>
+
+      <Grid
+        container
+        alignItems="center"
+        spacing={2}
+        width={{ xs: "100%", sm: "60%" }}
+        sx={{ textAlign: { xs: "center", sm: "left" } }}
+      >
         {/* Origin */}
-        <Grid item>
+        <Grid item xs={12} sm="auto">
           <OriginDestination
             time={depTime}
             airportCode={flightInfo.origin.code}
           />
         </Grid>
+
         {/* Long Arrow */}
         <Grid item xs>
-          <LongArrow />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: { xs: "center", sm: "flex-start" },
+            }}
+          >
+            <LongArrow />
+          </Box>
         </Grid>
+
         {/* Destination */}
-        <Grid item>
+        <Grid item xs={12} sm="auto">
           <OriginDestination
             time={arrTime}
             airportCode={flightInfo.destination.code}
@@ -48,17 +70,38 @@ export default function FlightCard({ flightInfo }) {
         </Grid>
       </Grid>
 
-      {/* Vertical Divider */}
+      {/* Horizontal divider for small screens */}
+      <Divider
+        orientation="horizontal"
+        flexItem
+        sx={{
+          display: { xs: "block", sm: "none" },
+          my: 1,
+          borderColor: "grey.600",
+        }}
+      />
+
+      {/* Vertical Divider for sm+ */}
       <Divider
         orientation="vertical"
         flexItem
-        sx={{ borderColor: "grey.600" }}
+        sx={{ display: { xs: "none", sm: "block" }, borderColor: "grey.600" }}
       />
 
       {/* price */}
-      <Typography variant="body1" width={"5%"}>
-        {formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
-      </Typography>
+      <Box
+        sx={{
+          width: { xs: "100%", sm: "auto" },
+          display: "flex",
+          justifyContent: { xs: "flex-end", sm: "flex-start" },
+          alignItems: "center",
+          mt: { xs: 1, sm: 0 },
+        }}
+      >
+        <Typography variant="body1" sx={{ fontWeight: 600 }}>
+          {formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
+        </Typography>
+      </Box>
     </Card>
   );
 }
