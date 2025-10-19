@@ -2,7 +2,6 @@ export default function LongArrow() {
   return (
     <svg
       width="100%"
-      height="auto"
       preserveAspectRatio="none"
       viewBox="0 0 120 24"
       fill="none"

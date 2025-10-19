@@ -37,12 +37,13 @@ export default function FlightCard({ flightInfo }) {
       <Grid
         container
         alignItems="center"
+        flexDirection="row" // keep it horizontal even on mobile
         spacing={2}
         width={{ xs: "100%", sm: "60%" }}
-        sx={{ textAlign: { xs: "center", sm: "left" } }}
+        sx={{ textAlign: "left" }} // keep text left-aligned
       >
         {/* Origin */}
-        <Grid item xs={12} sm="auto">
+        <Grid size="auto">
           <OriginDestination
             time={depTime}
             airportCode={flightInfo.origin.code}
@@ -50,11 +51,12 @@ export default function FlightCard({ flightInfo }) {
         </Grid>
 
         {/* Long Arrow */}
-        <Grid item xs>
+        <Grid size="auto">
           <Box
             sx={{
               display: "flex",
-              justifyContent: { xs: "center", sm: "flex-start" },
+              justifyContent: "center",
+              maxWidth: "100%"
             }}
           >
             <LongArrow />
@@ -62,7 +64,7 @@ export default function FlightCard({ flightInfo }) {
         </Grid>
 
         {/* Destination */}
-        <Grid item xs={12} sm="auto">
+        <Grid size="auto">
           <OriginDestination
             time={arrTime}
             airportCode={flightInfo.destination.code}
