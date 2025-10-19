@@ -39,13 +39,16 @@ export default function ResultsPage() {
         pt: 4,
       }}
     >
-      <Box sx={{ width: "100%", maxWidth: "600px" }}>
+      <Box sx={{ width: "100%", maxWidth: "800px" }}>
         <SearchSummaryBar
           from={from}
           to={to}
           date={departDate.toLocaleString()}
         />
         <FlightCard flightInfo={allFlights[1]} />
+        <FlightCard flightInfo={allFlights[2]} />
+        <FlightCard flightInfo={allFlights[3]} />
+        <FlightCard flightInfo={allFlights[4]} />
       </Box>
     </Box>
   );
