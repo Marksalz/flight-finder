@@ -4,9 +4,6 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import SelectField from "../components/SelectField";
 import DateField from "../components/DateField";
 import SubmitButton from "../components/SubmitButton";
-
-import appLogo from "../assets/app_logo3.png";
-
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -16,13 +13,14 @@ const airports = [
   { code: "JFK", name: "New York (JFK)" },
   { code: "LAX", name: "Los Angeles (LAX)" },
   { code: "ORD", name: "Chicago (ORD)" },
+  { code: "TLV", name: "Tel-Aviv (TLV)" },
 ];
 
 export default function SearchPage() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [depart, setDepart] = useState("");
-  const [returnDate, setReturnDate] = useState("");
+  const [departDate, setDepartDate] = useState(null); // Dayjs object
+  const [returnDate, setReturnDate] = useState(null); // Dayjs object
   const navigate = useNavigate();
 
   return (
@@ -34,26 +32,23 @@ export default function SearchPage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "#cfdef3",
+        background: "#CEDDF0",
         borderRadius: 4,
         py: 6,
       }}
     >
-      <img className="app_logo" src={appLogo} alt="app logo" />
+      <img className="app_logo" src="/app_logo4.png" alt="app logo" />
       <Box
         sx={{
           width: "100%",
           maxWidth: { xs: "90%", sm: 500, md: 600 }, // shrink on mobile
           bgcolor: "rgba(255,255,255,0.95)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.2)",
-          borderRadius: { xs: 2, sm: 3, md: 4 }, // less rounding on small screens
-          p: { xs: 2, sm: 3, md: 5 }, // less padding on mobile
+          borderRadius: { xs: 2, sm: 3, md: 4 },
+          p: { xs: 2, sm: 3, md: 5 },
           mx: "auto",
           backdropFilter: "blur(4px)",
-          transition: "box-shadow 0.3s",
-          "&:hover": {
-            boxShadow: "0 12px 40px 0 rgba(31, 38, 135, 0.25)",
-          },
+          backgroundColor: "#a6c3e9ab",
         }}
       >
         <Typography
@@ -75,14 +70,21 @@ export default function SearchPage() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            navigate("/results");
+            navigate("/results", {
+              state: {
+                from,
+                to,
+                departDate: departDate ? departDate.format("YYYY-MM-DD") : "",
+                returnDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
+              },
+            });
           }}
           style={{ width: "100%" }}
         >
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
-            <Grid container item spacing={3} justifyContent="center">
-              <Grid item xs={12} sm={6}>
+            <Grid container spacing={3} justifyContent="center">
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <SelectField
                   label="From"
                   value={from}
@@ -94,7 +96,7 @@ export default function SearchPage() {
                   helperText="Where are you flying from?"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <SelectField
                   label="To"
                   value={to}
@@ -109,40 +111,29 @@ export default function SearchPage() {
             </Grid>
 
             {/* Second row: Date selectors */}
-            <Grid
-              container
-              item
-              spacing={3}
-              justifyContent="center"
-              sx={{ mt: 0 }}
-            >
-              <Grid item xs={12} sm={6}>
+            <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <DateField
-                  label="Depart"
-                  value={depart}
-                  onChange={(e) => setDepart(e.target.value)}
-                  icon={<CalendarMonthIcon color="primary" />}
-                  tooltip="Choose your departure date"
+                  label="Departure Date"
+                  value={departDate}
+                  onChange={setDepartDate}
                   required
-                  helperText="Select your departure date"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <DateField
-                  label="Return"
+                  label="Return Date"
                   value={returnDate}
-                  onChange={(e) => setReturnDate(e.target.value)}
-                  icon={<CalendarMonthIcon color="primary" />}
-                  tooltip="Choose your return date (optional)"
+                  onChange={setReturnDate}
                   required
-                  helperText="Select your return date"
+                  minDate={departDate}
                 />
               </Grid>
             </Grid>
 
             {/* Third row: Search button */}
-            <Grid container item justifyContent="center" sx={{ mt: 2 }}>
-              <Grid item xs={12}>
+            <Grid container justifyContent="center" sx={{ mt: 2 }}>
+              <Grid size={{ xs: 12 }}>
                 <SubmitButton>🔍 Search Flights</SubmitButton>
               </Grid>
             </Grid>
@@ -152,3 +143,4 @@ export default function SearchPage() {
     </Container>
   );
 }
+//

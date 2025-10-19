@@ -28,10 +28,14 @@ export default function GenericSelectField({
           },
         }}
         helperText={helperText}
-        sx={{ mb: 0 }}
+        sx={{ mb: 0, width: 200 }}
       >
         {options.map((opt) => (
-          <MenuItem key={opt.value || opt.code} value={opt.value || opt.code}>
+          <MenuItem
+            key={opt.value || opt.code}
+            value={opt.value || opt.code}
+            sx={{ width: "100%" }}
+          >
             {opt.label || opt.name}
           </MenuItem>
         ))}

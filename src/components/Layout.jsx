@@ -19,7 +19,7 @@ export default function Layout() {
             flexDirection: { xs: "column", sm: "row" }, // Stack on mobile
             gap: { xs: 1, sm: 0 },
             minWidth: "95vw",
-            margin: "0 auto",
+            margin: "1% auto",
             py: { xs: 1, sm: 2 },
             px: { xs: 2, sm: 4 },
           }}
@@ -69,7 +69,7 @@ export default function Layout() {
             py: { xs: 1, sm: 2 },
             px: { xs: 2, sm: 4 },
             minWidth: "95vw",
-            margin: "0 auto",
+            margin: "1% auto",
           }}
         >
           <small>© {new Date().getFullYear()} AeroFind</small>

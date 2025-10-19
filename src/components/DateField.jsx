@@ -1,35 +1,35 @@
-import React from "react";
-import { TextField, Tooltip, InputAdornment } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
+import { InputAdornment } from "@mui/material";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
-export default function GenericDateField({
+export default function DateField({
   label,
   value,
   onChange,
-  icon,
-  tooltip,
-  required = false,
-  helperText = "",
+  required,
+  minDate,
 }) {
   return (
-    <Tooltip title={tooltip} arrow>
-      <TextField
-        label={label}
-        type="date"
-        value={value}
-        onChange={onChange}
-        slotProps={{
-          inputLabel: { shrink: true },
-          input: {
-            startAdornment: icon ? (
-              <InputAdornment position="start">{icon}</InputAdornment>
-            ) : null,
+    <DatePicker
+      label={label}
+      value={value}
+      onChange={onChange}
+      minDate={minDate}
+      format="DD/MM/YYYY"
+      slotProps={{
+        textField: {
+          required,
+          fullWidth: true,
+          sx: { maxWidth: "200px" },
+          InputProps: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <CalendarMonthIcon color="action" />
+              </InputAdornment>
+            ),
           },
-        }}
-        fullWidth
-        required={required}
-        helperText={helperText}
-        sx={{ mb: 0 }}
-      />
-    </Tooltip>
+        },
+      }}
+    />
   );
 }
