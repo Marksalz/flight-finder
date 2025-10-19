@@ -10,16 +10,27 @@ export default function FlightCard({ flightInfo }) {
 
   return (
     <Card
+      onClick={() => console.log("clicked!!")}
       sx={{
-        p: 2,
+        p: 1,
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         alignItems: { xs: "stretch", sm: "center" },
-        justifyContent: "flex-start",
-        gap: { xs: 2, sm: 4 },
+        justifyContent: { xs: "stretch", sm: "center" },
+        gap: { xs: 2, sm: 4.5 },
         backgroundColor: "lightblue",
         width: "100%",
+        minHeight: 100,
         borderRadius: 4,
+        transition: "transform 200ms ease, box-shadow 200ms ease",
+        "&:hover": {
+          cursor: "pointer",
+          transform: "scale(1.03)",
+          boxShadow: 6,
+          zIndex: 2,
+        },
+        // Ensure all cards have the same height by using flex and minHeight
+        height: "100%",
       }}
     >
       <Box
@@ -37,33 +48,29 @@ export default function FlightCard({ flightInfo }) {
       <Grid
         container
         alignItems="center"
-        flexDirection="row" // keep it horizontal even on mobile
+        justifyContent="center"
+        flexDirection="row"
         spacing={2}
         width={{ xs: "100%", sm: "60%" }}
-        sx={{ textAlign: "left" }} // keep text left-aligned
+        sx={{ textAlign: "left" }}
       >
-        {/* Origin */}
         <Grid size="auto">
           <OriginDestination
             time={depTime}
             airportCode={flightInfo.origin.code}
           />
         </Grid>
-
-        {/* Long Arrow */}
         <Grid size="auto">
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
-              maxWidth: "100%"
+              maxWidth: "100%",
             }}
           >
             <LongArrow />
           </Box>
         </Grid>
-
-        {/* Destination */}
         <Grid size="auto">
           <OriginDestination
             time={arrTime}
@@ -72,7 +79,6 @@ export default function FlightCard({ flightInfo }) {
         </Grid>
       </Grid>
 
-      {/* Horizontal divider for small screens */}
       <Divider
         orientation="horizontal"
         flexItem
@@ -83,14 +89,12 @@ export default function FlightCard({ flightInfo }) {
         }}
       />
 
-      {/* Vertical Divider for sm+ */}
       <Divider
         orientation="vertical"
         flexItem
         sx={{ display: { xs: "none", sm: "block" }, borderColor: "grey.600" }}
       />
 
-      {/* price */}
       <Box
         sx={{
           width: { xs: "100%", sm: "auto" },

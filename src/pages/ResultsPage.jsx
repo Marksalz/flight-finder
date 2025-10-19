@@ -16,7 +16,6 @@ export default function ResultsPage() {
     return (
       flight.origin.code === from &&
       flight.destination.code === to &&
-      // compare strings consistently; departDate may be a Date or string
       String(flight.date) === String(departDate)
     );
   });
