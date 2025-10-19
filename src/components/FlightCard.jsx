@@ -1,6 +1,7 @@
 import { Box, Card, Grid, Typography } from "@mui/material";
 import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
+import OriginDestination from "./OriginDestination";
 
 export default function FlightCard({ flightInfo }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
@@ -28,10 +29,10 @@ export default function FlightCard({ flightInfo }) {
       <Grid container alignItems="center" spacing={2}>
         {/* Origin */}
         <Grid item>
-          <Box display="flex" flexDirection="column" alignItems="flex-start">
-            <Typography variant="h6">{depTime}</Typography>
-            <Typography variant="h6">{flightInfo.origin.code}</Typography>
-          </Box>
+          <OriginDestination
+            time={depTime}
+            airportCode={flightInfo.origin.code}
+          />
         </Grid>
         {/* Long Arrow */}
         <Grid item xs>
@@ -39,10 +40,10 @@ export default function FlightCard({ flightInfo }) {
         </Grid>
         {/* Destination */}
         <Grid item>
-          <Box display="flex" flexDirection="column" alignItems="flex-end">
-            <Typography variant="h6">{arrTime}</Typography>
-            <Typography variant="h6">{flightInfo.destination.code}</Typography>
-          </Box>
+          <OriginDestination
+            time={arrTime}
+            airportCode={flightInfo.destination.code}
+          />
         </Grid>
       </Grid>
     </Card>
