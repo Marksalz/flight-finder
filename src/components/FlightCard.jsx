@@ -18,7 +18,7 @@ export default function FlightCard({ flightInfo }) {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         alignItems: { xs: "stretch", sm: "center" },
-        justifyContent: { xs: "stretch", sm: "center" },
+        justifyContent: { xs: "stretch", sm: "space-evenly" },
         gap: { xs: 2, sm: 4.5 },
         backgroundColor: "lightblue",
         width: "100%",
@@ -69,6 +69,7 @@ export default function FlightCard({ flightInfo }) {
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
+              height: { xs: 24, sm: 36, md: 48 },
             }}
           >
             {/* Arrow line */}
@@ -132,7 +133,7 @@ export default function FlightCard({ flightInfo }) {
           mt: { xs: 1, sm: 0 },
         }}
       >
-        <Typography variant="body1" sx={{ color: "#4caf50", fontWeight: 600 }}>
+        <Typography variant="body1" sx={{ color: "#4caf50", fontWeight: 800 }}>
           {formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
         </Typography>
       </Box>
