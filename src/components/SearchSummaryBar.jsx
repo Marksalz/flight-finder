@@ -10,15 +10,18 @@ export default function SearchSummaryBar({ from, to, date }) {
   return (
     <>
       <Card
+        elevation={0}
         sx={{
           p: 2,
           display: "flex",
           alignItems: "center",
           justifyContent: "flex-start",
           gap: 2,
-          backgroundColor: "lightblue",
+          backgroundColor: "#cfdef3",
           width: "100%",
           borderRadius: 0,
+          border: 0,
+          boxShadow: "none",
         }}
       >
         <Typography variant="h6" component="div">

@@ -41,16 +41,7 @@ export default function Layout() {
       </header>
 
       <main>
-        <Container
-          // sx={{
-          //   maxWidth: "1000px",
-          //   margin: "0 auto",
-          //   px: { xs: 2, sm: 4 },
-          //   py: { xs: 2, sm: 4 },
-          // }}
-        >
-          <Outlet />
-        </Container>
+        <Outlet />
       </main>
 
       <footer>

@@ -24,33 +24,24 @@ export default function ResultsPage() {
     <Box
       sx={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
+        flexDirection: "column",
+        justifyContent:"center",
+        alignItems:"start",
         minHeight: "100vh",
         width: "100%",
-        padding: 0,
-        pt: 0,
       }}
     >
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: "800px",
-          px: { xs: 2, sm: 3 },
-          pt: { xs: 2, sm: 2 },
-        }}
-      >
-        <SearchSummaryBar
-          from={from}
-          to={to}
-          date={
-            departDate && typeof departDate.toLocaleString === "function"
-              ? departDate.toLocaleString()
-              : String(departDate || "")
-          }
-        />
-        <FlightsList flights={allFlights} />
-      </Box>
+      <SearchSummaryBar
+        from={from}
+        to={to}
+        date={
+          departDate && typeof departDate.toLocaleString === "function"
+            ? departDate.toLocaleString()
+            : String(departDate || "")
+        }
+      />
+
+      <FlightsList flights={allFlights} />
     </Box>
   );
 }
