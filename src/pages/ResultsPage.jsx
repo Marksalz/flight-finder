@@ -25,8 +25,8 @@ export default function ResultsPage() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent:"center",
-        alignItems:"start",
+        justifyContent: "center",
+        alignItems: "start",
         minHeight: "100vh",
         width: "100%",
       }}
