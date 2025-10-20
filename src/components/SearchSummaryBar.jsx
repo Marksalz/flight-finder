@@ -26,14 +26,15 @@ export default function SearchSummaryBar({ from, to, date }) {
       <Card
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: { xs: "column", sm: "row" },
           justifyContent: "space-between",
           alignItems: "center",
           bgcolor: "#9dc2f4ff",
           borderRadius: 4,
           padding: 2,
-          minWidth: "80%",
+          minWidth: { xs: "100%", sm: "80%" },
           margin: "auto",
+          gap: { xs: 2, sm: 0 },
         }}
       >
         <Box
@@ -43,12 +44,19 @@ export default function SearchSummaryBar({ from, to, date }) {
             alignItems: "center",
             justifyContent: "center",
             gap: 2,
+            mb: { xs: 1, sm: 0 },
           }}
         >
-          <Typography variant="h4" component="div">
+          <Typography
+            variant="h6"
+            sx={{ fontSize: { xs: "1.1rem", sm: "1.5rem" } }}
+          >
             Flight Route:
           </Typography>
-          <Typography variant="h5" component="div">
+          <Typography
+            variant="subtitle1"
+            sx={{ fontSize: { xs: "1rem", sm: "1.25rem" } }}
+          >
             {from} &rarr; {to}
           </Typography>
         </Box>
@@ -61,10 +69,17 @@ export default function SearchSummaryBar({ from, to, date }) {
             gap: 2,
           }}
         >
-          <Typography variant="h4" component="div">
+          <Typography
+            variant="h6"
+            sx={{ fontSize: { xs: "1.1rem", sm: "1.5rem" } }}
+          >
             Date:
           </Typography>
-          <Typography variant="h5" color="text.secondary">
+          <Typography
+            variant="subtitle1"
+            color="text.secondary"
+            sx={{ fontSize: { xs: "1rem", sm: "1.25rem" } }}
+          >
             {formatDate(date)}
           </Typography>
         </Box>
