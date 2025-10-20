@@ -40,14 +40,14 @@ export default function Layout() {
         </Container>
       </header>
 
-      <main className="site-main">
+      <main>
         <Container
-          sx={{
-            maxWidth: "1000px",
-            margin: "0 auto",
-            px: { xs: 2, sm: 4 },
-            py: { xs: 2, sm: 4 },
-          }}
+          // sx={{
+          //   maxWidth: "1000px",
+          //   margin: "0 auto",
+          //   px: { xs: 2, sm: 4 },
+          //   py: { xs: 2, sm: 4 },
+          // }}
         >
           <Outlet />
         </Container>
