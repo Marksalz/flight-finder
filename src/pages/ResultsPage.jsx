@@ -25,8 +25,8 @@ export default function ResultsPage() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "start",
+        justifyContent: "flex-start",
+        alignItems: "center",
         minHeight: "100vh",
         width: "100%",
       }}
@@ -41,7 +41,7 @@ export default function ResultsPage() {
         }
       />
 
-      <FlightsList flights={allFlights} />
+      <FlightsList flights={flights} />
     </Box>
   );
 }

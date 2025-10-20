@@ -25,7 +25,7 @@ export const allFlights = [
     stops: 0,
     aircraft: "Boeing 787-9",
     terminal: "3",
-    date: "2025-10-21",
+    date: "2025-10-20",
     baggageAllowance: "23kg + 8kg hand luggage",
   },
   {
@@ -54,7 +54,7 @@ export const allFlights = [
     stops: 0,
     aircraft: "Boeing 787-9",
     terminal: "3",
-    date: "2025-10-21",
+    date: "2025-10-20",
     baggageAllowance: "23kg + 8kg hand luggage",
   },
   {
@@ -83,7 +83,7 @@ export const allFlights = [
     stops: 0,
     aircraft: "Boeing 787-9",
     terminal: "3",
-    date: "2025-10-21",
+    date: "2025-10-20",
     baggageAllowance: "23kg + 8kg hand luggage",
   },
   {
@@ -1417,7 +1417,7 @@ export const allFlights = [
     stops: 0,
     aircraft: "Boeing 787-9",
     terminal: "B",
-    date: "2025-10-25",
+    date: "2025-10-26",
     baggageAllowance: "2x23kg + 8kg hand luggage",
   },
   {
@@ -1446,7 +1446,7 @@ export const allFlights = [
     stops: 0,
     aircraft: "Boeing 787-9",
     terminal: "B",
-    date: "2025-10-25",
+    date: "2025-10-26",
     baggageAllowance: "2x23kg + 8kg hand luggage",
   },
   {
