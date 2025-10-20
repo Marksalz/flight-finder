@@ -12,7 +12,7 @@ export default function FlightCard({ flightInfo }) {
 
   return (
     <Card
-      onClick={() => navigate(`flight/${flightInfo.id}`)}
+      onClick={() => navigate(`/flight/${flightInfo.id}`)}
       sx={{
         p: 1,
         display: "flex",

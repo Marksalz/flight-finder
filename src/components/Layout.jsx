@@ -15,11 +15,9 @@ export default function Layout() {
             alignItems: "center",
             justifyContent: "space-between",
             bgcolor: "#cfdef3",
-            borderRadius: 4,
-            flexDirection: { xs: "column", sm: "row" }, // Stack on mobile
+            flexDirection: { xs: "column", sm: "row" },
             gap: { xs: 1, sm: 0 },
-            minWidth: "95vw",
-            margin: "1% auto",
+            minWidth: "100%",
             py: { xs: 1, sm: 2 },
             px: { xs: 2, sm: 4 },
           }}
@@ -62,14 +60,12 @@ export default function Layout() {
             alignItems: "center",
             justifyContent: "center",
             bgcolor: "#cfdef3",
-            borderRadius: 4,
             flexDirection: { xs: "column", sm: "row" },
             textAlign: "center",
             gap: { xs: 1, sm: 2 },
             py: { xs: 1, sm: 2 },
             px: { xs: 2, sm: 4 },
-            minWidth: "95vw",
-            margin: "1% auto",
+            minWidth: "100%",
           }}
         >
           <small>© {new Date().getFullYear()} AeroFind</small>
