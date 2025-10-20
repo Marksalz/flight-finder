@@ -14,7 +14,21 @@ export default function FlightsList({ flights = [] }) {
   }
 
   return (
-    <Stack spacing={1} sx={{ mt: 3 }}>
+    <Stack
+      spacing={1}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "stretch",
+        width: { xs: "100%", sm: "70%" },
+        maxWidth: "1100px",
+        mx: "auto",
+        px: { xs: 2, sm: 3, md: 4 },
+        mt: { xs: 2, sm: 3 },
+        mb: { xs: 2, sm: 3 },
+      }}
+    >
       {flights.map((f) => (
         <FlightCard key={f.id} flightInfo={f} />
       ))}

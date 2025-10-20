@@ -34,7 +34,9 @@ export default function SearchPage() {
         justifyContent: "center",
         background: "#CEDDF0",
         borderRadius: 4,
-        py: 6,
+        margin:"3% auto",
+        px: { xs: 2, sm: 4 },
+        py: { xs: 2, sm: 4 },
       }}
     >
       <img className="app_logo" src="/app_logo4.png" alt="app logo" />
