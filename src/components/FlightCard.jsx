@@ -4,7 +4,7 @@ import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
 
-export default function FlightCard({ flightInfo }) {
+export default function FlightCard({ flightInfo, isClickable }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
@@ -12,7 +12,9 @@ export default function FlightCard({ flightInfo }) {
 
   return (
     <Card
-      onClick={() => navigate(`/flight/${flightInfo.id}`)}
+      onClick={
+        isClickable ? () => navigate(`/flight/${flightInfo.id}`) : undefined
+      }
       sx={{
         p: 1,
         display: "flex",
@@ -23,14 +25,24 @@ export default function FlightCard({ flightInfo }) {
         backgroundColor: "lightblue",
         width: "100%",
         height: { xs: "100%", sm: 100 },
-        borderRadius: 4,
+
         transition: "transform 200ms ease, box-shadow 200ms ease",
-        "&:hover": {
-          cursor: "pointer",
-          transform: "scale(1.03)",
-          boxShadow: 6,
-          zIndex: 2,
-        },
+        ...(isClickable && {
+          borderRadius: 4,
+          "&:hover": {
+            cursor: "pointer",
+            transform: "scale(1.03)",
+            boxShadow: 6,
+            zIndex: 2,
+          },
+        }),
+        ...(!isClickable && {
+          borderTopLeftRadius: 16,
+          borderBottomLeftRadius: 16,
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+          cursor: "default",
+        }),
       }}
     >
       <Box
