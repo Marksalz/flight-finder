@@ -1,6 +1,6 @@
 import "leaflet/dist/leaflet.css";
 
-import { Card, CardContent } from "@mui/material";
+import { Card } from "@mui/material";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import "@elfalem/leaflet-curve";
@@ -57,46 +57,30 @@ function FlightRoute({ origin, destination }) {
   return null;
 }
 
-export default function FlightRouteMap({
-  origin,
-  destination,
-  fromLabel,
-  toLabel,
-}) {
+export default function FlightRouteMap({ origin, destination }) {
   return (
     <Card
       sx={{
-        borderRadius: 3,
-        boxShadow: 3,
-        overflow: "hidden",
-        margin: 2,
-        maxWidth: "70%",
-        width: "100%",
-        mx: "auto",
+        height: { xs: 300, sm: 400 },
+        position: "relative",
+        p: 0,
+        borderRadius: "16px",
       }}
     >
-      <CardContent
-        sx={{
-          height: { xs: 300, sm: 400 },
-          position: "relative",
-          p: 0,
-        }}
+      <MapContainer
+        center={[
+          (origin.lat + destination.lat) / 2,
+          (origin.lng + destination.lng) / 2,
+        ]}
+        zoom={3}
+        style={{ height: "100%", width: "100%", borderRadius: "16px" }}
       >
-        <MapContainer
-          center={[
-            (origin.lat + destination.lat) / 2,
-            (origin.lng + destination.lng) / 2,
-          ]}
-          zoom={3}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; OpenStreetMap contributors"
-          />
-          <FlightRoute origin={origin} destination={destination} />
-        </MapContainer>
-      </CardContent>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution="&copy; OpenStreetMap contributors"
+        />
+        <FlightRoute origin={origin} destination={destination} />
+      </MapContainer>
     </Card>
   );
 }
