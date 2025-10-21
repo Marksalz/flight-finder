@@ -6,6 +6,7 @@ import { Box, Container, Grid, Card } from "@mui/material";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 import { useState } from "react";
+import { readById } from "../utils/airportCRUD.js";
 
 export default function FlightDetailsPage() {
   const params = useParams();
@@ -31,8 +32,8 @@ export default function FlightDetailsPage() {
     >
       <Box sx={{ width: "50%" }}>
         <FlightRouteMap
-          origin={flight.origin}
-          destination={flight.destination}
+          origin={readById(flight.origin)}
+          destination={readById(flight.destination)}
         />
       </Box>
       <Grid container spacing={0} sx={{ width: "50%" }}>
