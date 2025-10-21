@@ -70,7 +70,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
         <Grid size="auto">
           <OriginDestination
             time={depTime}
-            airportCode={readById(flightInfo.origin)[0].code}
+            airportCode={readById(flightInfo.origin).code}
           />
         </Grid>
         <Grid size="auto">
@@ -115,7 +115,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
         <Grid size="auto">
           <OriginDestination
             time={arrTime}
-            airportCode={readById(flightInfo.destination)[0].code}
+            airportCode={readById(flightInfo.destination).code}
           />
         </Grid>
       </Grid>

@@ -12,8 +12,8 @@ export default function ResultsPage() {
   const { from, to, departDate, returnDate } = state || {};
 
   const flights = allFlights.filter((flight) => {
-    const originAirport = readById(flight.origin)[0];
-    const destinationAirport = readById(flight.destination)[0];
+    const originAirport = readById(flight.origin);
+    const destinationAirport = readById(flight.destination);
     
 
     return (
