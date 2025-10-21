@@ -22,7 +22,7 @@ export default function FlightCard({ flightInfo }) {
         gap: { xs: 2, sm: 4.5 },
         backgroundColor: "lightblue",
         width: "100%",
-        minHeight: 100,
+        height: { xs: "100%", sm: 100 },
         borderRadius: 4,
         transition: "transform 200ms ease, box-shadow 200ms ease",
         "&:hover": {
@@ -31,7 +31,6 @@ export default function FlightCard({ flightInfo }) {
           boxShadow: 6,
           zIndex: 2,
         },
-        height: "100%",
       }}
     >
       <Box
