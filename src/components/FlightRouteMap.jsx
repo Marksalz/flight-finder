@@ -1,6 +1,6 @@
 import "leaflet/dist/leaflet.css";
 
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import "@elfalem/leaflet-curve";
@@ -13,12 +13,19 @@ function FlightRoute({ origin, destination }) {
   useEffect(() => {
     if (!origin || !destination) return;
 
-    // Store curve reference for cleanup
     let curve;
 
-    // Create a curved line (Quadratic Bezier curve)
+    const lngDiff = Math.abs(destination.lng - origin.lng);
+    const latDiff = Math.abs(destination.lat - origin.lat);
+
+    const distance = Math.sqrt(lngDiff * lngDiff + latDiff * latDiff);
+
+    // Dynamic curve height based on distance
+    // For short flights: minimal curve, for long flights: more pronounced curve
+    const curveFactor = Math.min(Math.max(distance * 0.3, 2), 20);
+
     const controlPoint = [
-      (origin.lat + destination.lat) / 2 + 20, // curve height
+      (origin.lat + destination.lat) / 2 + curveFactor,
       (origin.lng + destination.lng) / 2,
     ];
 
@@ -89,22 +96,6 @@ export default function FlightRouteMap({
           />
           <FlightRoute origin={origin} destination={destination} />
         </MapContainer>
-
-        <Typography
-          variant="subtitle1"
-          sx={{
-            position: "absolute",
-            top: 8,
-            left: 16,
-            background: "rgba(255,255,255,0.8)",
-            px: 1.5,
-            py: 0.5,
-            borderRadius: 1,
-            fontSize: { xs: "0.95rem", sm: "1.1rem" },
-          }}
-        >
-          {fromLabel} ✈ {toLabel}
-        </Typography>
       </CardContent>
     </Card>
   );
