@@ -1,8 +1,5 @@
-import React from "react";
-import { useLocation } from "react-router";
 import SearchSummaryBar from "../components/SearchSummaryBar";
 import { allFlights } from "../utils/mockFlights";
-import { allAirports } from "../utils/mockAirports";
 import { Box } from "@mui/material";
 import FlightsList from "../components/FlightsList";
 import { readById } from "../utils/airportsApi";
