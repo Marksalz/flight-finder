@@ -6,20 +6,19 @@ import { allAirports } from "../utils/mockAirports";
 import { Box } from "@mui/material";
 import FlightsList from "../components/FlightsList";
 import { readById } from "../utils/airportsApi";
+import { useSelector } from "react-redux";
 
 export default function ResultsPage() {
-  const { state } = useLocation();
-  const { from, to, departDate, returnDate } = state || {};
+  const searchParams = useSelector((state) => state.search);
 
   const flights = allFlights.filter((flight) => {
     const originAirport = readById(flight.origin);
     const destinationAirport = readById(flight.destination);
-    
 
     return (
-      originAirport.code === from &&
-      destinationAirport.code === to &&
-      String(flight.date) === String(departDate)
+      originAirport.code === searchParams.origin &&
+      destinationAirport.code === searchParams.destination &&
+      String(flight.date) === String(searchParams.depDate)
     );
   });
 
@@ -35,12 +34,13 @@ export default function ResultsPage() {
       }}
     >
       <SearchSummaryBar
-        from={from}
-        to={to}
+        from={searchParams.origin}
+        to={searchParams.destination}
         date={
-          departDate && typeof departDate.toLocaleString === "function"
-            ? departDate.toLocaleString()
-            : String(departDate || "")
+          searchParams.depDate &&
+          typeof searchParams.depDate.toLocaleString === "function"
+            ? searchParams.depDate.toLocaleString()
+            : String(searchParams.depDate || "")
         }
       />
 

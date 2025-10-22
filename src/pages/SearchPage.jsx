@@ -74,8 +74,6 @@ export default function SearchPage() {
         </Typography>
         <form
           onSubmit={(e) => {
-            console.log(e);
-            
             e.preventDefault();
             dispatch(
               setSearchParams({
