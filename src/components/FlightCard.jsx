@@ -25,7 +25,8 @@ export default function FlightCard({ flightInfo, isClickable }) {
         gap: { xs: 2, sm: 4.5 },
         backgroundColor: "lightblue",
         width: "100%",
-        height: { xs: "100%", sm: 100 },
+        minHeight: 100,
+        height: { xs: "100%", sm: "auto" },
 
         transition: "transform 200ms ease, box-shadow 200ms ease",
         ...(isClickable && {
