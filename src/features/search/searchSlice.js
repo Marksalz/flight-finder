@@ -2,13 +2,14 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const searchSlice = createSlice({
   name: "search",
-  initialState: { origin: "", destination: "", date: "" },
+  initialState: { origin: "", destination: "", depDate: "", retDate: "" },
   reducers: {
     setSearchParams: (state, action) => {
-      const { origin, destination, date } = action.payload;
+      const { origin, destination, depDate, retDate } = action.payload;
       state.origin = origin;
       state.destination = destination;
-      state.date = date;
+      state.depDate = depDate;
+      state.retDate = retDate;
     },
   },
 });
