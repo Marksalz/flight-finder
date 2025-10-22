@@ -3,8 +3,9 @@ import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
+import { readById } from "../utils/airportCRUD";
 
-export default function FlightCard({ flightInfo }) {
+export default function FlightCard({ flightInfo, isClickable }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
@@ -12,7 +13,9 @@ export default function FlightCard({ flightInfo }) {
 
   return (
     <Card
-      onClick={() => navigate(`/flight/${flightInfo.id}`)}
+      onClick={
+        isClickable ? () => navigate(`/flight/${flightInfo.id}`) : undefined
+      }
       sx={{
         p: 1,
         display: "flex",
@@ -22,16 +25,25 @@ export default function FlightCard({ flightInfo }) {
         gap: { xs: 2, sm: 4.5 },
         backgroundColor: "lightblue",
         width: "100%",
-        minHeight: 100,
-        borderRadius: 4,
+        height: { xs: "100%", sm: 100 },
+
         transition: "transform 200ms ease, box-shadow 200ms ease",
-        "&:hover": {
-          cursor: "pointer",
-          transform: "scale(1.03)",
-          boxShadow: 6,
-          zIndex: 2,
-        },
-        height: "100%",
+        ...(isClickable && {
+          borderRadius: 4,
+          "&:hover": {
+            cursor: "pointer",
+            transform: "scale(1.03)",
+            boxShadow: 6,
+            zIndex: 2,
+          },
+        }),
+        ...(!isClickable && {
+          borderTopLeftRadius: 16,
+          borderBottomLeftRadius: 16,
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+          cursor: "default",
+        }),
       }}
     >
       <Box
@@ -58,7 +70,7 @@ export default function FlightCard({ flightInfo }) {
         <Grid size="auto">
           <OriginDestination
             time={depTime}
-            airportCode={flightInfo.origin.code}
+            airportCode={readById(flightInfo.origin).code}
           />
         </Grid>
         <Grid size="auto">
@@ -103,7 +115,7 @@ export default function FlightCard({ flightInfo }) {
         <Grid size="auto">
           <OriginDestination
             time={arrTime}
-            airportCode={flightInfo.destination.code}
+            airportCode={readById(flightInfo.destination).code}
           />
         </Grid>
       </Grid>

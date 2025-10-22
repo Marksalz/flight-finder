@@ -2,20 +2,23 @@ import React from "react";
 import { useLocation } from "react-router";
 import SearchSummaryBar from "../components/SearchSummaryBar";
 import { allFlights } from "../utils/mockFlights";
+import { allAirports } from "../utils/mockAirports";
 import { Box } from "@mui/material";
-import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import FlightCard from "../components/FlightCard";
 import FlightsList from "../components/FlightsList";
+import { readById } from "../utils/airportCRUD";
 
 export default function ResultsPage() {
   const { state } = useLocation();
   const { from, to, departDate, returnDate } = state || {};
 
   const flights = allFlights.filter((flight) => {
+    const originAirport = readById(flight.origin);
+    const destinationAirport = readById(flight.destination);
+    
+
     return (
-      flight.origin.code === from &&
-      flight.destination.code === to &&
+      originAirport.code === from &&
+      destinationAirport.code === to &&
       String(flight.date) === String(departDate)
     );
   });

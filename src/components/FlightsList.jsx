@@ -30,7 +30,7 @@ export default function FlightsList({ flights = [] }) {
       }}
     >
       {flights.map((f) => (
-        <FlightCard key={f.id} flightInfo={f} />
+        <FlightCard key={f.id} flightInfo={f} isClickable={true} />
       ))}
     </Stack>
   );
