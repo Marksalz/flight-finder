@@ -16,11 +16,12 @@ export default function FlightDetailsPage() {
 
   return (
     <Container
-      maxWidth={false}
+      maxWidth="xl"
       sx={{
         display: "flex",
+        flexDirection: { xs: "column", md: "row" },
         gap: 2,
-        justifyContent: "space-evenly",
+        justifyContent: { xs: "flex-start", md: "space-evenly" },
         alignItems: "flex-start",
         ml: 0,
         mr: 0,
@@ -28,21 +29,23 @@ export default function FlightDetailsPage() {
         mb: 2,
         width: "100%",
         minHeight: "100vh",
+        px: { xs: 1, sm: 2, md: 4 },
       }}
     >
-      <Box sx={{ width: "50%" }}>
+      <Box sx={{ width: { xs: "100%", md: "50%" }, mb: { xs: 2, md: 0 } }}>
         <FlightRouteMap
           origin={readById(flight.origin)}
           destination={readById(flight.destination)}
         />
       </Box>
-      <Grid container spacing={0} sx={{ width: "50%" }}>
+      <Grid container spacing={0} sx={{ width: { xs: "100%", md: "50%" } }}>
         <Grid
           sx={{
             width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            flexDirection: { xs: "column", md: "row" },
           }}
         >
           <FlightCard flightInfo={flight} isClickable={false} />
@@ -53,12 +56,17 @@ export default function FlightDetailsPage() {
               alignContent: "center",
               borderTopRightRadius: 16,
               borderBottomRightRadius: 16,
+              mt: { xs: 2, md: 0 },
+              width: { xs: "100%", md: "auto" },
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             {!isExpanded ? (
               <ExpandMoreRoundedIcon
                 sx={{
-                  fontSize: "3rem",
+                  fontSize: { xs: "2rem", md: "3rem" },
                   "&:hover": {
                     cursor: "pointer",
                     color: "black",
@@ -72,7 +80,7 @@ export default function FlightDetailsPage() {
             ) : (
               <ExpandLessRoundedIcon
                 sx={{
-                  fontSize: "3rem",
+                  fontSize: { xs: "2rem", md: "3rem" },
                   "&:hover": {
                     cursor: "pointer",
                     color: "black",
