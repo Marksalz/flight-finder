@@ -8,6 +8,8 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setSearchParams } from "../features/search/searchSlice";
 
 const airports = [
   { code: "JFK", name: "New York (JFK)" },
@@ -17,6 +19,7 @@ const airports = [
 ];
 
 export default function SearchPage() {
+  const dispatch = useDispatch();
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [departDate, setDepartDate] = useState(null); // Dayjs object
@@ -34,7 +37,7 @@ export default function SearchPage() {
         justifyContent: "center",
         background: "#CEDDF0",
         borderRadius: 4,
-        margin:"3% auto",
+        margin: "3% auto",
         px: { xs: 2, sm: 4 },
         py: { xs: 2, sm: 4 },
       }}
@@ -71,15 +74,18 @@ export default function SearchPage() {
         </Typography>
         <form
           onSubmit={(e) => {
+            console.log(e);
+            
             e.preventDefault();
-            navigate("/results", {
-              state: {
-                from,
-                to,
-                departDate: departDate ? departDate.format("YYYY-MM-DD") : "",
-                returnDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
-              },
-            });
+            dispatch(
+              setSearchParams({
+                origin: from,
+                destination: to,
+                depDate: departDate ? departDate.format("YYYY-MM-DD") : "",
+                retDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
+              })
+            );
+            navigate("/results");
           }}
           style={{ width: "100%" }}
         >
