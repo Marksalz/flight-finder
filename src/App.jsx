@@ -5,18 +5,22 @@ import SearchPage from "./pages/SearchPage";
 import ResultsPage from "./pages/ResultsPage";
 import FlightDetailsPage from "./pages/FlightDetailsPage";
 import AirportDetailsPage from "./pages/AirportDetailsPage";
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<SearchPage />} />
-          <Route path="results" element={<ResultsPage />} />
-          <Route path="flight/:flightId" element={<FlightDetailsPage />} />
-          <Route path="airport/:code" element={<AirportDetailsPage />} />
-        </Route>
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<SearchPage />} />
+            <Route path="results" element={<ResultsPage />} />
+            <Route path="flight/:flightId" element={<FlightDetailsPage />} />
+            <Route path="airport/:code" element={<AirportDetailsPage />} />
+          </Route>
+        </Routes>
+      </Provider>
     </>
   );
 }
