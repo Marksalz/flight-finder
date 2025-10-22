@@ -3,7 +3,7 @@ import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
-import { readById } from "../utils/airportCRUD";
+import { readById } from "../utils/airportsApi";
 
 export default function FlightCard({ flightInfo, isClickable }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);

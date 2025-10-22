@@ -5,7 +5,7 @@ import { allFlights } from "../utils/mockFlights";
 import { allAirports } from "../utils/mockAirports";
 import { Box } from "@mui/material";
 import FlightsList from "../components/FlightsList";
-import { readById } from "../utils/airportCRUD";
+import { readById } from "../utils/airportsApi";
 
 export default function ResultsPage() {
   const { state } = useLocation();

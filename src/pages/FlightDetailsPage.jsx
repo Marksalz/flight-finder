@@ -6,7 +6,7 @@ import { Box, Container, Grid, Card } from "@mui/material";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 import { useState } from "react";
-import { readById } from "../utils/airportCRUD.js";
+import { readById } from "../utils/airportsApi.js";
 
 export default function FlightDetailsPage() {
   const params = useParams();
