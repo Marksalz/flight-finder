@@ -93,6 +93,7 @@ const flightsSlice = createSlice({
       .addCase(fetchFlights.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+        state.flights = [];
       })
       .addCase(modifyFlight.fulfilled, (state, action) => {
         const idx = state.flights.findIndex((f) => f.id === action.payload.id);
