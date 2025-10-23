@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { allFlights } from "../../utils/mockFlights";
 
 export const fetchFlights = createAsyncThunk(
   "flights/fetchFlights",
