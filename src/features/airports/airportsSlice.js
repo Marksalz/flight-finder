@@ -1,26 +1,32 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { allAirports } from "../../utils/mockAirports";
 
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
   async () => {
-    const response = await fetch(`/api/airports`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch airport");
-    }
-    return await response.json();
+    return allAirports;
+
+    // const response = await fetch(`/api/airports`);
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch airport");
+    // }
+    // return await response.json();
   }
 );
 
 export const fetchAirportById = createAsyncThunk(
   "airports/fetchAirportById",
   async (airportId) => {
-    const response = await fetch(
-      `/api/airports/${encodeURIComponent(airportId)}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch airport");
-    }
-    return await response.json();
+    const airport = allAirports.find((airport) => airport.id === airportId);
+    return airport;
+
+    // const response = await fetch(
+    //   `/api/airports/${encodeURIComponent(airportId)}`
+    // );
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch airport");
+    // }
+    // return await response.json();
   }
 );
 
@@ -41,6 +47,12 @@ export const modifyAirport = createAsyncThunk(
     return await response.json();
   }
 );
+
+export const selectAirportByCode = (state, code) =>
+  state.airports.airports.find((a) => a.code === code);
+
+export const selectAirportById = (state, id) =>
+  state.airports.airports.find((a) => a.id === id);
 
 const airportsSlice = createSlice({
   name: "airports",
@@ -79,5 +91,6 @@ const airportsSlice = createSlice({
   },
 });
 
-export const { selectAirport } = airportsSlice.actions;
+export const { selectAirport, setOriginAirport, setDestinationAirport } =
+  airportsSlice.actions;
 export default airportsSlice.reducer;

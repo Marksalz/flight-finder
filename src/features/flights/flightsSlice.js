@@ -3,18 +3,40 @@ import { allFlights } from "../../utils/mockFlights";
 
 export const fetchFlights = createAsyncThunk(
   "flights/fetchFlights",
-  async ({ origin, destination, date }) => {
-    const response = await fetch(
-      `/api/flights?origin=${encodeURIComponent(
-        origin
-      )}&destination=${encodeURIComponent(
-        destination
-      )}&date=${encodeURIComponent(date)}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch flights");
+  async ({ searchParams }, { getState }) => {
+    const state = getState();
+
+    const airports = state.airports.airports;
+
+    const filtered = [];
+    for (const flight of allFlights) {
+      const originAirport = airports.find((a) => a.id === flight.origin);
+      const destinationAirport = airports.find(
+        (a) => a.id === flight.destination
+      );
+
+      if (
+        originAirport?.code === searchParams.origin &&
+        destinationAirport?.code === searchParams.destination &&
+        String(flight.date) === String(searchParams.depDate)
+      ) {
+        filtered.push(flight);
+      }
     }
-    return await response.json();
+
+    return filtered;
+
+    // const response = await fetch(
+    //   `/api/flights?origin=${encodeURIComponent(
+    //     searchParams.origin
+    //   )}&destination=${encodeURIComponent(
+    //     searchParams.destination
+    //   )}&date=${encodeURIComponent(searchParams.depDate)}`
+    // );
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch flights");
+    // }
+    // return await response.json();
   }
 );
 
