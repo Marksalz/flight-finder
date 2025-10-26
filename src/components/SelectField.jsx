@@ -11,8 +11,6 @@ export default function GenericSelectField({
   required = false,
   helperText = "",
 }) {
-  console.log(options);
-
   return (
     <Tooltip title={tooltip} arrow>
       <TextField

@@ -3,13 +3,26 @@ import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
-import { readById } from "../utils/airportsApi";
+import { fetchAirportById } from "../utils/airportsApi";
+import { useEffect, useState } from "react";
 
 export default function FlightCard({ flightInfo, isClickable }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
   const navigate = useNavigate();
+  const [origin, setOrigin] = useState();
+  const [destination, setDestination] = useState();
+
+  useEffect(() => {
+    async function fetchAirports() {
+      const originAirport = await fetchAirportById(flightInfo.origin);
+      setOrigin(originAirport.code);
+      const destinationAirport = await fetchAirportById(flightInfo.destination);
+      setDestination(destinationAirport.code);
+    }
+    fetchAirports();
+  }, [flightInfo.origin, flightInfo.destination]);
 
   return (
     <Card
@@ -69,10 +82,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
         sx={{ textAlign: "left" }}
       >
         <Grid size="auto">
-          <OriginDestination
-            time={depTime}
-            airportCode={readById(flightInfo.origin).code}
-          />
+          <OriginDestination time={depTime} airportCode={origin} />
         </Grid>
         <Grid size="auto">
           <Box
@@ -114,10 +124,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
           </Box>
         </Grid>
         <Grid size="auto">
-          <OriginDestination
-            time={arrTime}
-            airportCode={readById(flightInfo.destination).code}
-          />
+          <OriginDestination time={arrTime} airportCode={destination} />
         </Grid>
       </Grid>
 

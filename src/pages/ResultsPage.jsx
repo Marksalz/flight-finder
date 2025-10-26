@@ -2,22 +2,19 @@ import SearchSummaryBar from "../components/SearchSummaryBar";
 import { allFlights } from "../utils/mockFlights";
 import { Box } from "@mui/material";
 import FlightsList from "../components/FlightsList";
-import { readById } from "../utils/airportsApi";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchFlights } from "../features/flights/flightsSlice";
 
 export default function ResultsPage() {
   const searchParams = useSelector((state) => state.search);
+  const dispatch = useDispatch();
 
-  const flights = allFlights.filter((flight) => {
-    const originAirport = readById(flight.origin);
-    const destinationAirport = readById(flight.destination);
+  useEffect(() => {
+    dispatch(fetchFlights({ searchParams }));
+  }, [dispatch, searchParams]);
 
-    return (
-      originAirport.code === searchParams.origin &&
-      destinationAirport.code === searchParams.destination &&
-      String(flight.date) === String(searchParams.depDate)
-    );
-  });
+  const flights = useSelector((state) => state.flights.flights);
 
   return (
     <Box
