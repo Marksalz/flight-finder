@@ -40,6 +40,21 @@ export const fetchFlights = createAsyncThunk(
   }
 );
 
+export const fetchFlightById = createAsyncThunk(
+  "flights/fetchFlightById",
+  async (flightId) => {
+    const flight = allFlights.find((flight) => flight.id === flightId);
+
+    return flight;
+
+    // const response = await fetch(`/api/flights/${flightId}`);
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch flight");
+    // }
+    // return await response.json();
+  }
+);
+
 export const createFlight = createAsyncThunk(
   "flights/createFlight",
   async (flightData) => {
@@ -116,6 +131,17 @@ const flightsSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
         state.flights = [];
+      })
+      .addCase(fetchFlightById.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchFlightById.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.selectedFlight = action.payload;
+      })
+      .addCase(fetchFlightById.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       })
       .addCase(modifyFlight.fulfilled, (state, action) => {
         const idx = state.flights.findIndex((f) => f.id === action.payload.id);
