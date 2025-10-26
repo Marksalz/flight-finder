@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/searchPage.css";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import SelectField from "../components/SelectField";
@@ -6,25 +6,24 @@ import DateField from "../components/DateField";
 import SubmitButton from "../components/SubmitButton";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchParams } from "../features/search/searchSlice";
-
-const airports = [
-  { code: "JFK", name: "New York (JFK)" },
-  { code: "LAX", name: "Los Angeles (LAX)" },
-  { code: "ORD", name: "Chicago (ORD)" },
-  { code: "TLV", name: "Tel-Aviv (TLV)" },
-];
+import { fetchAirports } from "../features/airports/airportsSlice";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [departDate, setDepartDate] = useState(null); // Dayjs object
-  const [returnDate, setReturnDate] = useState(null); // Dayjs object
+  const [departDate, setDepartDate] = useState(null);
+  const [returnDate, setReturnDate] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(fetchAirports());
+  }, [dispatch]);
+
+  const airports = useSelector((state) => state.airports.airports);
 
   return (
     <Container
@@ -149,4 +148,3 @@ export default function SearchPage() {
     </Container>
   );
 }
-//
