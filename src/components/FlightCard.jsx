@@ -5,7 +5,7 @@ import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
 import { fetchAirportById } from "../utils/airportsApi";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectFlight } from "../features/flights/flightsSlice";
 
 export default function FlightCard({ flightInfo, isClickable }) {
@@ -13,20 +13,10 @@ export default function FlightCard({ flightInfo, isClickable }) {
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
   const navigate = useNavigate();
-  const [origin, setOrigin] = useState();
-  const [destination, setDestination] = useState();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    async function fetchAirports() {
-      const originAirport = await fetchAirportById(flightInfo.origin);
-      setOrigin(originAirport.code);
-      const destinationAirport = await fetchAirportById(flightInfo.destination);
-      setDestination(destinationAirport.code);
-    }
-    fetchAirports();
-  }, [flightInfo.origin, flightInfo.destination]);
-
+  const originCode = useSelector((state) => state.search.origin);
+  const destinationCode = useSelector((state) => state.search.destination);
   return (
     <Card
       onClick={
@@ -90,7 +80,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
         sx={{ textAlign: "left" }}
       >
         <Grid size="auto">
-          <OriginDestination time={depTime} airportCode={origin} />
+          <OriginDestination time={depTime} airportCode={originCode} />
         </Grid>
         <Grid size="auto">
           <Box
@@ -132,7 +122,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
           </Box>
         </Grid>
         <Grid size="auto">
-          <OriginDestination time={arrTime} airportCode={destination} />
+          <OriginDestination time={arrTime} airportCode={destinationCode} />
         </Grid>
       </Grid>
 
