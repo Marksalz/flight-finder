@@ -5,6 +5,8 @@ import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
 import { fetchAirportById } from "../utils/airportsApi";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { selectFlight } from "../features/flights/flightsSlice";
 
 export default function FlightCard({ flightInfo, isClickable }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
@@ -13,6 +15,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
   const navigate = useNavigate();
   const [origin, setOrigin] = useState();
   const [destination, setDestination] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchAirports() {
@@ -27,7 +30,12 @@ export default function FlightCard({ flightInfo, isClickable }) {
   return (
     <Card
       onClick={
-        isClickable ? () => navigate(`/flight/${flightInfo.id}`) : undefined
+        isClickable
+          ? () => {
+              dispatch(selectFlight(flightInfo));
+              navigate(`/flight/${flightInfo.id}`);
+            }
+          : undefined
       }
       sx={{
         p: 1,
