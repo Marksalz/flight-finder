@@ -25,6 +25,19 @@ export default function SearchPage() {
 
   const airports = useSelector((state) => state.airports.airports);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      setSearchParams({
+        origin: from,
+        destination: to,
+        depDate: departDate ? departDate.format("YYYY-MM-DD") : "",
+        retDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
+      })
+    );
+    navigate("/results");
+  };
+
   return (
     <Container
       maxWidth="md"
@@ -71,21 +84,7 @@ export default function SearchPage() {
         >
           Search and compare flights
         </Typography>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            dispatch(
-              setSearchParams({
-                origin: from,
-                destination: to,
-                depDate: departDate ? departDate.format("YYYY-MM-DD") : "",
-                retDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
-              })
-            );
-            navigate("/results");
-          }}
-          style={{ width: "100%" }}
-        >
+        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
