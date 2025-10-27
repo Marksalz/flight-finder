@@ -31,12 +31,8 @@ export default function GenericSelectField({
         sx={{ mb: 0, width: 200 }}
       >
         {options.map((opt) => (
-          <MenuItem
-            key={opt.value || opt.code}
-            value={opt.value || opt.code}
-            sx={{ width: "100%" }}
-          >
-            {opt.label || opt.name}
+          <MenuItem key={opt.code} value={opt.code} sx={{ width: "100%" }}>
+            {`${opt.name} (${opt.code})`}
           </MenuItem>
         ))}
       </TextField>

@@ -5,8 +5,17 @@ import SearchPage from "./pages/SearchPage";
 import ResultsPage from "./pages/ResultsPage";
 import FlightDetailsPage from "./pages/FlightDetailsPage";
 import AirportDetailsPage from "./pages/AirportDetailsPage";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchAirports } from "./features/airports/airportsSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAirports());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>

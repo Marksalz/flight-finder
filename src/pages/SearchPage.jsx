@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/searchPage.css";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import SelectField from "../components/SelectField";
@@ -6,22 +6,37 @@ import DateField from "../components/DateField";
 import SubmitButton from "../components/SubmitButton";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { useNavigate } from "react-router";
-
-const airports = [
-  { code: "JFK", name: "New York (JFK)" },
-  { code: "LAX", name: "Los Angeles (LAX)" },
-  { code: "ORD", name: "Chicago (ORD)" },
-  { code: "TLV", name: "Tel-Aviv (TLV)" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchParams } from "../features/search/searchSlice";
+import { fetchAirports } from "../features/airports/airportsSlice";
 
 export default function SearchPage() {
+  const dispatch = useDispatch();
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [departDate, setDepartDate] = useState(null); // Dayjs object
-  const [returnDate, setReturnDate] = useState(null); // Dayjs object
+  const [departDate, setDepartDate] = useState(null);
+  const [returnDate, setReturnDate] = useState(null);
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   dispatch(fetchAirports());
+  // }, [dispatch]);
+
+  const airports = useSelector((state) => state.airports.airports);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      setSearchParams({
+        origin: from,
+        destination: to,
+        depDate: departDate ? departDate.format("YYYY-MM-DD") : "",
+        retDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
+      })
+    );
+    navigate("/results");
+  };
 
   return (
     <Container
@@ -34,7 +49,7 @@ export default function SearchPage() {
         justifyContent: "center",
         background: "#CEDDF0",
         borderRadius: 4,
-        margin:"3% auto",
+        margin: "3% auto",
         px: { xs: 2, sm: 4 },
         py: { xs: 2, sm: 4 },
       }}
@@ -69,20 +84,7 @@ export default function SearchPage() {
         >
           Search and compare flights
         </Typography>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            navigate("/results", {
-              state: {
-                from,
-                to,
-                departDate: departDate ? departDate.format("YYYY-MM-DD") : "",
-                returnDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
-              },
-            });
-          }}
-          style={{ width: "100%" }}
-        >
+        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
@@ -145,4 +147,3 @@ export default function SearchPage() {
     </Container>
   );
 }
-//

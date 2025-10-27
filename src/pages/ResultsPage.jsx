@@ -1,27 +1,20 @@
-import React from "react";
-import { useLocation } from "react-router";
 import SearchSummaryBar from "../components/SearchSummaryBar";
 import { allFlights } from "../utils/mockFlights";
-import { allAirports } from "../utils/mockAirports";
 import { Box } from "@mui/material";
 import FlightsList from "../components/FlightsList";
-import { readById } from "../utils/airportCRUD";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchFlights } from "../features/flights/flightsSlice";
 
 export default function ResultsPage() {
-  const { state } = useLocation();
-  const { from, to, departDate, returnDate } = state || {};
+  const searchParams = useSelector((state) => state.search);
+  const dispatch = useDispatch();
 
-  const flights = allFlights.filter((flight) => {
-    const originAirport = readById(flight.origin);
-    const destinationAirport = readById(flight.destination);
-    
+  useEffect(() => {
+    dispatch(fetchFlights({ searchParams }));
+  }, [dispatch, searchParams]);
 
-    return (
-      originAirport.code === from &&
-      destinationAirport.code === to &&
-      String(flight.date) === String(departDate)
-    );
-  });
+  const flights = useSelector((state) => state.flights.flights);
 
   return (
     <Box
@@ -35,12 +28,13 @@ export default function ResultsPage() {
       }}
     >
       <SearchSummaryBar
-        from={from}
-        to={to}
+        from={searchParams.origin}
+        to={searchParams.destination}
         date={
-          departDate && typeof departDate.toLocaleString === "function"
-            ? departDate.toLocaleString()
-            : String(departDate || "")
+          searchParams.depDate &&
+          typeof searchParams.depDate.toLocaleString === "function"
+            ? searchParams.depDate.toLocaleString()
+            : String(searchParams.depDate || "")
         }
       />
 

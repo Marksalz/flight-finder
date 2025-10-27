@@ -3,18 +3,29 @@ import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
-import { readById } from "../utils/airportCRUD";
+import { fetchAirportById } from "../utils/airportsApi";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFlight } from "../features/flights/flightsSlice";
 
 export default function FlightCard({ flightInfo, isClickable }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const originCode = useSelector((state) => state.search.origin);
+  const destinationCode = useSelector((state) => state.search.destination);
   return (
     <Card
       onClick={
-        isClickable ? () => navigate(`/flight/${flightInfo.id}`) : undefined
+        isClickable
+          ? () => {
+              dispatch(selectFlight(flightInfo));
+              navigate(`/flight/${flightInfo.id}`);
+            }
+          : undefined
       }
       sx={{
         p: 1,
@@ -25,7 +36,8 @@ export default function FlightCard({ flightInfo, isClickable }) {
         gap: { xs: 2, sm: 4.5 },
         backgroundColor: "lightblue",
         width: "100%",
-        height: { xs: "100%", sm: 100 },
+        minHeight: 100,
+        height: { xs: "100%", sm: "auto" },
 
         transition: "transform 200ms ease, box-shadow 200ms ease",
         ...(isClickable && {
@@ -68,10 +80,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
         sx={{ textAlign: "left" }}
       >
         <Grid size="auto">
-          <OriginDestination
-            time={depTime}
-            airportCode={readById(flightInfo.origin).code}
-          />
+          <OriginDestination time={depTime} airportCode={originCode} />
         </Grid>
         <Grid size="auto">
           <Box
@@ -113,10 +122,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
           </Box>
         </Grid>
         <Grid size="auto">
-          <OriginDestination
-            time={arrTime}
-            airportCode={readById(flightInfo.destination).code}
-          />
+          <OriginDestination time={arrTime} airportCode={destinationCode} />
         </Grid>
       </Grid>
 
