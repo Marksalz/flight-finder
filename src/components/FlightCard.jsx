@@ -3,13 +3,11 @@ import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
-import { fetchAirportById } from "../utils/airportsApi";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFlight } from "../features/flights/flightsSlice";
 import { selectAirportById } from "../features/airports/airportsSlice";
 
-export default function FlightCard({ flightInfo, isClickable }) {
+export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
@@ -65,6 +63,10 @@ export default function FlightCard({ flightInfo, isClickable }) {
           borderBottomRightRadius: 0,
           cursor: "default",
         }),
+        ...(isExpanded && {
+          borderBottomLeftRadius: 0,
+          transition: "border-radius 0.4s",
+        }),
       }}
     >
       <Box
@@ -89,7 +91,13 @@ export default function FlightCard({ flightInfo, isClickable }) {
         sx={{ textAlign: "left" }}
       >
         <Grid size="auto">
-          <OriginDestination time={depTime} airportCode={originCode} />
+          <OriginDestination
+            time={depTime}
+            airportCode={originCode}
+            isColumn={true}
+            timeV={"body1"}
+            airportV={"h5"}
+          />
         </Grid>
         <Grid size="auto">
           <Box
@@ -131,7 +139,13 @@ export default function FlightCard({ flightInfo, isClickable }) {
           </Box>
         </Grid>
         <Grid size="auto">
-          <OriginDestination time={arrTime} airportCode={destinationCode} />
+          <OriginDestination
+            time={arrTime}
+            airportCode={destinationCode}
+            isColumn={true}
+            timeV={"body1"}
+            airportV={"h5"}
+          />
         </Grid>
       </Grid>
 
