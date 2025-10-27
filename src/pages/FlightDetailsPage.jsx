@@ -30,6 +30,10 @@ export default function FlightDetailsPage() {
     selectAirportById(state, flight?.destination)
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Container
       maxWidth="xl"
