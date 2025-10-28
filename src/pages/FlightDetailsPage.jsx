@@ -75,14 +75,14 @@ export default function FlightDetailsPage() {
             spacing={0}
             sx={{
               width: { xs: "100%", md: "50%" },
+              
             }}
           >
             <Grid
               sx={{
                 width: "100%",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                justifyContent: "flex-end",
                 flexDirection: { xs: "column", md: "row" },
               }}
             >
@@ -94,12 +94,12 @@ export default function FlightDetailsPage() {
               <Box
                 sx={{
                   bgcolor: "lightblue",
-                  height: "100%",
+                  height: { xs: "10%", md: "100%" },
                   alignContent: "center",
-                  borderTopRightRadius: 16,
+                  borderTopRightRadius: { xs: 0, md: 16 },
                   borderBottomRightRadius: isExpanded ? 0 : 16,
-                  mt: { xs: 2, md: 0 },
-                  width: { xs: "100%", md: "auto" },
+                  borderBottomLeftRadius: { xs: isExpanded ? 0 : 16, md: 0 },
+                  width: { xs: "100%", md: "10%" },
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

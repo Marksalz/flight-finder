@@ -40,11 +40,11 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
         flexDirection: { xs: "column", sm: "row" },
         alignItems: { xs: "stretch", sm: "center" },
         justifyContent: { xs: "stretch", sm: "space-evenly" },
-        gap: { xs: 2, sm: 4.5 },
+        gap: { xs: 0, sm: 4.5 },
         backgroundColor: "lightblue",
-        width: "100%",
+        width: { xs: "100%", sm: "90%" },
         minHeight: 100,
-        height: { xs: "100%", sm: "auto" },
+        height: { xs: "auto", sm: "auto" },
 
         transition: "transform 200ms ease, box-shadow 200ms ease",
         ...(isClickable && {
@@ -58,9 +58,9 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
         }),
         ...(!isClickable && {
           borderTopLeftRadius: 16,
-          borderBottomLeftRadius: 16,
-          borderTopRightRadius: 0,
-          borderBottomRightRadius: 0,
+          borderBottomLeftRadius: { xs: 0, sm: 16 },
+          borderTopRightRadius: { xs: 16, md: 0 },
+          borderBottomRightRadius: { xs: 0, sm: 16, md: 0 },
           cursor: "default",
         }),
         ...(isExpanded && {
@@ -86,6 +86,7 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
         alignItems="center"
         justifyContent="center"
         flexDirection="row"
+        flexWrap={"nowrap"}
         spacing={2}
         width={{ xs: "100%", sm: "60%" }}
         sx={{ textAlign: "left" }}
@@ -107,7 +108,7 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
-              height: { xs: 24, sm: 36, md: 48 },
+              height: { xs: 36, sm: 48, md: 16, lg: 40 },
             }}
           >
             {/* Arrow line */}
@@ -185,7 +186,6 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
 function formatPrice(amount, currency) {
   const numericAmount = Number(amount);
   let formattedPrice;
-
   try {
     formattedPrice = new Intl.NumberFormat(undefined, {
       style: "currency",

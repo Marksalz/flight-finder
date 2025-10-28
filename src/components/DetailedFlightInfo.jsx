@@ -18,7 +18,6 @@ export default function DetailedFlightInfo({
     <Box
       sx={{
         bgcolor: "lightblue",
-        bgcolor: "lightblue",
         width: "100%",
         minHeight: 300,
         p: 2,
