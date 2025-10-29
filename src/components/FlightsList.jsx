@@ -20,7 +20,7 @@ export default function FlightsList({ flights = [] }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "stretch",
+        alignItems: "center",
         width: { xs: "100%", sm: "70%" },
         maxWidth: "1100px",
         mx: "auto",

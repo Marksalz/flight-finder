@@ -108,7 +108,7 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
-              height: { xs: 36, sm: 48, md: 16, lg: 40 },
+              height: { xs: 36, sm: 16, md: 36, lg: 40 },
             }}
           >
             {/* Arrow line */}
