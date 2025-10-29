@@ -1,5 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { allFlights } from "../../utils/mockFlights";
+import LongArrow from "../../components/LongArrow";
+
+const baseUrl = "http://localhost:3000";
 
 export const fetchFlights = createAsyncThunk(
   "flights/fetchFlights",
@@ -7,51 +10,56 @@ export const fetchFlights = createAsyncThunk(
     const state = getState();
 
     const airports = state.airports.airports;
+    const originId = airports.find((a) => a.code === searchParams.origin).id;
 
-    const filtered = [];
-    for (const flight of allFlights) {
-      const originAirport = airports.find((a) => a.id === flight.origin);
-      const destinationAirport = airports.find(
-        (a) => a.id === flight.destination
-      );
+    const destinationId = airports.find(
+      (a) => a.code === searchParams.destination
+    ).id;
 
-      if (
-        originAirport?.code === searchParams.origin &&
-        destinationAirport?.code === searchParams.destination &&
-        String(flight.date) === String(searchParams.depDate)
-      ) {
-        filtered.push(flight);
-      }
-    }
+    // const filtered = [];
+    // for (const flight of allFlights) {
+    //   const originAirport = airports.find((a) => a.id === flight.origin);
+    //   const destinationAirport = airports.find(
+    //     (a) => a.id === flight.destination
+    //   );
 
-    return filtered;
-
-    // const response = await fetch(
-    //   `/api/flights?origin=${encodeURIComponent(
-    //     searchParams.origin
-    //   )}&destination=${encodeURIComponent(
-    //     searchParams.destination
-    //   )}&date=${encodeURIComponent(searchParams.depDate)}`
-    // );
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch flights");
+    //   if (
+    //     originAirport?.code === searchParams.origin &&
+    //     destinationAirport?.code === searchParams.destination &&
+    //     String(flight.date) === String(searchParams.depDate)
+    //   ) {
+    //     filtered.push(flight);
+    //   }
     // }
-    // return await response.json();
+
+    // return filtered;
+
+    const response = await fetch(
+      `${baseUrl}/flights?origin=${encodeURIComponent(
+        originId
+      )}&destination=${encodeURIComponent(
+        destinationId
+      )}&date=${encodeURIComponent(searchParams.depDate)}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch flights");
+    }
+    return await response.json();
   }
 );
 
 export const fetchFlightById = createAsyncThunk(
   "flights/fetchFlightById",
   async (flightId) => {
-    const flight = allFlights.find((flight) => flight.id === flightId);
+    // const flight = allFlights.find((flight) => flight.id === flightId);
 
-    return flight;
+    // return flight;
 
-    // const response = await fetch(`/api/flights/${flightId}`);
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch flight");
-    // }
-    // return await response.json();
+    const response = await fetch(`${baseUrl}/flights/${flightId}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch flight");
+    }
+    return await response.json();
   }
 );
 
