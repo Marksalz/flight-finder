@@ -42,11 +42,12 @@ export default function SearchPage() {
     <Container
       maxWidth="md"
       sx={{
-        minHeight: "100vh",
+        width: "90%",
+        minHeight: { xs: "87.8vh", sm: "100vh" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         background: "#CEDDF0",
         borderRadius: 4,
         margin: "3% auto",
@@ -58,7 +59,7 @@ export default function SearchPage() {
       <Box
         sx={{
           width: "100%",
-          maxWidth: { xs: "90%", sm: 500, md: 600 }, // shrink on mobile
+          maxWidth: { xs: "90%", sm: 500, md: 600 },
           bgcolor: "rgba(255,255,255,0.95)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.2)",
           borderRadius: { xs: 2, sm: 3, md: 4 },
@@ -88,7 +89,7 @@ export default function SearchPage() {
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
-              <Grid size={{ xs: 12, sm: 6 }}>
+              <Grid size={{ xs: 8, sm: 6 }}>
                 <SelectField
                   label="From"
                   value={from}
@@ -100,7 +101,7 @@ export default function SearchPage() {
                   helperText="Where are you flying from?"
                 />
               </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
+              <Grid size={{ xs: 8, sm: 6 }}>
                 <SelectField
                   label="To"
                   value={to}
@@ -116,7 +117,7 @@ export default function SearchPage() {
 
             {/* Second row: Date selectors */}
             <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
-              <Grid size={{ xs: 12, sm: 6 }}>
+              <Grid size={{ xs: 8, sm: 6 }}>
                 <DateField
                   label="Departure Date"
                   value={departDate}
@@ -124,7 +125,7 @@ export default function SearchPage() {
                   required
                 />
               </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
+              <Grid size={{ xs: 8, sm: 6 }}>
                 <DateField
                   label="Return Date"
                   value={returnDate}
