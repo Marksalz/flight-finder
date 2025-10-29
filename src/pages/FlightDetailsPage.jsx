@@ -1,13 +1,15 @@
 import { useParams } from "react-router";
 import FlightRouteMap from "../components/FlightRouteMap";
 import FlightCard from "../components/FlightCard.jsx";
-import { Box, Container, Grid, Card, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAirportById } from "../features/airports/airportsSlice.js";
 import { fetchFlightById } from "../features/flights/flightsSlice.js";
+import DetailedFlightInfo from "../components/DetailedFlightInfo.jsx";
+import Collapse from "@mui/material/Collapse";
 
 export default function FlightDetailsPage() {
   const dispatch = useDispatch();
@@ -18,17 +20,15 @@ export default function FlightDetailsPage() {
   const flight = useSelector((state) => state.flights.selectedFlight);
 
   useEffect(() => {
-    if (!flight) {
+    if (!flight || flight.id !== flightId) {
       dispatch(fetchFlightById(flightId));
     }
-  }, [dispatch, flightId, flight?.id]);
+  }, [dispatch, flightId, flight]);
 
-  const originAirport = useSelector((state) =>
-    selectAirportById(state, flight?.origin)
-  );
-  const destinationAirport = useSelector((state) =>
-    selectAirportById(state, flight?.destination)
-  );
+  const originAirport =
+    useSelector((state) => selectAirportById(state, flight?.origin)) || {};
+  const destinationAirport =
+    useSelector((state) => selectAirportById(state, flight?.destination)) || {};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,42 +52,58 @@ export default function FlightDetailsPage() {
         px: { xs: 1, sm: 2, md: 4 },
       }}
     >
-      {status === "loading" ? (
+      {(status === "loading" || status === "idle") && (
         <Typography>Loading flight...</Typography>
-      ) : status === "failed" ? (
-        <Typography>Error loading flight.</Typography>
-      ) : null}
-      {status === "succeeded" && (
+      )}
+      {status === "failed" && <Typography>Error loading flight.</Typography>}
+      {status === "succeeded" && flight && (
         <>
-          <Box sx={{ width: { xs: "100%", md: "50%" }, mb: { xs: 2, md: 0 } }}>
+          <Box
+            sx={{
+              width: { xs: "100%", md: "50%" },
+              mb: { xs: 2, md: 0 },
+            }}
+          >
             <FlightRouteMap
               origin={originAirport}
               destination={destinationAirport}
             />
           </Box>
-          <Grid container spacing={0} sx={{ width: { xs: "100%", md: "50%" } }}>
+
+          <Grid
+            container
+            spacing={0}
+            sx={{
+              width: { xs: "100%", md: "50%" },
+              
+            }}
+          >
             <Grid
               sx={{
                 width: "100%",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                justifyContent: "flex-end",
                 flexDirection: { xs: "column", md: "row" },
               }}
             >
-              <FlightCard flightInfo={flight} isClickable={false} />
+              <FlightCard
+                flightInfo={flight}
+                isClickable={false}
+                isExpanded={isExpanded}
+              />
               <Box
                 sx={{
                   bgcolor: "lightblue",
-                  height: "100%",
+                  height: { xs: "10%", md: "100%" },
                   alignContent: "center",
-                  borderTopRightRadius: 16,
-                  borderBottomRightRadius: 16,
-                  mt: { xs: 2, md: 0 },
-                  width: { xs: "100%", md: "auto" },
+                  borderTopRightRadius: { xs: 0, md: 16 },
+                  borderBottomRightRadius: isExpanded ? 0 : 16,
+                  borderBottomLeftRadius: { xs: isExpanded ? 0 : 16, md: 0 },
+                  width: { xs: "100%", md: "10%" },
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  transition: "border-radius 0.4s",
                 }}
               >
                 {!isExpanded ? (
@@ -100,9 +116,7 @@ export default function FlightDetailsPage() {
                       },
                       color: "blue",
                     }}
-                    onClick={() => {
-                      setIsExpanded((t) => !t);
-                    }}
+                    onClick={() => setIsExpanded((t) => !t)}
                   />
                 ) : (
                   <ExpandLessRoundedIcon
@@ -114,13 +128,30 @@ export default function FlightDetailsPage() {
                       },
                       color: "blue",
                     }}
-                    onClick={() => {
-                      setIsExpanded((t) => !t);
-                    }}
+                    onClick={() => setIsExpanded((t) => !t)}
                   />
                 )}
               </Box>
             </Grid>
+
+            <Collapse
+              in={isExpanded && originAirport && destinationAirport}
+              timeout={400}
+              unmountOnExit
+              sx={{
+                width: "100%",
+              }}
+            >
+              <Grid>
+                <DetailedFlightInfo
+                  flightInfo={flight}
+                  originCode={originAirport.code}
+                  destinationCode={destinationAirport.code}
+                  originAirportName={originAirport.name}
+                  destinationAirportName={destinationAirport.name}
+                />
+              </Grid>
+            </Collapse>
           </Grid>
         </>
       )}

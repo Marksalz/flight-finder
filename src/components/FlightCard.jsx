@@ -3,20 +3,27 @@ import "../styles/flightCard.css";
 import LongArrow from "./LongArrow";
 import OriginDestination from "./OriginDestination";
 import { useNavigate } from "react-router";
-import { fetchAirportById } from "../utils/airportsApi";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFlight } from "../features/flights/flightsSlice";
+import { selectAirportById } from "../features/airports/airportsSlice";
 
-export default function FlightCard({ flightInfo, isClickable }) {
+export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const originCode = useSelector((state) => state.search.origin);
-  const destinationCode = useSelector((state) => state.search.destination);
+  const originCode = useSelector(
+    (state) =>
+      state.search.origin || selectAirportById(state, flightInfo.origin).code
+  );
+  const destinationCode = useSelector(
+    (state) =>
+      state.search.destination ||
+      selectAirportById(state, flightInfo.destination).code
+  );
+
   return (
     <Card
       onClick={
@@ -33,11 +40,11 @@ export default function FlightCard({ flightInfo, isClickable }) {
         flexDirection: { xs: "column", sm: "row" },
         alignItems: { xs: "stretch", sm: "center" },
         justifyContent: { xs: "stretch", sm: "space-evenly" },
-        gap: { xs: 2, sm: 4.5 },
+        gap: { xs: 0, sm: 4.5 },
         backgroundColor: "lightblue",
-        width: "100%",
+        width: { xs: "100%", sm: "90%" },
         minHeight: 100,
-        height: { xs: "100%", sm: "auto" },
+        height: { xs: "auto", sm: "auto" },
 
         transition: "transform 200ms ease, box-shadow 200ms ease",
         ...(isClickable && {
@@ -51,10 +58,14 @@ export default function FlightCard({ flightInfo, isClickable }) {
         }),
         ...(!isClickable && {
           borderTopLeftRadius: 16,
-          borderBottomLeftRadius: 16,
-          borderTopRightRadius: 0,
-          borderBottomRightRadius: 0,
+          borderBottomLeftRadius: { xs: 0, sm: 16 },
+          borderTopRightRadius: { xs: 16, md: 0 },
+          borderBottomRightRadius: { xs: 0, sm: 16, md: 0 },
           cursor: "default",
+        }),
+        ...(isExpanded && {
+          borderBottomLeftRadius: 0,
+          transition: "border-radius 0.4s",
         }),
       }}
     >
@@ -75,12 +86,19 @@ export default function FlightCard({ flightInfo, isClickable }) {
         alignItems="center"
         justifyContent="center"
         flexDirection="row"
+        flexWrap={"nowrap"}
         spacing={2}
         width={{ xs: "100%", sm: "60%" }}
         sx={{ textAlign: "left" }}
       >
         <Grid size="auto">
-          <OriginDestination time={depTime} airportCode={originCode} />
+          <OriginDestination
+            time={depTime}
+            airportCode={originCode}
+            isColumn={true}
+            timeV={"body1"}
+            airportV={"h5"}
+          />
         </Grid>
         <Grid size="auto">
           <Box
@@ -90,7 +108,7 @@ export default function FlightCard({ flightInfo, isClickable }) {
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
-              height: { xs: 24, sm: 36, md: 48 },
+              height: { xs: 36, sm: 16, md: 36, lg: 40 },
             }}
           >
             {/* Arrow line */}
@@ -122,7 +140,13 @@ export default function FlightCard({ flightInfo, isClickable }) {
           </Box>
         </Grid>
         <Grid size="auto">
-          <OriginDestination time={arrTime} airportCode={destinationCode} />
+          <OriginDestination
+            time={arrTime}
+            airportCode={destinationCode}
+            isColumn={true}
+            timeV={"body1"}
+            airportV={"h5"}
+          />
         </Grid>
       </Grid>
 
@@ -162,7 +186,6 @@ export default function FlightCard({ flightInfo, isClickable }) {
 function formatPrice(amount, currency) {
   const numericAmount = Number(amount);
   let formattedPrice;
-
   try {
     formattedPrice = new Intl.NumberFormat(undefined, {
       style: "currency",
