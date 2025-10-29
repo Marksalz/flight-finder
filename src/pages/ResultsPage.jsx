@@ -1,5 +1,4 @@
 import SearchSummaryBar from "../components/SearchSummaryBar";
-import { allFlights } from "../utils/mockFlights";
 import { Box } from "@mui/material";
 import FlightsList from "../components/FlightsList";
 import { useEffect, useState } from "react";
