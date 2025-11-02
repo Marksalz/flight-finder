@@ -6,10 +6,7 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchAirports,
-  selectAirportById,
-} from "../features/airports/airportsSlice.js";
+import { selectAirportById } from "../features/airports/airportsSlice.js";
 import { fetchFlightById } from "../features/flights/flightsSlice.js";
 import DetailedFlightInfo from "../components/DetailedFlightInfo.jsx";
 import Collapse from "@mui/material/Collapse";
