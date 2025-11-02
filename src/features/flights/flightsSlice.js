@@ -16,50 +16,50 @@ export const fetchFlights = createAsyncThunk(
       (a) => a.code === searchParams.destination
     ).id;
 
-    // const filtered = [];
-    // for (const flight of allFlights) {
-    //   const originAirport = airports.find((a) => a.id === flight.origin);
-    //   const destinationAirport = airports.find(
-    //     (a) => a.id === flight.destination
-    //   );
+    const filtered = [];
+    for (const flight of allFlights) {
+      const originAirport = airports.find((a) => a.id === flight.origin);
+      const destinationAirport = airports.find(
+        (a) => a.id === flight.destination
+      );
 
-    //   if (
-    //     originAirport?.code === searchParams.origin &&
-    //     destinationAirport?.code === searchParams.destination &&
-    //     String(flight.date) === String(searchParams.depDate)
-    //   ) {
-    //     filtered.push(flight);
-    //   }
-    // }
-
-    // return filtered;
-
-    const response = await fetch(
-      `${baseUrl}/flights?origin=${encodeURIComponent(
-        originId
-      )}&destination=${encodeURIComponent(
-        destinationId
-      )}&date=${encodeURIComponent(searchParams.depDate)}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch flights");
+      if (
+        originAirport?.code === searchParams.origin &&
+        destinationAirport?.code === searchParams.destination &&
+        String(flight.date) === String(searchParams.depDate)
+      ) {
+        filtered.push(flight);
+      }
     }
-    return await response.json();
+
+    return filtered;
+
+    // const response = await fetch(
+    //   `${baseUrl}/flights?origin=${encodeURIComponent(
+    //     originId
+    //   )}&destination=${encodeURIComponent(
+    //     destinationId
+    //   )}&date=${encodeURIComponent(searchParams.depDate)}`
+    // );
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch flights");
+    // }
+    // return await response.json();
   }
 );
 
 export const fetchFlightById = createAsyncThunk(
   "flights/fetchFlightById",
   async (flightId) => {
-    // const flight = allFlights.find((flight) => flight.id === flightId);
+    const flight = allFlights.find((flight) => flight.id === flightId);
 
-    // return flight;
+    return flight;
 
-    const response = await fetch(`${baseUrl}/flights/${flightId}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch flight");
-    }
-    return await response.json();
+    // const response = await fetch(`${baseUrl}/flights/${flightId}`);
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch flight");
+    // }
+    // return await response.json();
   }
 );
 

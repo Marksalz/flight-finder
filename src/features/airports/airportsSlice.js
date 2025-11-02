@@ -6,29 +6,29 @@ const baseUrl = "http://localhost:3000";
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
   async () => {
-    // return allAirports;
+    return allAirports;
 
-    const response = await fetch(`${baseUrl}/airports`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch airport");
-    }
-    return await response.json();
+    // const response = await fetch(`${baseUrl}/airports`);
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch airport");
+    // }
+    // return await response.json();
   }
 );
 
 export const fetchAirportById = createAsyncThunk(
   "airports/fetchAirportById",
   async (airportId) => {
-    // const airport = allAirports.find((airport) => airport.id === airportId);
-    // return airport;
+    const airport = allAirports.find((airport) => airport.id === airportId);
+    return airport;
 
-    const response = await fetch(
-      `${baseUrl}/airports/${encodeURIComponent(airportId)}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch airport");
-    }
-    return await response.json();
+    // const response = await fetch(
+    //   `${baseUrl}/airports/${encodeURIComponent(airportId)}`
+    // );
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch airport");
+    // }
+    // return await response.json();
   }
 );
 
