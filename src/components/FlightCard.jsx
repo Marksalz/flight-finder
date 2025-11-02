@@ -42,7 +42,7 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
         justifyContent: { xs: "stretch", sm: "space-evenly" },
         gap: { xs: 0, sm: 4.5 },
         backgroundColor: "lightblue",
-        width: { xs: "100%", sm: "90%" },
+        width: { xs: "100%", sm: "100%", md: "90%" },
         minHeight: 100,
         height: { xs: "auto", sm: "auto" },
 
@@ -58,9 +58,9 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
         }),
         ...(!isClickable && {
           borderTopLeftRadius: 16,
-          borderBottomLeftRadius: { xs: 0, sm: 16 },
+          borderBottomLeftRadius: { xs: 0, sm: 0, md: 16 },
           borderTopRightRadius: { xs: 16, md: 0 },
-          borderBottomRightRadius: { xs: 0, sm: 16, md: 0 },
+          borderBottomRightRadius: { xs: 0, sm: 0, md: 0 },
           cursor: "default",
         }),
         ...(isExpanded && {
@@ -108,7 +108,12 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
-              height: { xs: 36, sm: 16, md: 36, lg: 40 },
+              height: {
+                xs: "5vh",
+                sm: isClickable ? "4.5vh" : "10vh",
+                md: isClickable ? "8vh" : "4.5vh",
+                lg: "8vh",
+              },
             }}
           >
             {/* Arrow line */}
