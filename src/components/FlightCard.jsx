@@ -16,12 +16,12 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
 
   const originCode = useSelector(
     (state) =>
-      state.search.origin || selectAirportById(state, flightInfo.origin).code
+      state.search.origin || selectAirportById(state, flightInfo?.origin).code
   );
   const destinationCode = useSelector(
     (state) =>
       state.search.destination ||
-      selectAirportById(state, flightInfo.destination).code
+      selectAirportById(state, flightInfo?.destination).code
   );
 
   return (
