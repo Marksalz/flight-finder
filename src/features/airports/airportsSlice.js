@@ -36,7 +36,7 @@ export const modifyAirport = createAsyncThunk(
   "airports/modifyAirport",
   async ({ airportId, airportData }) => {
     const response = await fetch(
-      `/api/airports/modify/${encodeURIComponent(airportId)}`,
+      `${baseUrl}/airports/${encodeURIComponent(airportId)}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -45,6 +45,21 @@ export const modifyAirport = createAsyncThunk(
     );
     if (!response.ok) {
       throw new Error("Failed to modify airport");
+    }
+    return await response.json();
+  }
+);
+
+export const createAirport = createAsyncThunk(
+  "airports/createAirport",
+  async (airportData) => {
+    const response = await fetch(`${baseUrl}/airports`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(airportData),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to create airport");
     }
     return await response.json();
   }
@@ -89,6 +104,9 @@ const airportsSlice = createSlice({
       .addCase(modifyAirport.fulfilled, (state, action) => {
         const idx = state.airports.findIndex((a) => a.id === action.payload.id);
         if (idx !== -1) state.airports[idx] = action.payload;
+      })
+      .addCase(createAirport.fulfilled, (state, action) => {
+        state.airports.push(action.payload);
       });
   },
 });

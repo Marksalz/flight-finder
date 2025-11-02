@@ -66,7 +66,7 @@ export const fetchFlightById = createAsyncThunk(
 export const createFlight = createAsyncThunk(
   "flights/createFlight",
   async (flightData) => {
-    const response = await fetch("/api/flights", {
+    const response = await fetch(`${baseUrl}/flights`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(flightData),
@@ -82,7 +82,7 @@ export const modifyFlight = createAsyncThunk(
   "flights/modifyFlight",
   async ({ flightId, flightData }) => {
     const response = await fetch(
-      `/api/flights/${encodeURIComponent(flightId)}`,
+      `${baseUrl}/flights/${encodeURIComponent(flightId)}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -100,7 +100,7 @@ export const removeFlight = createAsyncThunk(
   "flights/removeFlight",
   async (flightId) => {
     const response = await fetch(
-      `/api/flights/${encodeURIComponent(flightId)}`,
+      `${baseUrl}/flights/${encodeURIComponent(flightId)}`,
       {
         method: "DELETE",
       }
@@ -157,6 +157,9 @@ const flightsSlice = createSlice({
       })
       .addCase(removeFlight.fulfilled, (state, action) => {
         state.flights = state.flights.filter((f) => f.id !== action.payload.id);
+      })
+      .addCase(createFlight.fulfilled, (state, action) => {
+        state.flights.push(action.payload);
       });
   },
 });
