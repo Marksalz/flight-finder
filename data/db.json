@@ -1904,7 +1904,7 @@
   ],
   "airports": [
     {
-      "id": 1,
+      "id": "1",
       "code": "TLV",
       "name": "Ben Gurion Intl Airport",
       "city": "Tel Aviv",
@@ -1913,7 +1913,7 @@
       "lng": 34.8866
     },
     {
-      "id": 2,
+      "id": "2",
       "code": "JFK",
       "name": "John F. Kennedy Intl Airport",
       "city": "New York",
@@ -1922,7 +1922,7 @@
       "lng": -73.7781
     },
     {
-      "id": 3,
+      "id": "3",
       "code": "ORD",
       "name": "O'Hare Intl Airport",
       "city": "Chicago",
@@ -1931,7 +1931,7 @@
       "lng": -87.9073
     },
     {
-      "id": 4,
+      "id": "4",
       "code": "LAX",
       "name": "Los Angeles Intl Airport",
       "city": "Los Angeles",
