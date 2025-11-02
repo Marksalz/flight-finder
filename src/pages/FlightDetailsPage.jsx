@@ -6,7 +6,10 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAirportById } from "../features/airports/airportsSlice.js";
+import {
+  fetchAirports,
+  selectAirportById,
+} from "../features/airports/airportsSlice.js";
 import { fetchFlightById } from "../features/flights/flightsSlice.js";
 import DetailedFlightInfo from "../components/DetailedFlightInfo.jsx";
 import Collapse from "@mui/material/Collapse";
@@ -18,17 +21,22 @@ export default function FlightDetailsPage() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const flight = useSelector((state) => state.flights.selectedFlight);
+  const airports = useSelector((state) => state.airports.airports);
 
   useEffect(() => {
-    if (!flight || flight.id !== flightId) {
+    if (airports?.length !== 0 && (!flight || flight.id !== flightId)) {
       dispatch(fetchFlightById(flightId));
     }
-  }, [dispatch, flightId, flight]);
+  }, [dispatch, flightId, flight, airports]);
 
   const originAirport =
-    useSelector((state) => selectAirportById(state, flight?.origin)) || {};
+    useSelector((state) =>
+      flight ? selectAirportById(state, flight?.origin) : null
+    ) || {};
   const destinationAirport =
-    useSelector((state) => selectAirportById(state, flight?.destination)) || {};
+    useSelector((state) =>
+      flight ? selectAirportById(state, flight?.destination) : null
+    ) || {};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,7 +83,6 @@ export default function FlightDetailsPage() {
             spacing={0}
             sx={{
               width: { xs: "100%", md: "50%" },
-              
             }}
           >
             <Grid
@@ -145,10 +152,10 @@ export default function FlightDetailsPage() {
               <Grid>
                 <DetailedFlightInfo
                   flightInfo={flight}
-                  originCode={originAirport.code}
-                  destinationCode={destinationAirport.code}
-                  originAirportName={originAirport.name}
-                  destinationAirportName={destinationAirport.name}
+                  originCode={originAirport?.code}
+                  destinationCode={destinationAirport?.code}
+                  originAirportName={originAirport?.name}
+                  destinationAirportName={destinationAirport?.name}
                 />
               </Grid>
             </Collapse>
