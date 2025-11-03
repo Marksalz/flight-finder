@@ -19,10 +19,6 @@ export default function SearchPage() {
   const [returnDate, setReturnDate] = useState(null);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(fetchAirports());
-  // }, [dispatch]);
-
   const airports = useSelector((state) => state.airports.airports);
 
   const handleSubmit = (e) => {
