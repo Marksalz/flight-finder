@@ -5,10 +5,13 @@ import Button from "@mui/material/Button";
 import { Link as RouterLink } from "react-router";
 import Link from "@mui/material/Link";
 import appLogo from "../assets/app_logo2.png";
+import { useDispatch } from "react-redux";
+import { clearFlights } from "../features/flights/flightsSlice";
 
 export default function Layout({ showAdminBtn = false }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const showButton = showAdminBtn || location.pathname === "/";
 
@@ -46,6 +49,10 @@ export default function Layout({ showAdminBtn = false }) {
             sx={{
               display: "flex",
               alignItems: "center",
+            }}
+            onClick={() => {
+              dispatch(clearFlights());
+              dispatch(clearSearchParams());
             }}
           >
             <Box
@@ -89,7 +96,7 @@ export default function Layout({ showAdminBtn = false }) {
         sx={{
           flexGrow: 1,
           py: { xs: 2, sm: 3 },
-          px: { xs: 2, sm: 4 },
+          px: { xs: 2, tsm: 4 },
           minHeight: "70vh",
         }}
       >
