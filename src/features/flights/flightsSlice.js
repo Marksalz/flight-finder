@@ -154,10 +154,6 @@ const flightsSlice = createSlice({
         (action) => action.type.endsWith("/fulfilled"),
         (state) => {
           state.status = "succeeded";
-
-          setTimeout(() => {
-            state.status = "idle";
-          }, 0);
         }
       )
       .addMatcher(
@@ -165,10 +161,6 @@ const flightsSlice = createSlice({
         (state, action) => {
           state.status = "failed";
           state.error = action.error.message;
-
-          setTimeout(() => {
-            state.status = "idle";
-          }, 0);
         }
       );
   },
