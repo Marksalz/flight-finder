@@ -81,7 +81,7 @@ export default function SearchPage() {
         >
           Search and compare flights
         </Typography>
-        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
@@ -139,7 +139,7 @@ export default function SearchPage() {
               </Grid>
             </Grid>
           </Grid>
-        </form>
+        </Box>
       </Box>
     </Container>
   );
