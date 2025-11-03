@@ -1,32 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { allAirports } from "../../utils/mockAirports";
 
+const baseUrl = "http://localhost:3000";
+
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
   async () => {
-    return allAirports;
+    // return allAirports;
 
-    // const response = await fetch(`/api/airports`);
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch airport");
-    // }
-    // return await response.json();
+    const response = await fetch(`${baseUrl}/airports`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch airport");
+    }
+    return await response.json();
   }
 );
 
 export const fetchAirportById = createAsyncThunk(
   "airports/fetchAirportById",
   async (airportId) => {
-    const airport = allAirports.find((airport) => airport.id === airportId);
-    return airport;
+    // const airport = allAirports.find((airport) => airport.id === airportId);
+    // return airport;
 
-    // const response = await fetch(
-    //   `/api/airports/${encodeURIComponent(airportId)}`
-    // );
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch airport");
-    // }
-    // return await response.json();
+    const response = await fetch(
+      `${baseUrl}/airports/${encodeURIComponent(airportId)}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch airport");
+    }
+    return await response.json();
   }
 );
 
@@ -34,7 +36,7 @@ export const modifyAirport = createAsyncThunk(
   "airports/modifyAirport",
   async ({ airportId, airportData }) => {
     const response = await fetch(
-      `/api/airports/modify/${encodeURIComponent(airportId)}`,
+      `${baseUrl}/airports/${encodeURIComponent(airportId)}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -48,11 +50,26 @@ export const modifyAirport = createAsyncThunk(
   }
 );
 
+export const createAirport = createAsyncThunk(
+  "airports/createAirport",
+  async (airportData) => {
+    const response = await fetch(`${baseUrl}/airports`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(airportData),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to create airport");
+    }
+    return await response.json();
+  }
+);
+
 export const selectAirportByCode = (state, code) =>
   state.airports.airports.find((a) => a.code === code);
 
 export const selectAirportById = (state, id) =>
-  state.airports.airports.find((a) => a.id === id);
+  state.airports.airports.find((a) => a.id === String(id));
 
 const airportsSlice = createSlice({
   name: "airports",
@@ -69,17 +86,8 @@ const airportsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAirports.pending, (state) => {
-        state.status = "loading";
-        state.error = null;
-      })
       .addCase(fetchAirports.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.airports = action.payload;
-      })
-      .addCase(fetchAirports.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
       })
       .addCase(fetchAirportById.fulfilled, (state, action) => {
         state.selectedAirport = action.payload;
@@ -87,7 +95,38 @@ const airportsSlice = createSlice({
       .addCase(modifyAirport.fulfilled, (state, action) => {
         const idx = state.airports.findIndex((a) => a.id === action.payload.id);
         if (idx !== -1) state.airports[idx] = action.payload;
-      });
+      })
+      .addCase(createAirport.fulfilled, (state, action) => {
+        state.airports.push(action.payload);
+      })
+      .addMatcher(
+        (action) => action.type.endsWith("/pending"),
+        (state) => {
+          state.status = "loading";
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/fulfilled"),
+        (state) => {
+          state.status = "succeeded";
+
+          setTimeout(() => {
+            state.status = "idle";
+          }, 0);
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/rejected"),
+        (state, action) => {
+          state.status = "failed";
+          state.error = action.error.message;
+
+          setTimeout(() => {
+            state.status = "idle";
+          }, 0);
+        }
+      );
   },
 });
 

@@ -1,0 +1,1943 @@
+{
+  "flights": [
+    {
+      "id": "LY001",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY001",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-20T21:30:00.000Z",
+      "arrivalTime": "2025-10-21T03:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 775,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-20",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY002",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY002",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-20T22:30:00.000Z",
+      "arrivalTime": "2025-10-21T04:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 808,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-20",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY003",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY003",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-20T23:30:00.000Z",
+      "arrivalTime": "2025-10-21T05:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 855,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-20",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY004",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY004",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-21T00:30:00.000Z",
+      "arrivalTime": "2025-10-21T06:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 786,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-21",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY005",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY005",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-21T01:30:00.000Z",
+      "arrivalTime": "2025-10-21T07:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 843,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-21",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY006",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY006",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-21T02:30:00.000Z",
+      "arrivalTime": "2025-10-21T08:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 739,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-21",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY007",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY007",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-21T03:30:00.000Z",
+      "arrivalTime": "2025-10-21T09:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 759,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-21",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY008",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY008",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-21T04:30:00.000Z",
+      "arrivalTime": "2025-10-21T10:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 851,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-21",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY009",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY009",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-21T05:30:00.000Z",
+      "arrivalTime": "2025-10-21T11:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 728,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-21",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY010",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY010",
+      "origin": 1,
+      "destination": 2,
+      "departureTime": "2025-10-21T06:30:00.000Z",
+      "arrivalTime": "2025-10-21T12:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 792,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-21",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA011",
+      "airline": "American Airlines",
+      "flightNumber": "AA011",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T07:00:00.000Z",
+      "arrivalTime": "2025-10-22T10:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 350,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA012",
+      "airline": "American Airlines",
+      "flightNumber": "AA012",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T08:00:00.000Z",
+      "arrivalTime": "2025-10-22T11:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 309,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA013",
+      "airline": "American Airlines",
+      "flightNumber": "AA013",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T09:00:00.000Z",
+      "arrivalTime": "2025-10-22T12:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 267,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA014",
+      "airline": "American Airlines",
+      "flightNumber": "AA014",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T10:00:00.000Z",
+      "arrivalTime": "2025-10-22T13:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 209,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA015",
+      "airline": "American Airlines",
+      "flightNumber": "AA015",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T11:00:00.000Z",
+      "arrivalTime": "2025-10-22T14:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 183,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA016",
+      "airline": "American Airlines",
+      "flightNumber": "AA016",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T12:00:00.000Z",
+      "arrivalTime": "2025-10-22T15:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 242,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA017",
+      "airline": "American Airlines",
+      "flightNumber": "AA017",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T13:00:00.000Z",
+      "arrivalTime": "2025-10-22T16:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 220,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA018",
+      "airline": "American Airlines",
+      "flightNumber": "AA018",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T14:00:00.000Z",
+      "arrivalTime": "2025-10-22T17:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 253,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA019",
+      "airline": "American Airlines",
+      "flightNumber": "AA019",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T15:00:00.000Z",
+      "arrivalTime": "2025-10-22T18:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 373,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA020",
+      "airline": "American Airlines",
+      "flightNumber": "AA020",
+      "origin": 2,
+      "destination": 4,
+      "departureTime": "2025-10-22T16:00:00.000Z",
+      "arrivalTime": "2025-10-22T19:00:00.000Z",
+      "durationMinutes": 300,
+      "price": {
+        "amount": 244,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-800",
+      "terminal": "4",
+      "date": "2025-10-22",
+      "baggageAllowance": "20kg + 8kg hand luggage"
+    },
+    {
+      "id": "DL021",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL021",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T06:15:00.000Z",
+      "arrivalTime": "2025-10-23T11:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 202,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL022",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL022",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T07:15:00.000Z",
+      "arrivalTime": "2025-10-23T12:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 272,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL023",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL023",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T08:15:00.000Z",
+      "arrivalTime": "2025-10-23T13:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 246,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL024",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL024",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T09:15:00.000Z",
+      "arrivalTime": "2025-10-23T14:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 118,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL025",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL025",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T10:15:00.000Z",
+      "arrivalTime": "2025-10-23T15:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 237,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL026",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL026",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T11:15:00.000Z",
+      "arrivalTime": "2025-10-23T16:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 304,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL027",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL027",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T12:15:00.000Z",
+      "arrivalTime": "2025-10-23T17:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 134,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL028",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL028",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T13:15:00.000Z",
+      "arrivalTime": "2025-10-23T18:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 185,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL029",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL029",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T14:15:00.000Z",
+      "arrivalTime": "2025-10-23T19:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 221,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL030",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL030",
+      "origin": 4,
+      "destination": 3,
+      "departureTime": "2025-10-23T15:15:00.000Z",
+      "arrivalTime": "2025-10-23T20:00:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 217,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "terminal": "2",
+      "date": "2025-10-23",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "UA031",
+      "airline": "United Airlines",
+      "flightNumber": "UA031",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T05:45:00.000Z",
+      "arrivalTime": "2025-10-24T09:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 151,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA032",
+      "airline": "United Airlines",
+      "flightNumber": "UA032",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T06:45:00.000Z",
+      "arrivalTime": "2025-10-24T10:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 219,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA033",
+      "airline": "United Airlines",
+      "flightNumber": "UA033",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T07:45:00.000Z",
+      "arrivalTime": "2025-10-24T11:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 235,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA034",
+      "airline": "United Airlines",
+      "flightNumber": "UA034",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T08:45:00.000Z",
+      "arrivalTime": "2025-10-24T12:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 267,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA035",
+      "airline": "United Airlines",
+      "flightNumber": "UA035",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T09:45:00.000Z",
+      "arrivalTime": "2025-10-24T13:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 114,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA036",
+      "airline": "United Airlines",
+      "flightNumber": "UA036",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T10:45:00.000Z",
+      "arrivalTime": "2025-10-24T14:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 140,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA037",
+      "airline": "United Airlines",
+      "flightNumber": "UA037",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T11:45:00.000Z",
+      "arrivalTime": "2025-10-24T15:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 207,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA038",
+      "airline": "United Airlines",
+      "flightNumber": "UA038",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T12:45:00.000Z",
+      "arrivalTime": "2025-10-24T16:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 242,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA039",
+      "airline": "United Airlines",
+      "flightNumber": "UA039",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T13:45:00.000Z",
+      "arrivalTime": "2025-10-24T17:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 228,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA040",
+      "airline": "United Airlines",
+      "flightNumber": "UA040",
+      "origin": 3,
+      "destination": 2,
+      "departureTime": "2025-10-24T14:45:00.000Z",
+      "arrivalTime": "2025-10-24T18:00:00.000Z",
+      "durationMinutes": 195,
+      "price": {
+        "amount": 167,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "terminal": "1",
+      "date": "2025-10-24",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY041",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY041",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T15:00:00.000Z",
+      "arrivalTime": "2025-10-25T14:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 994,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY042",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY042",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T16:00:00.000Z",
+      "arrivalTime": "2025-10-25T15:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 1027,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY043",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY043",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T17:00:00.000Z",
+      "arrivalTime": "2025-10-25T16:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 977,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY044",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY044",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T18:00:00.000Z",
+      "arrivalTime": "2025-10-25T17:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 968,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY045",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY045",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T19:00:00.000Z",
+      "arrivalTime": "2025-10-25T18:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 1041,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY046",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY046",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T20:00:00.000Z",
+      "arrivalTime": "2025-10-25T19:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 918,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY047",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY047",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T21:00:00.000Z",
+      "arrivalTime": "2025-10-25T20:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 929,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY048",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY048",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-25T22:00:00.000Z",
+      "arrivalTime": "2025-10-25T21:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 896,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-25",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY049",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY049",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-26T00:00:00.000Z",
+      "arrivalTime": "2025-10-25T22:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 903,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-26",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY050",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY050",
+      "origin": 4,
+      "destination": 1,
+      "departureTime": "2025-10-26T01:00:00.000Z",
+      "arrivalTime": "2025-10-26T00:00:00.000Z",
+      "durationMinutes": 960,
+      "price": {
+        "amount": 1024,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "B",
+      "date": "2025-10-26",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA051",
+      "airline": "American Airlines",
+      "flightNumber": "AA051",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T12:30:00.000Z",
+      "arrivalTime": "2025-10-26T15:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 267,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA052",
+      "airline": "American Airlines",
+      "flightNumber": "AA052",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T13:30:00.000Z",
+      "arrivalTime": "2025-10-26T16:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 336,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA053",
+      "airline": "American Airlines",
+      "flightNumber": "AA053",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T14:30:00.000Z",
+      "arrivalTime": "2025-10-26T17:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 254,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA054",
+      "airline": "American Airlines",
+      "flightNumber": "AA054",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T15:30:00.000Z",
+      "arrivalTime": "2025-10-26T18:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 309,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA055",
+      "airline": "American Airlines",
+      "flightNumber": "AA055",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T16:30:00.000Z",
+      "arrivalTime": "2025-10-26T19:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 197,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA056",
+      "airline": "American Airlines",
+      "flightNumber": "AA056",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T17:30:00.000Z",
+      "arrivalTime": "2025-10-26T20:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 300,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA057",
+      "airline": "American Airlines",
+      "flightNumber": "AA057",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T18:30:00.000Z",
+      "arrivalTime": "2025-10-26T21:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 233,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA058",
+      "airline": "American Airlines",
+      "flightNumber": "AA058",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T19:30:00.000Z",
+      "arrivalTime": "2025-10-26T22:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 257,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA059",
+      "airline": "American Airlines",
+      "flightNumber": "AA059",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T20:30:00.000Z",
+      "arrivalTime": "2025-10-26T23:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 301,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA060",
+      "airline": "American Airlines",
+      "flightNumber": "AA060",
+      "origin": 3,
+      "destination": 4,
+      "departureTime": "2025-10-26T21:30:00.000Z",
+      "arrivalTime": "2025-10-27T00:15:00.000Z",
+      "durationMinutes": 285,
+      "price": {
+        "amount": 207,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "terminal": "3",
+      "date": "2025-10-26",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "DL061",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL061",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T06:00:00.000Z",
+      "arrivalTime": "2025-10-27T08:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 216,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL062",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL062",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T07:00:00.000Z",
+      "arrivalTime": "2025-10-27T09:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 226,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL063",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL063",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T08:00:00.000Z",
+      "arrivalTime": "2025-10-27T10:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 228,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL064",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL064",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T09:00:00.000Z",
+      "arrivalTime": "2025-10-27T11:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 175,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL065",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL065",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T10:00:00.000Z",
+      "arrivalTime": "2025-10-27T12:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 266,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL066",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL066",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T11:00:00.000Z",
+      "arrivalTime": "2025-10-27T13:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 105,
+
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL067",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL067",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T12:00:00.000Z",
+      "arrivalTime": "2025-10-27T14:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 145,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL068",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL068",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T13:00:00.000Z",
+      "arrivalTime": "2025-10-27T15:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 288,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL069",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL069",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T14:00:00.000Z",
+      "arrivalTime": "2025-10-27T16:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 206,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "DL070",
+      "airline": "Delta Airlines",
+      "flightNumber": "DL070",
+      "origin": 2,
+      "destination": 3,
+      "departureTime": "2025-10-27T15:00:00.000Z",
+      "arrivalTime": "2025-10-27T17:15:00.000Z",
+      "durationMinutes": 135,
+      "price": {
+        "amount": 217,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 737-900",
+      "terminal": "4",
+      "date": "2025-10-27",
+      "baggageAllowance": "23kg + 7kg hand luggage"
+    },
+    {
+      "id": "UA071",
+      "airline": "United Airlines",
+      "flightNumber": "UA071",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T09:45:00.000Z",
+      "arrivalTime": "2025-10-28T18:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 258,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA072",
+      "airline": "United Airlines",
+      "flightNumber": "UA072",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T10:45:00.000Z",
+      "arrivalTime": "2025-10-28T19:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 239,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA073",
+      "airline": "United Airlines",
+      "flightNumber": "UA073",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T11:45:00.000Z",
+      "arrivalTime": "2025-10-28T20:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 301,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA074",
+      "airline": "United Airlines",
+      "flightNumber": "UA074",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T12:45:00.000Z",
+      "arrivalTime": "2025-10-28T21:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 236,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA075",
+      "airline": "United Airlines",
+      "flightNumber": "UA075",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T13:45:00.000Z",
+      "arrivalTime": "2025-10-28T22:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 380,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA076",
+      "airline": "United Airlines",
+      "flightNumber": "UA076",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T14:45:00.000Z",
+      "arrivalTime": "2025-10-28T23:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 353,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA077",
+      "airline": "United Airlines",
+      "flightNumber": "UA077",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T15:45:00.000Z",
+      "arrivalTime": "2025-10-29T00:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 227,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA078",
+      "airline": "United Airlines",
+      "flightNumber": "UA078",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T16:45:00.000Z",
+      "arrivalTime": "2025-10-29T01:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 355,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA079",
+      "airline": "United Airlines",
+      "flightNumber": "UA079",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T17:45:00.000Z",
+      "arrivalTime": "2025-10-29T02:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 290,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "UA080",
+      "airline": "United Airlines",
+      "flightNumber": "UA080",
+      "origin": 4,
+      "destination": 2,
+      "departureTime": "2025-10-28T18:45:00.000Z",
+      "arrivalTime": "2025-10-29T03:00:00.000Z",
+      "durationMinutes": 315,
+      "price": {
+        "amount": 372,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-200",
+      "terminal": "B",
+      "date": "2025-10-28",
+      "baggageAllowance": "23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY081",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY081",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T04:00:00.000Z",
+      "arrivalTime": "2025-10-29T12:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 941,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY082",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY082",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T05:00:00.000Z",
+      "arrivalTime": "2025-10-29T13:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 787,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY083",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY083",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T06:00:00.000Z",
+      "arrivalTime": "2025-10-29T14:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 836,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY084",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY084",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T07:00:00.000Z",
+      "arrivalTime": "2025-10-29T15:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 903,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY085",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY085",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T08:00:00.000Z",
+      "arrivalTime": "2025-10-29T16:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 815,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY086",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY086",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T09:00:00.000Z",
+      "arrivalTime": "2025-10-29T17:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 886,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY087",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY087",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T10:00:00.000Z",
+      "arrivalTime": "2025-10-29T18:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 781,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY088",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY088",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T11:00:00.000Z",
+      "arrivalTime": "2025-10-29T19:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 833,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY089",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY089",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T12:00:00.000Z",
+      "arrivalTime": "2025-10-29T20:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 946,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "LY090",
+      "airline": "El Al Israel Airlines",
+      "flightNumber": "LY090",
+      "origin": 1,
+      "destination": 3,
+      "departureTime": "2025-10-29T13:00:00.000Z",
+      "arrivalTime": "2025-10-29T21:00:00.000Z",
+      "durationMinutes": 600,
+      "price": {
+        "amount": 797,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 787-9",
+      "terminal": "3",
+      "date": "2025-10-29",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA091",
+      "airline": "American Airlines",
+      "flightNumber": "AA091",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-30T21:30:00.000Z",
+      "arrivalTime": "2025-10-30T16:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 948,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA092",
+      "airline": "American Airlines",
+      "flightNumber": "AA092",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-30T22:30:00.000Z",
+      "arrivalTime": "2025-10-30T17:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 866,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA093",
+      "airline": "American Airlines",
+      "flightNumber": "AA093",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-30T23:30:00.000Z",
+      "arrivalTime": "2025-10-30T18:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 876,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA094",
+      "airline": "American Airlines",
+      "flightNumber": "AA094",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-31T00:30:00.000Z",
+      "arrivalTime": "2025-10-30T19:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 964,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA095",
+      "airline": "American Airlines",
+      "flightNumber": "AA095",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-31T01:30:00.000Z",
+      "arrivalTime": "2025-10-30T20:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 972,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA096",
+      "airline": "American Airlines",
+      "flightNumber": "AA096",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-31T02:30:00.000Z",
+      "arrivalTime": "2025-10-30T21:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 1004,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA097",
+      "airline": "American Airlines",
+      "flightNumber": "AA097",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-31T03:30:00.000Z",
+      "arrivalTime": "2025-10-30T22:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 991,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA098",
+      "airline": "American Airlines",
+      "flightNumber": "AA098",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-31T04:30:00.000Z",
+      "arrivalTime": "2025-10-30T23:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 844,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA099",
+      "airline": "American Airlines",
+      "flightNumber": "AA099",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-31T05:30:00.000Z",
+      "arrivalTime": "2025-10-31T00:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 929,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    },
+    {
+      "id": "AA100",
+      "airline": "American Airlines",
+      "flightNumber": "AA100",
+      "origin": 3,
+      "destination": 1,
+      "departureTime": "2025-10-31T06:30:00.000Z",
+      "arrivalTime": "2025-10-31T01:30:00.000Z",
+      "durationMinutes": 720,
+      "price": {
+        "amount": 1009,
+        "currency": "USD"
+      },
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "terminal": "1",
+      "date": "2025-10-30",
+      "baggageAllowance": "2x23kg + 8kg hand luggage"
+    }
+  ],
+  "airports": [
+    {
+      "id": "1",
+      "code": "TLV",
+      "name": "Ben Gurion Intl Airport",
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "lat": 32.0114,
+      "lng": 34.8866
+    },
+    {
+      "id": "2",
+      "code": "JFK",
+      "name": "John F. Kennedy Intl Airport",
+      "city": "New York",
+      "country": "USA",
+      "lat": 40.6413,
+      "lng": -73.7781
+    },
+    {
+      "id": "3",
+      "code": "ORD",
+      "name": "O'Hare Intl Airport",
+      "city": "Chicago",
+      "country": "USA",
+      "lat": 41.9742,
+      "lng": -87.9073
+    },
+    {
+      "id": "4",
+      "code": "LAX",
+      "name": "Los Angeles Intl Airport",
+      "city": "Los Angeles",
+      "country": "USA",
+      "lat": 33.9416,
+      "lng": -118.4085
+    }
+  ]
+}
