@@ -1,11 +1,16 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useNavigate } from "react-router";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-
+import { useLocation } from "react-router";
 import "../styles/Layout.css";
 import appLogo from "../assets/app_logo2.png";
+import Button from "@mui/material/Button";
 
-export default function Layout() {
+export default function Layout({ showAdminBtn = false }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  showAdminBtn = location.pathname === "/";
+
   return (
     <Box>
       <header>
@@ -37,6 +42,29 @@ export default function Layout() {
               }}
             />
           </Link>
+          {showAdminBtn && (
+            <Button
+              onClick={() => {
+                navigate("/admin");
+              }}
+              size="medium"
+              sx={{
+                color: "white",
+                borderRadius: 3,
+                background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
+                boxShadow: "0 4px 16px 0 rgba(33, 203, 243, 0.15)",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0 8px 24px 0 rgba(33, 203, 243, 0.25)",
+                  background:
+                    "linear-gradient(90deg, #21cbf3 0%, #2196f3 100%)",
+                },
+              }}
+            >
+              Admin
+            </Button>
+          )}
         </Container>
       </header>
 
