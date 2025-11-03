@@ -34,6 +34,7 @@ export default function Layout({ showAdminBtn = false }) {
             alignItems: "center",
             justifyContent: "space-between",
             flexDirection: { xs: "column", sm: "row" },
+            px: 0,
             gap: { xs: 1, sm: 0 },
           }}
         >
