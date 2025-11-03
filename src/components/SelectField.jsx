@@ -1,7 +1,6 @@
-import React from "react";
 import { TextField, MenuItem, Tooltip, InputAdornment } from "@mui/material";
 
-export default function GenericSelectField({
+export default function SelectField({
   label,
   value,
   onChange,
