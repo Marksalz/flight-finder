@@ -86,17 +86,8 @@ const airportsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAirports.pending, (state) => {
-        state.status = "loading";
-        state.error = null;
-      })
       .addCase(fetchAirports.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.airports = action.payload;
-      })
-      .addCase(fetchAirports.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
       })
       .addCase(fetchAirportById.fulfilled, (state, action) => {
         state.selectedAirport = action.payload;
@@ -107,7 +98,35 @@ const airportsSlice = createSlice({
       })
       .addCase(createAirport.fulfilled, (state, action) => {
         state.airports.push(action.payload);
-      });
+      })
+      .addMatcher(
+        (action) => action.type.endsWith("/pending"),
+        (state) => {
+          state.status = "loading";
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/fulfilled"),
+        (state) => {
+          state.status = "succeeded";
+
+          setTimeout(() => {
+            state.status = "idle";
+          }, 0);
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/rejected"),
+        (state, action) => {
+          state.status = "failed";
+          state.error = action.error.message;
+
+          setTimeout(() => {
+            state.status = "idle";
+          }, 0);
+        }
+      );
   },
 });
 

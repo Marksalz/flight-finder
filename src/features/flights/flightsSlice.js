@@ -127,29 +127,11 @@ const flightsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFlights.pending, (state) => {
-        state.status = "loading";
-        state.error = null;
-      })
       .addCase(fetchFlights.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.flights = action.payload;
       })
-      .addCase(fetchFlights.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-        state.flights = [];
-      })
-      .addCase(fetchFlightById.pending, (state) => {
-        state.status = "loading";
-      })
       .addCase(fetchFlightById.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.selectedFlight = action.payload;
-      })
-      .addCase(fetchFlightById.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
       })
       .addCase(modifyFlight.fulfilled, (state, action) => {
         const idx = state.flights.findIndex((f) => f.id === action.payload.id);
@@ -160,7 +142,35 @@ const flightsSlice = createSlice({
       })
       .addCase(createFlight.fulfilled, (state, action) => {
         state.flights.push(action.payload);
-      });
+      })
+      .addMatcher(
+        (action) => action.type.endsWith("/pending"),
+        (state) => {
+          state.status = "loading";
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/fulfilled"),
+        (state) => {
+          state.status = "succeeded";
+
+          setTimeout(() => {
+            state.status = "idle";
+          }, 0);
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/rejected"),
+        (state, action) => {
+          state.status = "failed";
+          state.error = action.error.message;
+
+          setTimeout(() => {
+            state.status = "idle";
+          }, 0);
+        }
+      );
   },
 });
 
