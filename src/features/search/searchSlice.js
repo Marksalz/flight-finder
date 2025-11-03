@@ -11,8 +11,14 @@ const searchSlice = createSlice({
       state.depDate = depDate;
       state.retDate = retDate;
     },
+    clearSearchParams(state) {
+      state.origin = "";
+      state.destination = "";
+      state.depDate = "";
+      state.retDate = "";
+    },
   },
 });
 
-export const { setSearchParams } = searchSlice.actions;
+export const { setSearchParams, clearSearchParams } = searchSlice.actions;
 export default searchSlice.reducer;

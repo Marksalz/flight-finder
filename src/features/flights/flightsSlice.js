@@ -4,47 +4,59 @@ import LongArrow from "../../components/LongArrow";
 
 const baseUrl = "http://localhost:3000";
 
+//Fetching the flights by date range for now before backend
 export const fetchFlights = createAsyncThunk(
   "flights/fetchFlights",
   async ({ searchParams }, { getState }) => {
     const state = getState();
 
     const airports = state.airports.airports;
-    const originId = airports.find((a) => a.code === searchParams.origin).id;
-
+    const originId = airports.find((a) => a.code === searchParams.origin)?.id;
     const destinationId = airports.find(
       (a) => a.code === searchParams.destination
-    ).id;
+    )?.id;
 
-    // const filtered = [];
-    // for (const flight of allFlights) {
-    //   const originAirport = airports.find((a) => a.id === flight.origin);
-    //   const destinationAirport = airports.find(
-    //     (a) => a.id === flight.destination
-    //   );
+    let query = `origin=${encodeURIComponent(
+      originId
+    )}&destination=${encodeURIComponent(destinationId)}`;
 
-    //   if (
-    //     originAirport?.code === searchParams.origin &&
-    //     destinationAirport?.code === searchParams.destination &&
-    //     String(flight.date) === String(searchParams.depDate)
-    //   ) {
-    //     filtered.push(flight);
-    //   }
-    // }
+    //     // Add date or date range to query
+    //     if (searchParams.startDate && searchParams.endDate) {
+    //       const start = searchParams.startDate.format("YYYY-MM-DD");
+    //       const end = searchParams.endDate.format("YYYY-MM-DD");
+    //       query += `&date_gte=${encodeURIComponent(
+    //         start
+    //       )}&date_lte=${encodeURIComponent(end)}`;
+    //     }
 
-    // return filtered;
+    // If search came from search form params state
+    if (searchParams.depDate) {
+      query += `&date=${encodeURIComponent(searchParams.depDate)}`;
+      const response = await fetch(`${baseUrl}/flights?${query}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch flights");
+      }
+      return await response.json();
+    } else {
+      // Fetch everything from json-server (no date filtering yet)
+      const response = await fetch(`${baseUrl}/flights?${query}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch flights");
+      }
+      let flights = await response.json();
 
-    const response = await fetch(
-      `${baseUrl}/flights?origin=${encodeURIComponent(
-        originId
-      )}&destination=${encodeURIComponent(
-        destinationId
-      )}&date=${encodeURIComponent(searchParams.depDate)}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch flights");
+      // Manual filtering by date or date range (client-side)
+      if (searchParams.startDate && searchParams.endDate) {
+        const start = searchParams.startDate.format("YYYY-MM-DD");
+        const end = searchParams.endDate.format("YYYY-MM-DD");
+
+        flights = flights.filter((f) => {
+          const flightDate = f.date.slice(0, 10);
+          return flightDate >= start && flightDate <= end;
+        });
+      }
+      return flights;
     }
-    return await response.json();
   }
 );
 
@@ -124,6 +136,9 @@ const flightsSlice = createSlice({
     selectFlight(state, action) {
       state.selectedFlight = action.payload;
     },
+    clearFlights(state) {
+      state.flights = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -166,5 +181,5 @@ const flightsSlice = createSlice({
   },
 });
 
-export const { selectFlight } = flightsSlice.actions;
+export const { selectFlight, clearFlights } = flightsSlice.actions;
 export default flightsSlice.reducer;
