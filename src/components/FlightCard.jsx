@@ -123,7 +123,7 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
             <Box
               sx={{
                 position: "absolute",
-                top: "30%",
+                top: { xs: "20%", sm: "0%", md: "30%" },
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 bgcolor: "transparent",
@@ -140,6 +140,30 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
                 sx={{ color: "#8f8f8fff", fontWeight: 600 }}
               >
                 {durationInHours(flightInfo.durationMinutes)}
+              </Typography>
+            </Box>
+
+            {/* Flight date under the arrow, same CSS as duration */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: { xs: "90%", sm: "100%", md: "75%" },
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                bgcolor: "transparent",
+                px: 1,
+                py: 0.25,
+                borderRadius: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{ color: "#8f8f8fff", fontWeight: 600 }}
+              >
+                {new Date(flightInfo.date).toLocaleDateString("en-GB")}
               </Typography>
             </Box>
           </Box>
