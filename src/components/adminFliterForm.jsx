@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import DateField from "./DateField";
 import GenericSubmitButton from "./SubmitButton";
+import dayjs from "dayjs";
 
 export default function AdminFilterForm({ handeleSubmit }) {
   const airports = useSelector((state) => state.airports.airports);
@@ -13,8 +14,8 @@ export default function AdminFilterForm({ handeleSubmit }) {
   const [formData, setFormData] = useState({
     origin: adminSearchParams.origin || "",
     destination: adminSearchParams.destination || "",
-    startDate: adminSearchParams.startDate || null,
-    endDate: adminSearchParams.endDate || null,
+    startDate: dayjs(adminSearchParams.startDate) || null,
+    endDate: dayjs(adminSearchParams.endDate) || null,
   });
 
   return (
@@ -58,6 +59,7 @@ export default function AdminFilterForm({ handeleSubmit }) {
       <DateField
         label="from"
         value={formData.startDate}
+        required={true}
         onChange={(newValue) =>
           setFormData((prev) => ({ ...prev, startDate: newValue }))
         }
@@ -66,6 +68,8 @@ export default function AdminFilterForm({ handeleSubmit }) {
       <DateField
         label="to"
         value={formData.endDate}
+        required={true}
+        minDate={formData.startDate}
         onChange={(newValue) =>
           setFormData((prev) => ({ ...prev, endDate: newValue }))
         }
