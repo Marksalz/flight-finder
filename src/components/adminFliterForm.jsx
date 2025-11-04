@@ -40,6 +40,7 @@ export default function AdminFilterForm({ handeleSubmit }) {
         p: 4,
         bgcolor: "#a6c3e9ab",
         display: "flex",
+        flexDirection: { xs: "column", md: "row" },
         flexWrap: "nowrap",
         justifyContent: "center",
         alignItems: "center",
