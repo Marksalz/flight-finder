@@ -8,7 +8,7 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchParams } from "../features/search/searchSlice";
+import { setUserSearchParams } from "../features/search/searchSlice";
 import { fetchAirports } from "../features/airports/airportsSlice";
 
 export default function SearchPage() {
@@ -24,7 +24,7 @@ export default function SearchPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      setSearchParams({
+      setUserSearchParams({
         origin: from,
         destination: to,
         depDate: departDate ? departDate.format("YYYY-MM-DD") : "",
