@@ -47,8 +47,9 @@ export const fetchFlights = createAsyncThunk(
 
       // Manual filtering by date or date range (client-side)
       if (searchParams.startDate && searchParams.endDate) {
-        const start = searchParams.startDate.format("YYYY-MM-DD");
-        const end = searchParams.endDate.format("YYYY-MM-DD");
+        const start = searchParams.startDate;
+        const end = searchParams.endDate;
+        //.format("YYYY-MM-DD")
 
         flights = flights.filter((f) => {
           const flightDate = f.date.slice(0, 10);
