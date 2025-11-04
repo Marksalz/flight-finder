@@ -11,7 +11,6 @@ import dayjs from "dayjs";
 export default function AdminFilterForm({ handeleSubmit }) {
   const airports = useSelector((state) => state.airports.airports);
   const adminSearchParams = useSelector((state) => state.search.adminSearch);
-  console.log("Admin search params: ", adminSearchParams);
 
   const [formData, setFormData] = useState({
     origin: adminSearchParams.origin,
@@ -25,8 +24,6 @@ export default function AdminFilterForm({ handeleSubmit }) {
         ? dayjs(adminSearchParams.endDate)
         : null,
   });
-
-  console.log("form data state: ", formData);
 
   return (
     <Box
