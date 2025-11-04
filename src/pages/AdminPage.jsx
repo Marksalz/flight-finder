@@ -9,8 +9,15 @@ export default function AdminPage() {
   const dispatch = useDispatch();
 
   const handeleSubmit = (formData) => {
-    dispatch(setAdminSearchParams(formData));
-    dispatch(fetchFlights({ searchParams: formData }));
+    const serializableFormData = {
+      ...formData,
+      startDate: formData.startDate
+        ? formData.startDate.format("YYYY-MM-DD")
+        : null,
+      endDate: formData.endDate ? formData.endDate.format("YYYY-MM-DD") : null,
+    };
+    dispatch(setAdminSearchParams(serializableFormData));
+    dispatch(fetchFlights({ searchParams: serializableFormData }));
   };
 
   const flights = useSelector((state) => state.flights.flights);
