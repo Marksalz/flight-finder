@@ -2,23 +2,44 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const searchSlice = createSlice({
   name: "search",
-  initialState: { origin: "", destination: "", depDate: "", retDate: "" },
+  initialState: {
+    userSearch: { origin: "", destination: "", depDate: "", retDate: "" },
+    adminSearch: { origin: "", destination: "", startDate: "", endDate: "" },
+  },
   reducers: {
-    setSearchParams: (state, action) => {
+    setUserSearchParams: (state, action) => {
       const { origin, destination, depDate, retDate } = action.payload;
       state.origin = origin;
       state.destination = destination;
       state.depDate = depDate;
       state.retDate = retDate;
     },
-    clearSearchParams(state) {
+    clearUserSearchParams(state) {
       state.origin = "";
       state.destination = "";
       state.depDate = "";
       state.retDate = "";
     },
+    setAdminSearchParams: (state, action) => {
+      const { origin, destination, startDate, endDate } = action.payload;
+      state.origin = origin;
+      state.destination = destination;
+      state.depDate = startDate;
+      state.retDate = endDate;
+    },
+    clearAdminSearchParams(state) {
+      state.origin = "";
+      state.destination = "";
+      state.startDate = "";
+      state.endDate = "";
+    },
   },
 });
 
-export const { setSearchParams, clearSearchParams } = searchSlice.actions;
+export const {
+  setUserSearchParams,
+  clearUserSearchParams,
+  setAdminSearchParams,
+  clearAdminSearchParams,
+} = searchSlice.actions;
 export default searchSlice.reducer;
