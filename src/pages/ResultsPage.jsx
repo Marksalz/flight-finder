@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchFlights } from "../features/flights/flightsSlice";
 
 export default function ResultsPage() {
-  const searchParams = useSelector((state) => state.search);
+  const searchParams = useSelector((state) => state.search.userSearch);
   const dispatch = useDispatch();
 
   useEffect(() => {

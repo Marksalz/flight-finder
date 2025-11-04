@@ -61,8 +61,7 @@ export default function AdminFilterForm({ handeleSubmit }) {
           setFormData((prev) => ({ ...prev, startDate: newValue }))
         }
       />
-      <Typography>--
-      </Typography>
+      <Typography>--</Typography>
       <DateField
         label="to"
         value={formData.endDate}
