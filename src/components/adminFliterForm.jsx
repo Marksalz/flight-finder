@@ -11,12 +11,22 @@ import dayjs from "dayjs";
 export default function AdminFilterForm({ handeleSubmit }) {
   const airports = useSelector((state) => state.airports.airports);
   const adminSearchParams = useSelector((state) => state.search.adminSearch);
+  console.log("Admin search params: ", adminSearchParams);
+
   const [formData, setFormData] = useState({
-    origin: adminSearchParams.origin || "",
-    destination: adminSearchParams.destination || "",
-    startDate: dayjs(adminSearchParams.startDate) || null,
-    endDate: dayjs(adminSearchParams.endDate) || null,
+    origin: adminSearchParams.origin,
+    destination: adminSearchParams.destination,
+    startDate:
+      adminSearchParams.startDate !== ""
+        ? dayjs(adminSearchParams.startDate)
+        : null,
+    endDate:
+      adminSearchParams.endDate !== ""
+        ? dayjs(adminSearchParams.endDate)
+        : null,
   });
+
+  console.log("form data state: ", formData);
 
   return (
     <Box
