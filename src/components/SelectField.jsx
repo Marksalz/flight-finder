@@ -24,10 +24,12 @@ export default function SelectField({
             startAdornment: icon ? (
               <InputAdornment position="start">{icon}</InputAdornment>
             ) : null,
+            sx: { fontSize: 16 },
           },
+          select: { renderValue: (selected) => selected },
         }}
         helperText={helperText}
-        sx={{ mb: 0, width: 200 }}
+        sx={{ mb: 0, width: "100%", maxWidth: 200 }}
       >
         {options.map((opt) => (
           <MenuItem key={opt.code} value={opt.code} sx={{ width: "100%" }}>
