@@ -9,11 +9,12 @@ import GenericSubmitButton from "./SubmitButton";
 
 export default function AdminFilterForm({ handeleSubmit }) {
   const airports = useSelector((state) => state.airports.airports);
+  const adminSearchParams = useSelector((state) => state.search.adminSearch);
   const [formData, setFormData] = useState({
-    origin: "",
-    destination: "",
-    startDate: null,
-    endDate: null,
+    origin: adminSearchParams.origin || "",
+    destination: adminSearchParams.destination || "",
+    startDate: adminSearchParams.startDate || null,
+    endDate: adminSearchParams.endDate || null,
   });
 
   return (
