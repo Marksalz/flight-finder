@@ -9,7 +9,6 @@ import FlightLandIcon from "@mui/icons-material/FlightLand";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserSearchParams } from "../features/search/searchSlice";
-import { fetchAirports } from "../features/airports/airportsSlice";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
@@ -39,7 +38,6 @@ export default function SearchPage() {
       maxWidth="md"
       sx={{
         width: "90%",
-        minHeight: { xs: "87.8vh", sm: "100vh" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -66,18 +64,20 @@ export default function SearchPage() {
         }}
       >
         <Typography
-          variant="h4"
           align="center"
           gutterBottom
-          sx={{ fontWeight: 700, color: "primary.main" }}
+          sx={{
+            fontSize: { xs: 18, md: 36 },
+            fontWeight: 700,
+            color: "primary.main",
+          }}
         >
           ✈️ Find Your Perfect Flight
         </Typography>
         <Typography
           variant="subtitle1"
           align="center"
-          gutterBottom
-          sx={{ color: "#555" }}
+          sx={{ color: "#555", mb: 2 }}
         >
           Search and compare flights
         </Typography>
@@ -85,7 +85,7 @@ export default function SearchPage() {
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
-              <Grid size={{ xs: 8, sm: 6 }}>
+              <Grid size={{ xs: 10, sm: 6 }}>
                 <SelectField
                   label="From"
                   value={from}
@@ -97,7 +97,7 @@ export default function SearchPage() {
                   helperText="Where are you flying from?"
                 />
               </Grid>
-              <Grid size={{ xs: 8, sm: 6 }}>
+              <Grid size={{ xs: 10, sm: 6 }}>
                 <SelectField
                   label="To"
                   value={to}
@@ -113,7 +113,7 @@ export default function SearchPage() {
 
             {/* Second row: Date selectors */}
             <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
-              <Grid size={{ xs: 8, sm: 6 }}>
+              <Grid size={{ xs: 10, sm: 6 }}>
                 <DateField
                   label="Departure Date"
                   value={departDate}
@@ -121,7 +121,7 @@ export default function SearchPage() {
                   required
                 />
               </Grid>
-              <Grid size={{ xs: 8, sm: 6 }}>
+              <Grid size={{ xs: 10, sm: 6 }}>
                 <DateField
                   label="Return Date"
                   value={returnDate}

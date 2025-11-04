@@ -10,10 +10,10 @@ export default function GenericSubmitButton({ children }) {
         color="primary"
         size="large"
         sx={{
-          px: 5,
-          py: 1.5,
+          px: { xs: 2.5, sm: 4, md: 5 },
+          py: { xs: 1, sm: 1.25, md: 1.5 },
           fontWeight: 600,
-          fontSize: "1.15rem",
+          fontSize: { xs: "0.95rem", sm: "1.05rem", md: "1.15rem" },
           borderRadius: 3,
           background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
           boxShadow: "0 4px 16px 0 rgba(33, 203, 243, 0.15)",

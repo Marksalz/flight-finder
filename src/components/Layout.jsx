@@ -36,9 +36,8 @@ export default function Layout({ showAdminBtn = false }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            flexDirection: { xs: "column", sm: "row" },
             px: 0,
-            gap: { xs: 1, sm: 0 },
+            gap: 0,
           }}
         >
           <Link
@@ -98,6 +97,10 @@ export default function Layout({ showAdminBtn = false }) {
           py: { xs: 2, sm: 0 },
           px: { xs: 2, sm: 0 },
           minHeight: "70vh",
+          backgroundImage: 'url("/background.jpg")', // <-- Add this line
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <Outlet />

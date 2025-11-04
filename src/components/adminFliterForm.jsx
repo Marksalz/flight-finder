@@ -38,7 +38,7 @@ export default function AdminFilterForm({ handeleSubmit }) {
       sx={{
         width: "100%",
         p: 4,
-        bgcolor: "#a6c3e9ab",
+        bgcolor: "#a6c3e99c",
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         flexWrap: "nowrap",

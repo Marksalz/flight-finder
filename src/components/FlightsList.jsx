@@ -25,8 +25,11 @@ export default function FlightsList({ flights = [] }) {
         maxWidth: "1100px",
         mx: "auto",
         px: { xs: 2, sm: 3, md: 4 },
+        py: { xs: 2, sm: 3, md: 4 },
         mt: { xs: 2, sm: 3 },
         mb: { xs: 2, sm: 3 },
+        backgroundColor: "#cfdef390",
+        borderRadius: 4,
       }}
     >
       {flights.map((f) => (

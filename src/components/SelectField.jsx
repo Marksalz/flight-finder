@@ -29,7 +29,7 @@ export default function SelectField({
           select: { renderValue: (selected) => selected },
         }}
         helperText={helperText}
-        sx={{ mb: 0, width: "25vw", maxWidth: 200 }}
+        sx={{ mb: 0, width: { xs: "50vw", md: "25vw" }, maxWidth: 200 }}
       >
         {options.map((opt) => (
           <MenuItem key={opt.code} value={opt.code} sx={{ width: "100%" }}>

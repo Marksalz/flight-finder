@@ -41,7 +41,7 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
         alignItems: { xs: "stretch", sm: "center" },
         justifyContent: { xs: "stretch", sm: "space-evenly" },
         gap: { xs: 0, sm: 4.5 },
-        backgroundColor: "lightblue",
+        backgroundColor: "#b6ccecff",
         width: { xs: "100%", sm: "100%", md: "90%" },
         minHeight: 100,
         height: { xs: "auto", sm: "auto" },
