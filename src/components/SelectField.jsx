@@ -1,6 +1,7 @@
 import { TextField, MenuItem, Tooltip, InputAdornment } from "@mui/material";
 
 export default function SelectField({
+  name,
   label,
   value,
   onChange,
@@ -14,6 +15,7 @@ export default function SelectField({
     <Tooltip title={tooltip} arrow>
       <TextField
         select
+        name={name}
         label={label}
         value={value}
         onChange={onChange}
