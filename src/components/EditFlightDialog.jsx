@@ -8,27 +8,78 @@ import {
   Grid,
 } from "@mui/material";
 import { useState, useEffect } from "react";
+import SelectField from "./SelectField";
+import { useSelector } from "react-redux";
+import { selectAirportById } from "../features/airports/airportsSlice";
 
 export default function EditFlightDialog({ open, onClose, flight, onSave }) {
+  const airlines = [
+    "United Airlines",
+    "Delta Airlines",
+    "El Al Israel Airlines",
+    "American Airlines",
+  ];
+
   const [formData, setFormData] = useState(flight);
+
+  const airports = useSelector((state) => state.airports.airports);
 
   useEffect(() => {
     setFormData(flight);
   }, [flight]);
 
+  const originAirport = useSelector((state) =>
+    selectAirportById(state, formData.origin)
+  );
+  const destinationAirport = useSelector((state) =>
+    selectAirportById(state, formData.destination)
+  );
+
+  const airlineCodes = [
+    { name: "El Al Israel Airlines", code: "LY" },
+    { name: "Delta Airlines", code: "DL" },
+    { name: "American Airlines", code: "AA" },
+    { name: "United Airlines", code: "UA" },
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (name === "origin" || name === "destination") {
+      const airportId = airports.find((ap) => ap.code === value)?.id;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: Number(airportId),
+      }));
+    } else if (name === "airline") {
+      const code = airlineCodes[value] || "";
+      let flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
+      setFormData((prev) => ({
+        ...prev,
+        airline: value,
+        flightNumber: code + flightNumber,
+      }));
+    } else if (name === "flightNumber") {
+      const code = airlineCodes[formData.airline] || "";
+      let input = value.replace(/[^0-9]/g, "");
+      setFormData((prev) => ({
+        ...prev,
+        flightNumber: code + input,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = () => {
     const updatedFlight = {
       ...formData,
+      id: formData.flightNumber,
       departureTime: toISOString(formData.departureTime),
       arrivalTime: toISOString(formData.arrivalTime),
+      date: formData.departureTime ? formData.departureTime.slice(0, 10) : "",
     };
     onSave(updatedFlight);
     onClose();
@@ -51,48 +102,57 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
           },
         },
       }}
-     
     >
       <DialogTitle fontWeight="600">Edit Flight</DialogTitle>
 
       <DialogContent>
         <Grid container spacing={2} mt={1}>
+          {/* Airline */}
           <Grid xs={6}>
-            <TextField
-              label="Airline"
+            <SelectField
               name="airline"
-              value={formData.airline}
+              label="Airline"
+              value={formData.airline || ""}
+              options={airlines}
               onChange={handleChange}
-              fullWidth
+              autoFocus
             />
           </Grid>
+
+          {/* Flight Number */}
           <Grid xs={6}>
             <TextField
               label="Flight Number"
               name="flightNumber"
-              value={formData.flightNumber}
+              value={formData.flightNumber || ""}
               onChange={handleChange}
               fullWidth
             />
           </Grid>
+
+          {/* Origin */}
           <Grid xs={6}>
-            <TextField
-              label="Origin"
+            <SelectField
               name="origin"
-              value={formData.origin}
+              options={airports}
+              label="Origin"
+              value={originAirport?.code || ""}
               onChange={handleChange}
-              fullWidth
             />
           </Grid>
+
+          {/* Destination */}
           <Grid xs={6}>
-            <TextField
-              label="Destination"
+            <SelectField
               name="destination"
-              value={formData.destination}
+              options={airports}
+              label="Destination"
+              value={destinationAirport?.code || ""}
               onChange={handleChange}
-              fullWidth
             />
           </Grid>
+
+          {/* Departure Time */}
           <Grid xs={6}>
             <TextField
               label="Departure Time"
@@ -105,9 +165,14 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
                   departureTime: e.target.value,
                 }))
               }
+              slotProps={{
+                inputLabel: { shrink: true },
+              }}
               fullWidth
             />
           </Grid>
+
+          {/* Arrival Time */}
           <Grid xs={6}>
             <TextField
               label="Arrival Time"
@@ -120,23 +185,32 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
                   arrivalTime: e.target.value,
                 }))
               }
+              slotProps={{
+                inputLabel: { shrink: true },
+              }}
               fullWidth
             />
           </Grid>
+
+          {/* Duration */}
           <Grid xs={6}>
             <TextField
               label="Duration (minutes)"
               name="durationMinutes"
-              value={formData.durationMinutes}
+              type="number"
+              value={formData.durationMinutes || ""}
               onChange={handleChange}
               fullWidth
             />
           </Grid>
+
+          {/* Price */}
           <Grid xs={6}>
             <TextField
               label="Price (USD)"
               name="price.amount"
-              value={formData.price.amount}
+              type="number"
+              value={formData.price?.amount || ""}
               onChange={(e) =>
                 setFormData((prev) => ({
                   ...prev,
@@ -146,29 +220,35 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
               fullWidth
             />
           </Grid>
+
+          {/* Aircraft */}
           <Grid xs={6}>
             <TextField
               label="Aircraft"
               name="aircraft"
-              value={formData.aircraft}
+              value={formData.aircraft || ""}
               onChange={handleChange}
               fullWidth
             />
           </Grid>
+
+          {/* Terminal */}
           <Grid xs={6}>
             <TextField
               label="Terminal"
               name="terminal"
-              value={formData.terminal}
+              value={formData.terminal || ""}
               onChange={handleChange}
               fullWidth
             />
           </Grid>
+
+          {/* Baggage Allowance */}
           <Grid xs={12}>
             <TextField
               label="Baggage Allowance"
               name="baggageAllowance"
-              value={formData.baggageAllowance}
+              value={formData.baggageAllowance || ""}
               onChange={handleChange}
               fullWidth
             />
@@ -178,7 +258,11 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
 
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleSubmit} variant="contained">
+        <Button
+          onClick={handleSubmit}
+          variant="contained"
+          disabled={!formData.flightNumber || !formData.airline}
+        >
           Save Changes
         </Button>
       </DialogActions>
@@ -190,7 +274,6 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
 function toLocalInputValue(isoString) {
   if (!isoString) return "";
   const date = new Date(isoString);
-  // Get timezone offset in minutes and adjust
   const tzOffset = date.getTimezoneOffset() * 60000;
   const localISO = new Date(date - tzOffset).toISOString().slice(0, 16);
   return localISO;
@@ -201,4 +284,10 @@ function toISOString(localValue) {
   if (!localValue) return "";
   const date = new Date(localValue);
   return date.toISOString();
+}
+
+// Helper to remove prefix from flight number
+function prevFlightNumberWithoutPrefix(flightNumber) {
+  if (!flightNumber) return "";
+  return flightNumber.slice(2);
 }
