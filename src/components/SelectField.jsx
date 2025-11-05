@@ -31,11 +31,17 @@ export default function SelectField({
         helperText={helperText}
         sx={{ mb: 0, width: { xs: "50vw", md: "25vw" }, maxWidth: 200 }}
       >
-        {options.map((opt) => (
-          <MenuItem key={opt.code} value={opt.code} sx={{ width: "100%" }}>
-            {`${opt.name} (${opt.code})`}
-          </MenuItem>
-        ))}
+        {options.map((opt) =>
+          opt.code && opt.name ? (
+            <MenuItem key={opt.code} value={opt.code} sx={{ width: "100%" }}>
+              {`${opt.name} (${opt.code})`}
+            </MenuItem>
+          ) : (
+            <MenuItem key={opt} value={opt} sx={{ width: "100%" }}>
+              {`${opt}`}
+            </MenuItem>
+          )
+        )}
       </TextField>
     </Tooltip>
   );
