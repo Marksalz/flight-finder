@@ -137,6 +137,9 @@ const flightsSlice = createSlice({
     selectFlight(state, action) {
       state.selectedFlight = action.payload;
     },
+    clearSelectedFlight(state) {
+      state.selectedFlight = null;
+    },
     clearFlights(state) {
       state.flights = [];
     },
@@ -182,5 +185,6 @@ const flightsSlice = createSlice({
   },
 });
 
-export const { selectFlight, clearFlights } = flightsSlice.actions;
+export const { selectFlight, clearSelectedFlight, clearFlights } =
+  flightsSlice.actions;
 export default flightsSlice.reducer;
