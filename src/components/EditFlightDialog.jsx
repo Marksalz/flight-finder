@@ -9,49 +9,22 @@ import {
 } from "@mui/material";
 import { useState, useEffect } from "react";
 
-// Helper to convert ISO string to 'YYYY-MM-DDTHH:mm'
-function toLocalInputValue(isoString) {
-  if (!isoString) return "";
-  const date = new Date(isoString);
-  // Get timezone offset in minutes and adjust
-  const tzOffset = date.getTimezoneOffset() * 60000;
-  const localISO = new Date(date - tzOffset).toISOString().slice(0, 16);
-  return localISO;
-}
-
-// Helper to convert 'YYYY-MM-DDTHH:mm' to ISO string (UTC)
-function toISOString(localValue) {
-  if (!localValue) return "";
-  const date = new Date(localValue);
-  return date.toISOString();
-}
-
 export default function EditFlightDialog({ open, onClose, flight, onSave }) {
   const [formData, setFormData] = useState(flight);
 
-  // Update formData when flight changes (important when editing different flights)
   useEffect(() => {
     setFormData(flight);
   }, [flight]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Special handling for datetime-local fields
-    if (name === "departureTime" || name === "arrivalTime") {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = () => {
-    // Convert local datetime values back to ISO string
     const updatedFlight = {
       ...formData,
       departureTime: toISOString(formData.departureTime),
@@ -67,15 +40,18 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
       onClose={onClose}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          bgcolor: "#cfdef3",
-          backdropFilter: "blur(20px)",
-          borderRadius: "20px",
-          boxShadow: "0 8px 32px 0 rgba(207, 222, 243, 0.45)",
-          p: 2,
+      slotProps={{
+        paper: {
+          sx: {
+            bgcolor: "#cfdef3",
+            backdropFilter: "blur(20px)",
+            borderRadius: "20px",
+            boxShadow: "0 8px 32px 0 rgba(207, 222, 243, 0.45)",
+            p: 2,
+          },
         },
       }}
+     
     >
       <DialogTitle fontWeight="600">Edit Flight</DialogTitle>
 
@@ -208,4 +184,21 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
       </DialogActions>
     </Dialog>
   );
+}
+
+// Helper to convert ISO string to 'YYYY-MM-DDTHH:mm'
+function toLocalInputValue(isoString) {
+  if (!isoString) return "";
+  const date = new Date(isoString);
+  // Get timezone offset in minutes and adjust
+  const tzOffset = date.getTimezoneOffset() * 60000;
+  const localISO = new Date(date - tzOffset).toISOString().slice(0, 16);
+  return localISO;
+}
+
+// Helper to convert 'YYYY-MM-DDTHH:mm' to ISO string (UTC)
+function toISOString(localValue) {
+  if (!localValue) return "";
+  const date = new Date(localValue);
+  return date.toISOString();
 }

@@ -2,12 +2,13 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState } from "react";
 
-export default function FlightActions({ onEdit, onDelete }) {
+export default function FlightActions({ onEdit, onDelete, onClick }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleOpen = (e) => {
     e.stopPropagation();
+    onClick && onClick();
     setAnchorEl(e.currentTarget);
   };
 
@@ -42,7 +43,6 @@ export default function FlightActions({ onEdit, onDelete }) {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        // stop propagation on the menu itself (safety)
         onClick={(e) => e.stopPropagation()}
       >
         <MenuItem onClick={handleEdit}>Edit</MenuItem>

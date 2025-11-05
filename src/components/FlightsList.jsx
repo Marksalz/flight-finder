@@ -1,8 +1,31 @@
-import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import FlightCard from "./FlightCard";
+import EditFlightDialog from "./EditFlightDialog";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearSelectedFlight } from "../features/flights/flightsSlice";
 
-export default function FlightsList({ flights = [] }) {
+export default function FlightsList({ flights = [], isAdmin = false }) {
+  const dispatch = useDispatch();
+  const [editOpen, setEditOpen] = useState(false);
+  //const [selectedFlight, setSelectedFlight] = useState(null);
+  const selectedFlight = useSelector((state) => state.flights.selectedFlight);
+
+  const handleEdit = () => {
+    setEditOpen(true);
+  };
+
+  const handleClose = () => {
+    setEditOpen(false);
+    dispatch(clearSelectedFlight());
+  };
+
+  // You can implement onSave to update the flight in your store or backend
+  const handleSave = (updatedFlight) => {
+    // ...save logic here...
+    handleClose();
+  };
+
   if (flights.length === 0) {
     return (
       <Box sx={{ mt: 2 }}>
@@ -14,27 +37,43 @@ export default function FlightsList({ flights = [] }) {
   }
 
   return (
-    <Stack
-      spacing={1}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: { xs: "100%", sm: "70%" },
-        maxWidth: "1100px",
-        mx: "auto",
-        px: { xs: 2, sm: 3, md: 4 },
-        py: { xs: 2, sm: 3, md: 4 },
-        mt: { xs: 2, sm: 3 },
-        mb: { xs: 2, sm: 3 },
-        backgroundColor: "#cfdef390",
-        borderRadius: 4,
-      }}
-    >
-      {flights.map((f) => (
-        <FlightCard key={f.id} flightInfo={f} isClickable={true} />
-      ))}
-    </Stack>
+    <>
+      <Stack
+        spacing={1}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: { xs: "100%", sm: "70%" },
+          maxWidth: "1100px",
+          mx: "auto",
+          px: { xs: 2, sm: 3, md: 4 },
+          py: { xs: 2, sm: 3, md: 4 },
+          mt: { xs: 2, sm: 3 },
+          mb: { xs: 2, sm: 3 },
+          backgroundColor: "#cfdef390",
+          borderRadius: 4,
+        }}
+      >
+        {flights.map((f) => (
+          <FlightCard
+            key={f.id}
+            flightInfo={f}
+            isClickable={true}
+            isAdmin={isAdmin}
+            onEdit={() => handleEdit()}
+          />
+        ))}
+      </Stack>
+      {editOpen && selectedFlight && (
+        <EditFlightDialog
+          open={editOpen}
+          onClose={handleClose}
+          flight={selectedFlight}
+          onSave={handleSave}
+        />
+      )}
+    </>
   );
 }
