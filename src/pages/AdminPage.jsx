@@ -24,7 +24,9 @@ export default function AdminPage() {
   return (
     <>
       <AdminFilterForm handeleSubmit={handeleSubmit} />
-      {flights && flights.length > 0 && <FlightsList flights={flights} />}
+      {flights && flights.length > 0 && (
+        <FlightsList flights={flights} isAdmin={true} />
+      )}
     </>
   );
 }
