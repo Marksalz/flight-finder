@@ -41,20 +41,18 @@ export default function FlightDetailsPage() {
 
   return (
     <Container
-      maxWidth="xl"
       sx={{
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         gap: 2,
         justifyContent: { xs: "flex-start", md: "space-evenly" },
         alignItems: "flex-start",
-        ml: 0,
-        mr: 0,
+        backgroundColor: "#cfdef390",
+        borderRadius: 4,
         mt: 2,
         mb: 2,
         width: "100%",
-        minHeight: "100vh",
-        px: { xs: 1, sm: 2, md: 4 },
+        p: { xs: 1, sm: 2, md: 3 },
       }}
     >
       {(status === "loading" || status === "idle") && (
@@ -97,7 +95,7 @@ export default function FlightDetailsPage() {
               />
               <Box
                 sx={{
-                  bgcolor: "lightblue",
+                  bgcolor: "#b6ccecff",
                   height: { xs: "10%", md: "100%" },
                   alignContent: "center",
                   borderTopRightRadius: { xs: 0, md: 16 },

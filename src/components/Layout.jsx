@@ -94,8 +94,6 @@ export default function Layout({ showAdminBtn = false }) {
         component="main"
         sx={{
           flexGrow: 1,
-          py: { xs: 2, sm: 0 },
-          px: { xs: 2, sm: 0 },
           minHeight: "70vh",
           backgroundImage: 'url("/background.jpg")', // <-- Add this line
           backgroundSize: "cover",

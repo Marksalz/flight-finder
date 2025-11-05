@@ -42,6 +42,7 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
         justifyContent: { xs: "stretch", sm: "space-evenly" },
         gap: { xs: 0, sm: 4.5 },
         backgroundColor: "#b6ccecff",
+        boxShadow: "none",
         width: { xs: "100%", sm: "100%", md: "90%" },
         minHeight: 100,
         height: { xs: "auto", sm: "auto" },
@@ -124,6 +125,9 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
               sx={{
                 position: "absolute",
                 top: { xs: "20%", sm: "0%", md: "30%" },
+                ...(!isClickable && {
+                  top: { xs: "20%", sm: "30%", md: "20%", lg: "30%" },
+                }),
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 bgcolor: "transparent",
@@ -148,6 +152,9 @@ export default function FlightCard({ flightInfo, isClickable, isExpanded }) {
               sx={{
                 position: "absolute",
                 top: { xs: "90%", sm: "100%", md: "75%" },
+                ...(!isClickable && {
+                  top: { xs: "90%", sm: "75%", md: "90%", lg: "75%" },
+                }),
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 bgcolor: "transparent",
