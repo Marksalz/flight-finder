@@ -20,6 +20,13 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
     "American Airlines",
   ];
 
+  const airlineCodes = {
+    "El Al Israel Airlines": "LY",
+    "Delta Airlines": "DL",
+    "American Airlines": "AA",
+    "United Airlines": "UA",
+  };
+
   const [formData, setFormData] = useState(flight);
 
   const airports = useSelector((state) => state.airports.airports);
@@ -35,42 +42,31 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
     selectAirportById(state, formData.destination)
   );
 
-  const airlineCodes = [
-    { name: "El Al Israel Airlines", code: "LY" },
-    { name: "Delta Airlines", code: "DL" },
-    { name: "American Airlines", code: "AA" },
-    { name: "United Airlines", code: "UA" },
-  ];
-
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let updatedValue = value;
+
     if (name === "origin" || name === "destination") {
-      const airportId = airports.find((ap) => ap.code === value)?.id;
-      setFormData((prev) => ({
-        ...prev,
-        [name]: Number(airportId),
-      }));
+      updatedValue = Number(airports.find((ap) => ap.code === value)?.id || 0);
     } else if (name === "airline") {
       const code = airlineCodes[value] || "";
-      let flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
+      const flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
+      updatedValue = value;
       setFormData((prev) => ({
         ...prev,
         airline: value,
         flightNumber: code + flightNumber,
       }));
+      return;
     } else if (name === "flightNumber") {
       const code = airlineCodes[formData.airline] || "";
-      let input = value.replace(/[^0-9]/g, "");
-      setFormData((prev) => ({
-        ...prev,
-        flightNumber: code + input,
-      }));
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
+      updatedValue = code + value.replace(/[^0-9]/g, "");
     }
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: updatedValue,
+    }));
   };
 
   const handleSubmit = () => {
@@ -81,7 +77,7 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
       arrivalTime: toISOString(formData.arrivalTime),
       date: formData.departureTime ? formData.departureTime.slice(0, 10) : "",
     };
-    onSave(updatedFlight);
+    onSave(formData.id, updatedFlight);
     onClose();
   };
 
