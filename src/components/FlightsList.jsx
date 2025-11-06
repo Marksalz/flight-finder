@@ -3,12 +3,17 @@ import FlightCard from "./FlightCard";
 import EditFlightDialog from "./EditFlightDialog";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearSelectedFlight } from "../features/flights/flightsSlice";
+import {
+  clearSelectedFlight,
+  createFlight,
+  modifyFlight,
+  removeFlight,
+} from "../features/flights/flightsSlice";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function FlightsList({ flights = [], isAdmin = false }) {
   const dispatch = useDispatch();
   const [editOpen, setEditOpen] = useState(false);
-  //const [selectedFlight, setSelectedFlight] = useState(null);
   const selectedFlight = useSelector((state) => state.flights.selectedFlight);
 
   const handleEdit = () => {
@@ -20,9 +25,13 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
     dispatch(clearSelectedFlight());
   };
 
-  // You can implement onSave to update the flight in your store or backend
-  const handleSave = (updatedFlight) => {
-    // ...save logic here...
+  const handleSave = (id, updatedFlight) => {
+    if (id === updatedFlight.id) {
+      dispatch(modifyFlight({ flightId: id, flightData: updatedFlight }));
+    } else {
+      dispatch(createFlight(updatedFlight));
+      dispatch(removeFlight(id));
+    }
     handleClose();
   };
 
