@@ -85,7 +85,11 @@ export default function SearchPage() {
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
-              <Grid size={{ xs: 10, sm: 6 }}>
+              <Grid
+                container
+                size={{ xs: 12, sm: 6 }}
+                justifyContent={"center"}
+              >
                 <SelectField
                   label="From"
                   value={from}
@@ -97,7 +101,11 @@ export default function SearchPage() {
                   helperText="Where are you flying from?"
                 />
               </Grid>
-              <Grid size={{ xs: 10, sm: 6 }}>
+              <Grid
+                container
+                size={{ xs: 12, sm: 6 }}
+                justifyContent={"center"}
+              >
                 <SelectField
                   label="To"
                   value={to}
@@ -113,7 +121,11 @@ export default function SearchPage() {
 
             {/* Second row: Date selectors */}
             <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
-              <Grid size={{ xs: 10, sm: 6 }}>
+              <Grid
+                container
+                justifyContent={"center"}
+                size={{ xs: 10, sm: 6 }}
+              >
                 <DateField
                   label="Departure Date"
                   value={departDate}
@@ -121,7 +133,11 @@ export default function SearchPage() {
                   required
                 />
               </Grid>
-              <Grid size={{ xs: 10, sm: 6 }}>
+              <Grid
+                container
+                justifyContent={"center"}
+                size={{ xs: 10, sm: 6 }}
+              >
                 <DateField
                   label="Return Date"
                   value={returnDate}
