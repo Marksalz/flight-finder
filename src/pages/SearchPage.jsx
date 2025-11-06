@@ -85,74 +85,48 @@ export default function SearchPage() {
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
-              <Grid
-                container
-                size={{ xs: 12, sm: 6 }}
-                justifyContent={"center"}
-              >
-                <SelectField
-                  label="From"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                  options={airports}
-                  icon={<FlightTakeoffIcon color="primary" />}
-                  tooltip="Select your departure airport"
-                  required
-                  helperText="Where are you flying from?"
-                />
-              </Grid>
-              <Grid
-                container
-                size={{ xs: 12, sm: 6 }}
-                justifyContent={"center"}
-              >
-                <SelectField
-                  label="To"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                  options={airports}
-                  icon={<FlightLandIcon color="primary" />}
-                  tooltip="Select your destination airport"
-                  required
-                  helperText="Where are you flying to?"
-                />
-              </Grid>
+              <SelectField
+                label="From"
+                value={from}
+                onChange={(e) => setFrom(e.target.value)}
+                options={airports}
+                icon={<FlightTakeoffIcon color="primary" />}
+                tooltip="Select your departure airport"
+                required
+                helperText="Where are you flying from?"
+              />
+              <SelectField
+                label="To"
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+                options={airports}
+                icon={<FlightLandIcon color="primary" />}
+                tooltip="Select your destination airport"
+                required
+                helperText="Where are you flying to?"
+              />
             </Grid>
 
             {/* Second row: Date selectors */}
             <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
-              <Grid
-                container
-                justifyContent={"center"}
-                size={{ xs: 10, sm: 6 }}
-              >
-                <DateField
-                  label="Departure Date"
-                  value={departDate}
-                  onChange={setDepartDate}
-                  required
-                />
-              </Grid>
-              <Grid
-                container
-                justifyContent={"center"}
-                size={{ xs: 10, sm: 6 }}
-              >
-                <DateField
-                  label="Return Date"
-                  value={returnDate}
-                  onChange={setReturnDate}
-                  required
-                  minDate={departDate}
-                />
-              </Grid>
+              <DateField
+                label="Departure Date"
+                value={departDate}
+                onChange={setDepartDate}
+                required
+              />
+              <DateField
+                label="Return Date"
+                value={returnDate}
+                onChange={setReturnDate}
+                required
+                minDate={departDate}
+              />
             </Grid>
 
             {/* Third row: Search button */}
             <Grid container justifyContent="center" sx={{ mt: 2 }}>
-              <Grid size={{ xs: 12 }}>
-                <SubmitButton>🔍 Search Flights</SubmitButton>
-              </Grid>
+              <SubmitButton>🔍 Search Flights</SubmitButton>
             </Grid>
           </Grid>
         </Box>
