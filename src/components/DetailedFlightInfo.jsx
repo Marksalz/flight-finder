@@ -28,7 +28,11 @@ export default function DetailedFlightInfo({
       <Grid
         container
         spacing={1}
-        sx={{ flexDirection: "row", alignItems: "center", mb: 3 }}
+        sx={{
+          flexDirection: "row",
+          alignItems: "center",
+          mb: 3,
+        }}
       >
         <Box
           component="img"
@@ -49,6 +53,7 @@ export default function DetailedFlightInfo({
         sx={{
           flexDirection: "row",
           alignItems: "flex-start",
+          flexWrap: "nowrap",
         }}
       >
         <Grid>
