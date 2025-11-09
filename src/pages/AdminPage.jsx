@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import AdminFilterForm from "../components/adminFliterForm";
-import { fetchFlights, clearFlights } from "../features/flights/flightsSlice";
+import { fetchFlights } from "../features/flights/flightsSlice";
 import FlightsList from "../components/FlightsList";
-import { useEffect } from "react";
+import { useState } from "react";
 import { setAdminSearchParams } from "../features/search/searchSlice";
-import { Typography } from "@mui/material";
 
 export default function AdminPage() {
+  const [showFlights, setShowFlights] = useState(false);
   const dispatch = useDispatch();
 
   const handeleSubmit = (formData) => {
+    setShowFlights(true);
     const serializableFormData = {
       ...formData,
       startDate: formData.startDate
@@ -25,21 +26,7 @@ export default function AdminPage() {
   return (
     <>
       <AdminFilterForm handeleSubmit={handeleSubmit} />
-      {flights && flights.length > 0 ? (
-        <FlightsList flights={flights} isAdmin={true} />
-      ) : (
-        <Typography
-          variant={{ xs: "h6", md: "h4" }}
-          sx={{
-            color: "red",
-            display: "flex",
-            justifyContent: "center",
-            m: 2,
-          }}
-        >
-          No flights to be shown
-        </Typography>
-      )}
+      {showFlights && <FlightsList flights={flights} isAdmin={true} />}
     </>
   );
 }

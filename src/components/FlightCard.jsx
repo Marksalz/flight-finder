@@ -14,6 +14,7 @@ export default function FlightCard({
   isExpanded,
   isAdmin = false,
   onEdit,
+  onDelete,
 }) {
   const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
@@ -136,6 +137,7 @@ export default function FlightCard({
               {/* Duration badge centered on the arrow */}
               <Box
                 sx={{
+                  width:"100px",
                   position: "absolute",
                   top: { xs: "20%", sm: "0%", md: "30%" },
                   ...(!isClickable && {
@@ -160,7 +162,7 @@ export default function FlightCard({
                 </Typography>
               </Box>
 
-              {/* Flight date under the arrow, same CSS as duration */}
+              {/* Flight date under the arrow*/}
               <Box
                 sx={{
                   position: "absolute",
@@ -225,7 +227,13 @@ export default function FlightCard({
             mt: { xs: 1, sm: 0 },
           }}
         >
-          {isAdmin && <FlightActions onEdit={onEdit} onClick={handleClick} />}
+          {isAdmin && (
+            <FlightActions
+              onEdit={onEdit}
+              onDelete={onDelete}
+              onClick={handleClick}
+            />
+          )}
           <Typography
             variant="body1"
             sx={{ color: "#4caf50", fontWeight: 800 }}
