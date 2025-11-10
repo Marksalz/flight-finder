@@ -6,14 +6,39 @@ import { Link as RouterLink } from "react-router";
 import Link from "@mui/material/Link";
 import appLogo from "../assets/app_logo2.png";
 import { useDispatch } from "react-redux";
-import { clearFlights } from "../features/flights/flightsSlice";
+import { clearFlights, createFlight } from "../features/flights/flightsSlice";
+import { useState, useEffect } from "react";
+import EditFlightDialog from "./EditFlightDialog";
 
-export default function Layout({ showAdminBtn = false }) {
+export default function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const [createOpen, setCreateOpen] = useState(false);
+  const [message, setMessage] = useState(null);
 
-  const showButton = showAdminBtn || location.pathname === "/";
+  const showButton =
+    location.pathname === "/" || location.pathname === "/admin";
+
+  const handleClose = () => setCreateOpen(false);
+
+  const handleSave = (id, flightData) => {
+    setMessage(null);
+    try {
+      dispatch(createFlight(flightData));
+      setCreateOpen(false);
+      setMessage({ type: "success", text: "Flight added successfully!" });
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to add flight." });
+    }
+  };
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setMessage(null), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <Box
@@ -68,7 +93,13 @@ export default function Layout({ showAdminBtn = false }) {
 
           {showButton && (
             <Button
-              onClick={() => navigate("/admin")}
+              onClick={() => {
+                if (location.pathname === "/") {
+                  navigate("/admin");
+                } else {
+                  setCreateOpen(true);
+                }
+              }}
               size="medium"
               sx={{
                 color: "white",
@@ -84,7 +115,7 @@ export default function Layout({ showAdminBtn = false }) {
                 },
               }}
             >
-              Admin
+              {location.pathname === "/" ? "Admin" : "Add FLight"}
             </Button>
           )}
         </Container>
@@ -95,8 +126,7 @@ export default function Layout({ showAdminBtn = false }) {
         sx={{
           flexGrow: 1,
           minHeight: "70vh",
-          backgroundImage: 'url("/background.jpg")', // <-- Add this line
-          backgroundSize: "cover",
+          backgroundImage: 'url("/background.jpg")',
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
@@ -125,6 +155,33 @@ export default function Layout({ showAdminBtn = false }) {
           <Box component="small">© {new Date().getFullYear()} AeroFind</Box>
         </Container>
       </Box>
+      {createOpen && (
+        <EditFlightDialog
+          open={true}
+          onClose={handleClose}
+          onSave={handleSave}
+          flight={{}}
+        />
+      )}
+      {message && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 20,
+            left: "50%",
+            transform: "translateX(-50%)",
+            bgcolor: message.type === "success" ? "#4caf50" : "#f44336",
+            color: "white",
+            px: 3,
+            py: 1,
+            borderRadius: 2,
+            boxShadow: 2,
+            zIndex: 9999,
+          }}
+        >
+          {message.text}
+        </Box>
+      )}
     </Box>
   );
 }
