@@ -61,6 +61,8 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
     } else if (name === "flightNumber") {
       const code = airlineCodes[formData.airline] || "";
       updatedValue = code + value.replace(/[^0-9]/g, "");
+    } else if (name === "price.amount" || name === "durationMinutes") {
+      updatedValue = Number(updatedValue);
     }
 
     setFormData((prev) => ({
@@ -72,7 +74,6 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
   const handleSubmit = () => {
     const updatedFlight = {
       ...formData,
-      id: formData.flightNumber,
       departureTime: toISOString(formData.departureTime),
       arrivalTime: toISOString(formData.arrivalTime),
       date: formData.departureTime ? formData.departureTime.slice(0, 10) : "",
@@ -194,7 +195,7 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
               label="Duration (minutes)"
               name="durationMinutes"
               type="number"
-              value={formData.durationMinutes || ""}
+              value={formData.durationMinutes || NaN}
               onChange={handleChange}
               fullWidth
             />
@@ -206,7 +207,7 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
               label="Price (USD)"
               name="price.amount"
               type="number"
-              value={formData.price?.amount || ""}
+              value={formData.price?.amount || NaN}
               onChange={(e) =>
                 setFormData((prev) => ({
                   ...prev,
