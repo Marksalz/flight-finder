@@ -190,9 +190,6 @@ const flightsSlice = createSlice({
       .addCase(removeFlight.fulfilled, (state, action) => {
         state.flights = state.flights.filter((f) => f.id !== action.payload.id);
       })
-      .addCase(createFlight.fulfilled, (state, action) => {
-        state.flights.push(action.payload);
-      })
       .addMatcher(
         (action) => action.type.endsWith("/pending"),
         (state) => {
