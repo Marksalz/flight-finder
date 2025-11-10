@@ -1,7 +1,7 @@
 {
   "flights": [
     {
-      "id": "LY001",
+      "id": "1",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY001",
       "origin": 1,
@@ -20,7 +20,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY002",
+      "id": "2",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY002",
       "origin": 1,
@@ -39,7 +39,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY003",
+      "id": "3",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY003",
       "origin": 1,
@@ -58,7 +58,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY004",
+      "id": "4",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY004",
       "origin": 1,
@@ -77,7 +77,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY005",
+      "id": "5",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY005",
       "origin": 1,
@@ -96,7 +96,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY006",
+      "id": "6",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY006",
       "origin": 1,
@@ -115,7 +115,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY007",
+      "id": "7",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY007",
       "origin": 1,
@@ -134,7 +134,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY008",
+      "id": "8",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY008",
       "origin": 1,
@@ -153,7 +153,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY009",
+      "id": "9",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY009",
       "origin": 1,
@@ -172,7 +172,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY010",
+      "id": "10",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY010",
       "origin": 1,
@@ -191,7 +191,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA011",
+      "id": "11",
       "airline": "American Airlines",
       "flightNumber": "AA011",
       "origin": 2,
@@ -210,7 +210,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA012",
+      "id": "12",
       "airline": "American Airlines",
       "flightNumber": "AA012",
       "origin": 2,
@@ -229,7 +229,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA013",
+      "id": "13",
       "airline": "American Airlines",
       "flightNumber": "AA013",
       "origin": 2,
@@ -248,7 +248,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA014",
+      "id": "14",
       "airline": "American Airlines",
       "flightNumber": "AA014",
       "origin": 2,
@@ -267,7 +267,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA015",
+      "id": "15",
       "airline": "American Airlines",
       "flightNumber": "AA015",
       "origin": 2,
@@ -286,7 +286,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA016",
+      "id": "16",
       "airline": "American Airlines",
       "flightNumber": "AA016",
       "origin": 2,
@@ -305,7 +305,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA017",
+      "id": "17",
       "airline": "American Airlines",
       "flightNumber": "AA017",
       "origin": 2,
@@ -324,7 +324,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA018",
+      "id": "18",
       "airline": "American Airlines",
       "flightNumber": "AA018",
       "origin": 2,
@@ -343,7 +343,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA019",
+      "id": "19",
       "airline": "American Airlines",
       "flightNumber": "AA019",
       "origin": 2,
@@ -362,7 +362,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "AA020",
+      "id": "20",
       "airline": "American Airlines",
       "flightNumber": "AA020",
       "origin": 2,
@@ -381,7 +381,7 @@
       "baggageAllowance": "20kg + 8kg hand luggage"
     },
     {
-      "id": "DL021",
+      "id": "21",
       "airline": "Delta Airlines",
       "flightNumber": "DL021",
       "origin": 4,
@@ -400,7 +400,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL022",
+      "id": "22",
       "airline": "Delta Airlines",
       "flightNumber": "DL022",
       "origin": 4,
@@ -419,7 +419,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL023",
+      "id": "23",
       "airline": "Delta Airlines",
       "flightNumber": "DL023",
       "origin": 4,
@@ -438,7 +438,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL024",
+      "id": "24",
       "airline": "Delta Airlines",
       "flightNumber": "DL024",
       "origin": 4,
@@ -457,7 +457,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL025",
+      "id": "25",
       "airline": "Delta Airlines",
       "flightNumber": "DL025",
       "origin": 4,
@@ -476,7 +476,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL026",
+      "id": "26",
       "airline": "Delta Airlines",
       "flightNumber": "DL026",
       "origin": 4,
@@ -495,7 +495,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL027",
+      "id": "27",
       "airline": "Delta Airlines",
       "flightNumber": "DL027",
       "origin": 4,
@@ -514,7 +514,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL028",
+      "id": "28",
       "airline": "Delta Airlines",
       "flightNumber": "DL028",
       "origin": 4,
@@ -533,7 +533,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL029",
+      "id": "29",
       "airline": "Delta Airlines",
       "flightNumber": "DL029",
       "origin": 4,
@@ -552,7 +552,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL030",
+      "id": "30",
       "airline": "Delta Airlines",
       "flightNumber": "DL030",
       "origin": 4,
@@ -571,7 +571,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "UA031",
+      "id": "31",
       "airline": "United Airlines",
       "flightNumber": "UA031",
       "origin": 3,
@@ -590,7 +590,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA032",
+      "id": "32",
       "airline": "United Airlines",
       "flightNumber": "UA032",
       "origin": 3,
@@ -609,7 +609,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA033",
+      "id": "33",
       "airline": "United Airlines",
       "flightNumber": "UA033",
       "origin": 3,
@@ -628,7 +628,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA034",
+      "id": "34",
       "airline": "United Airlines",
       "flightNumber": "UA034",
       "origin": 3,
@@ -647,7 +647,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA035",
+      "id": "35",
       "airline": "United Airlines",
       "flightNumber": "UA035",
       "origin": 3,
@@ -666,7 +666,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA036",
+      "id": "36",
       "airline": "United Airlines",
       "flightNumber": "UA036",
       "origin": 3,
@@ -685,7 +685,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA037",
+      "id": "37",
       "airline": "United Airlines",
       "flightNumber": "UA037",
       "origin": 3,
@@ -704,7 +704,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA038",
+      "id": "38",
       "airline": "United Airlines",
       "flightNumber": "UA038",
       "origin": 3,
@@ -723,7 +723,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA039",
+      "id": "39",
       "airline": "United Airlines",
       "flightNumber": "UA039",
       "origin": 3,
@@ -742,7 +742,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA040",
+      "id": "40",
       "airline": "United Airlines",
       "flightNumber": "UA040",
       "origin": 3,
@@ -761,7 +761,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY041",
+      "id": "41",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY041",
       "origin": 4,
@@ -780,7 +780,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY042",
+      "id": "42",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY042",
       "origin": 4,
@@ -799,7 +799,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY043",
+      "id": "43",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY043",
       "origin": 4,
@@ -818,7 +818,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY044",
+      "id": "44",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY044",
       "origin": 4,
@@ -837,7 +837,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY045",
+      "id": "45",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY045",
       "origin": 4,
@@ -856,7 +856,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY046",
+      "id": "46",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY046",
       "origin": 4,
@@ -875,7 +875,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY047",
+      "id": "47",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY047",
       "origin": 4,
@@ -894,7 +894,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY048",
+      "id": "48",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY048",
       "origin": 4,
@@ -913,7 +913,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY049",
+      "id": "49",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY049",
       "origin": 4,
@@ -932,7 +932,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY050",
+      "id": "50",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY050",
       "origin": 4,
@@ -951,7 +951,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA051",
+      "id": "51",
       "airline": "American Airlines",
       "flightNumber": "AA051",
       "origin": 3,
@@ -970,7 +970,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA052",
+      "id": "52",
       "airline": "American Airlines",
       "flightNumber": "AA052",
       "origin": 3,
@@ -989,7 +989,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA053",
+      "id": "53",
       "airline": "American Airlines",
       "flightNumber": "AA053",
       "origin": 3,
@@ -1008,7 +1008,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA054",
+      "id": "54",
       "airline": "American Airlines",
       "flightNumber": "AA054",
       "origin": 3,
@@ -1027,7 +1027,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA055",
+      "id": "55",
       "airline": "American Airlines",
       "flightNumber": "AA055",
       "origin": 3,
@@ -1046,7 +1046,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA056",
+      "id": "56",
       "airline": "American Airlines",
       "flightNumber": "AA056",
       "origin": 3,
@@ -1065,7 +1065,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA057",
+      "id": "57",
       "airline": "American Airlines",
       "flightNumber": "AA057",
       "origin": 3,
@@ -1084,7 +1084,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA058",
+      "id": "58",
       "airline": "American Airlines",
       "flightNumber": "AA058",
       "origin": 3,
@@ -1103,7 +1103,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA059",
+      "id": "59",
       "airline": "American Airlines",
       "flightNumber": "AA059",
       "origin": 3,
@@ -1122,7 +1122,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "AA060",
+      "id": "60",
       "airline": "American Airlines",
       "flightNumber": "AA060",
       "origin": 3,
@@ -1141,7 +1141,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "DL061",
+      "id": "61",
       "airline": "Delta Airlines",
       "flightNumber": "DL061",
       "origin": 2,
@@ -1160,7 +1160,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL062",
+      "id": "62",
       "airline": "Delta Airlines",
       "flightNumber": "DL062",
       "origin": 2,
@@ -1179,7 +1179,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL063",
+      "id": "63",
       "airline": "Delta Airlines",
       "flightNumber": "DL063",
       "origin": 2,
@@ -1198,7 +1198,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL064",
+      "id": "64",
       "airline": "Delta Airlines",
       "flightNumber": "DL064",
       "origin": 2,
@@ -1217,7 +1217,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL065",
+      "id": "65",
       "airline": "Delta Airlines",
       "flightNumber": "DL065",
       "origin": 2,
@@ -1236,7 +1236,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL066",
+      "id": "66",
       "airline": "Delta Airlines",
       "flightNumber": "DL066",
       "origin": 2,
@@ -1255,7 +1255,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL067",
+      "id": "67",
       "airline": "Delta Airlines",
       "flightNumber": "DL067",
       "origin": 2,
@@ -1274,7 +1274,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL068",
+      "id": "68",
       "airline": "Delta Airlines",
       "flightNumber": "DL068",
       "origin": 2,
@@ -1293,7 +1293,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL069",
+      "id": "69",
       "airline": "Delta Airlines",
       "flightNumber": "DL069",
       "origin": 2,
@@ -1312,7 +1312,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "DL070",
+      "id": "70",
       "airline": "Delta Airlines",
       "flightNumber": "DL070",
       "origin": 2,
@@ -1331,7 +1331,7 @@
       "baggageAllowance": "23kg + 7kg hand luggage"
     },
     {
-      "id": "UA071",
+      "id": "71",
       "airline": "United Airlines",
       "flightNumber": "UA071",
       "origin": 4,
@@ -1350,7 +1350,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA072",
+      "id": "72",
       "airline": "United Airlines",
       "flightNumber": "UA072",
       "origin": 4,
@@ -1369,7 +1369,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA073",
+      "id": "73",
       "airline": "United Airlines",
       "flightNumber": "UA073",
       "origin": 4,
@@ -1388,7 +1388,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA074",
+      "id": "74",
       "airline": "United Airlines",
       "flightNumber": "UA074",
       "origin": 4,
@@ -1407,7 +1407,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA075",
+      "id": "75",
       "airline": "United Airlines",
       "flightNumber": "UA075",
       "origin": 4,
@@ -1426,7 +1426,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA076",
+      "id": "76",
       "airline": "United Airlines",
       "flightNumber": "UA076",
       "origin": 4,
@@ -1445,7 +1445,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA077",
+      "id": "77",
       "airline": "United Airlines",
       "flightNumber": "UA077",
       "origin": 4,
@@ -1464,7 +1464,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA078",
+      "id": "78",
       "airline": "United Airlines",
       "flightNumber": "UA078",
       "origin": 4,
@@ -1483,7 +1483,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA079",
+      "id": "79",
       "airline": "United Airlines",
       "flightNumber": "UA079",
       "origin": 4,
@@ -1502,7 +1502,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "UA080",
+      "id": "80",
       "airline": "United Airlines",
       "flightNumber": "UA080",
       "origin": 4,
@@ -1521,7 +1521,7 @@
       "baggageAllowance": "23kg + 8kg hand luggage"
     },
     {
-      "id": "LY081",
+      "id": "81",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY081",
       "origin": 1,
@@ -1540,7 +1540,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY082",
+      "id": "82",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY082",
       "origin": 1,
@@ -1559,7 +1559,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY083",
+      "id": "83",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY083",
       "origin": 1,
@@ -1578,7 +1578,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY084",
+      "id": "84",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY084",
       "origin": 1,
@@ -1597,7 +1597,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY085",
+      "id": "85",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY085",
       "origin": 1,
@@ -1616,7 +1616,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY086",
+      "id": "86",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY086",
       "origin": 1,
@@ -1635,7 +1635,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY087",
+      "id": "87",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY087",
       "origin": 1,
@@ -1654,7 +1654,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY088",
+      "id": "88",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY088",
       "origin": 1,
@@ -1673,7 +1673,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY089",
+      "id": "89",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY089",
       "origin": 1,
@@ -1692,7 +1692,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "LY090",
+      "id": "90",
       "airline": "El Al Israel Airlines",
       "flightNumber": "LY090",
       "origin": 1,
@@ -1711,7 +1711,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA091",
+      "id": "91",
       "airline": "American Airlines",
       "flightNumber": "AA091",
       "origin": 3,
@@ -1730,7 +1730,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA092",
+      "id": "92",
       "airline": "American Airlines",
       "flightNumber": "AA092",
       "origin": 3,
@@ -1749,7 +1749,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA093",
+      "id": "93",
       "airline": "American Airlines",
       "flightNumber": "AA093",
       "origin": 3,
@@ -1768,7 +1768,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA094",
+      "id": "94",
       "airline": "American Airlines",
       "flightNumber": "AA094",
       "origin": 3,
@@ -1787,7 +1787,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA095",
+      "id": "95",
       "airline": "American Airlines",
       "flightNumber": "AA095",
       "origin": 3,
@@ -1806,7 +1806,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA096",
+      "id": "96",
       "airline": "American Airlines",
       "flightNumber": "AA096",
       "origin": 3,
@@ -1825,7 +1825,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA097",
+      "id": "97",
       "airline": "American Airlines",
       "flightNumber": "AA097",
       "origin": 3,
@@ -1844,7 +1844,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA098",
+      "id": "98",
       "airline": "American Airlines",
       "flightNumber": "AA098",
       "origin": 3,
@@ -1863,7 +1863,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA099",
+      "id": "99",
       "airline": "American Airlines",
       "flightNumber": "AA099",
       "origin": 3,
@@ -1882,7 +1882,7 @@
       "baggageAllowance": "2x23kg + 8kg hand luggage"
     },
     {
-      "id": "AA100",
+      "id": "100",
       "airline": "American Airlines",
       "flightNumber": "AA100",
       "origin": 3,
