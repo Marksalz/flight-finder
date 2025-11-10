@@ -10,7 +10,7 @@ export default function DetailedFlightInfo({
   originAirportName,
   destinationAirportName,
 }) {
-  const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
+  const airlineCode = String(flightInfo?.flightNumber ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
 

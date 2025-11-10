@@ -16,7 +16,7 @@ export default function FlightCard({
   onEdit,
   onDelete,
 }) {
-  const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
+  const airlineCode = String(flightInfo?.flightNumber ?? "").slice(0, 2);
   const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
   const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
   const navigate = useNavigate();
@@ -137,7 +137,7 @@ export default function FlightCard({
               {/* Duration badge centered on the arrow */}
               <Box
                 sx={{
-                  width:"100px",
+                  width: "100px",
                   position: "absolute",
                   top: { xs: "20%", sm: "0%", md: "30%" },
                   ...(!isClickable && {

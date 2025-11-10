@@ -6,11 +6,9 @@ import { useState } from "react";
 import { setAdminSearchParams } from "../features/search/searchSlice";
 
 export default function AdminPage() {
-  const [showFlights, setShowFlights] = useState(false);
   const dispatch = useDispatch();
 
   const handeleSubmit = (formData) => {
-    setShowFlights(true);
     const serializableFormData = {
       ...formData,
       startDate: formData.startDate
@@ -26,7 +24,7 @@ export default function AdminPage() {
   return (
     <>
       <AdminFilterForm handeleSubmit={handeleSubmit} />
-      {showFlights && <FlightsList flights={flights} isAdmin={true} />}
+      {flights.length > 0 && <FlightsList flights={flights} isAdmin={true} />}
     </>
   );
 }

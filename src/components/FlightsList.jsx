@@ -39,18 +39,15 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
   };
 
   const handleSave = (id, updatedFlight) => {
-    if (id === updatedFlight.id) {
-      dispatch(modifyFlight({ flightId: id, flightData: updatedFlight }));
-    } else {
-      dispatch(createFlight(updatedFlight));
-      dispatch(removeFlight(id));
-    }
+    dispatch(modifyFlight({ flightId: id, flightData: updatedFlight }));
     handleClose();
   };
 
   if (flights.length === 0) {
     return (
-      <Box sx={{ display: "flex", justifyContent: "center", m: 2, color:"red"}}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", m: 2, color: "red" }}
+      >
         <Typography variant="h4">
           No flights found for the selected route and date.
         </Typography>
