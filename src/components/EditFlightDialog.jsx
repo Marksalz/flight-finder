@@ -12,7 +12,14 @@ import SelectField from "./SelectField";
 import { useSelector } from "react-redux";
 import { selectAirportById } from "../features/airports/airportsSlice";
 
-export default function EditFlightDialog({ open, onClose, flight, onSave }) {
+export default function EditFlightDialog({
+  open,
+  onClose,
+  flight = {},
+  onSave,
+}) {
+  const isEdit = !!flight.id;
+
   const airlines = [
     "United Airlines",
     "Delta Airlines",
@@ -100,7 +107,9 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
         },
       }}
     >
-      <DialogTitle fontWeight="600">Edit Flight</DialogTitle>
+      <DialogTitle fontWeight="600">
+        {isEdit ? "Edit Flight" : "Add Flight"}
+      </DialogTitle>
 
       <DialogContent>
         <Grid container spacing={2} mt={1}>
@@ -195,7 +204,7 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
               label="Duration (minutes)"
               name="durationMinutes"
               type="number"
-              value={formData.durationMinutes || NaN}
+              value={formData.durationMinutes || ""}
               onChange={handleChange}
               fullWidth
             />
@@ -207,11 +216,15 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
               label="Price (USD)"
               name="price.amount"
               type="number"
-              value={formData.price?.amount || NaN}
+              value={formData.price?.amount || ""}
               onChange={(e) =>
                 setFormData((prev) => ({
                   ...prev,
-                  price: { ...prev.price, amount: e.target.value },
+                  price: {
+                    ...prev.price,
+                    amount: Number(e.target.value),
+                    currency: "USD",
+                  },
                 }))
               }
               fullWidth
@@ -260,7 +273,7 @@ export default function EditFlightDialog({ open, onClose, flight, onSave }) {
           variant="contained"
           disabled={!formData.flightNumber || !formData.airline}
         >
-          Save Changes
+          {isEdit ? "Save Changes" : "Add Flight"}
         </Button>
       </DialogActions>
     </Dialog>
