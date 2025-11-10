@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { allFlights } from "../../utils/mockFlights";
-import LongArrow from "../../components/LongArrow";
+import { selectAirportByCode } from "../airports/airportsSlice";
 
 const baseUrl = "http://localhost:3000";
 
@@ -93,7 +92,7 @@ export const createFlight = createAsyncThunk(
 
 export const modifyFlight = createAsyncThunk(
   "flights/modifyFlight",
-  async ({ flightId, flightData }) => {
+  async ({ flightId, flightData }, { getState }) => {
     const response = await fetch(
       `${baseUrl}/flights/${encodeURIComponent(flightId)}`,
       {
@@ -105,7 +104,19 @@ export const modifyFlight = createAsyncThunk(
     if (!response.ok) {
       throw new Error("Failed to modify flight");
     }
-    return await response.json();
+
+    const updatedFlight = await response.json();
+    const state = getState();
+    const adminSearch = state.search.adminSearch;
+
+    const searchOriginId = selectAirportByCode(state, adminSearch.origin)?.id;
+    const searchDestinationId = selectAirportByCode(
+      state,
+      adminSearch.destination
+    )?.id;
+
+    // Add it to the payload
+    return { updatedFlight, searchOriginId, searchDestinationId, adminSearch };
   }
 );
 
@@ -153,8 +164,28 @@ const flightsSlice = createSlice({
         state.selectedFlight = action.payload;
       })
       .addCase(modifyFlight.fulfilled, (state, action) => {
-        const idx = state.flights.findIndex((f) => f.id === action.payload.id);
-        if (idx !== -1) state.flights[idx] = action.payload;
+        const {
+          updatedFlight,
+          searchOriginId,
+          searchDestinationId,
+          adminSearch,
+        } = action.payload;
+
+        if (
+          matchesFilters(
+            updatedFlight,
+            adminSearch,
+            searchOriginId,
+            searchDestinationId
+          )
+        ) {
+          const idx = state.flights.findIndex((f) => f.id === updatedFlight.id);
+          if (idx !== -1) state.flights[idx] = updatedFlight;
+        } else {
+          state.flights = state.flights.filter(
+            (f) => f.id !== updatedFlight.id
+          );
+        }
       })
       .addCase(removeFlight.fulfilled, (state, action) => {
         state.flights = state.flights.filter((f) => f.id !== action.payload.id);
@@ -184,6 +215,27 @@ const flightsSlice = createSlice({
       );
   },
 });
+
+// Helper function to check if flight matches current filters
+const matchesFilters = (
+  updatedFlight,
+  adminSearch,
+  searchOriginId,
+  searchDestinationId
+) => {
+  if (!adminSearch) return true;
+
+  const originMatch = String(updatedFlight.origin) === searchOriginId;
+  const destMatch = String(updatedFlight.destination) === searchDestinationId;
+
+  let dateMatch = true;
+  if (adminSearch.startDate && adminSearch.endDate) {
+    const date = updatedFlight.date;
+    dateMatch = date >= adminSearch.startDate && date <= adminSearch.endDate;
+  }
+
+  return originMatch && destMatch && dateMatch;
+};
 
 export const { selectFlight, clearSelectedFlight, clearFlights } =
   flightsSlice.actions;
