@@ -1,14 +1,16 @@
-import SearchSummaryBar from "../components/SearchSummaryBar";
-import { Box } from "@mui/material";
-import FlightsList from "../components/FlightsList";
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { fetchFlights } from "../features/flights/flightsSlice";
+import SearchSummaryBar from "../components/SearchSummaryBar";
+import FlightsList from "../components/FlightsList";
+
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+
+import { Box } from "@mui/material";
 
 export default function ResultsPage() {
-  const searchParams = useSelector((state) => state.search.userSearch);
   const dispatch = useDispatch();
 
+  const searchParams = useSelector((state) => state.search.userSearch);
   useEffect(() => {
     dispatch(fetchFlights({ searchParams }));
   }, [dispatch, searchParams]);
