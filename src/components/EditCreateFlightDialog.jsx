@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import SelectField from "./SelectField";
 import { useSelector } from "react-redux";
 import { selectAirportById } from "../features/airports/airportsSlice";
+import { toISOString, toLocalInputValue } from "../utils/helpFunctions";
 
 export default function EditCreateFlightDialog({
   open,
@@ -165,12 +166,12 @@ export default function EditCreateFlightDialog({
               name="departureTime"
               type="datetime-local"
               value={toLocalInputValue(formData.departureTime)}
-              onChange={(e) =>
+              onChange={(e) => {
                 setFormData((prev) => ({
                   ...prev,
                   departureTime: e.target.value,
-                }))
-              }
+                }));
+              }}
               slotProps={{
                 inputLabel: { shrink: true },
               }}
@@ -278,22 +279,6 @@ export default function EditCreateFlightDialog({
       </DialogActions>
     </Dialog>
   );
-}
-
-// Helper to convert ISO string to 'YYYY-MM-DDTHH:mm'
-function toLocalInputValue(isoString) {
-  if (!isoString) return "";
-  const date = new Date(isoString);
-  const tzOffset = date.getTimezoneOffset() * 60000;
-  const localISO = new Date(date - tzOffset).toISOString().slice(0, 16);
-  return localISO;
-}
-
-// Helper to convert 'YYYY-MM-DDTHH:mm' to ISO string (UTC)
-function toISOString(localValue) {
-  if (!localValue) return "";
-  const date = new Date(localValue);
-  return date.toISOString();
 }
 
 // Helper to remove prefix from flight number
