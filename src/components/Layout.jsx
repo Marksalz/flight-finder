@@ -109,7 +109,7 @@ export default function Layout() {
               src={appLogo}
               alt="AeroFind Logo"
               sx={{
-                width: { xs: 120, sm: 200 },
+                width: { xs: 110, sm: 150 },
                 maxWidth: "100%",
                 height: "auto",
               }}
