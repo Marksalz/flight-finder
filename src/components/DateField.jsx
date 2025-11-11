@@ -1,6 +1,6 @@
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { DatePicker } from "@mui/x-date-pickers";
 import { InputAdornment } from "@mui/material";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 export default function DateField({
   label,
