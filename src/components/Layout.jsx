@@ -2,6 +2,8 @@ import { Outlet, useNavigate, useLocation } from "react-router";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link as RouterLink } from "react-router";
 import Link from "@mui/material/Link";
 import appLogo from "../assets/app_logo2.png";
@@ -9,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { clearFlights, createFlight } from "../features/flights/flightsSlice";
 import { useState, useEffect } from "react";
 import EditCreateFlightDialog from "./EditCreateFlightDialog";
+import { Grid } from "@mui/material";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -65,6 +68,28 @@ export default function Layout() {
             gap: 0,
           }}
         >
+          {/* Go Back Button*/}
+          {location.pathname !== "/" && (
+            <IconButton
+              aria-label="Go back"
+              onClick={() => navigate(-1)}
+              sx={{
+                color: "white",
+                borderRadius: 3,
+                background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
+                boxShadow: "0 4px 16px 0 rgba(33, 203, 243, 0.15)",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0 8px 24px 0 rgba(33, 203, 243, 0.25)",
+                  background:
+                    "linear-gradient(90deg, #21cbf3 0%, #2196f3 100%)",
+                },
+              }}
+            >
+              <ArrowBackIcon sx={{ fontSize: { xs: 16, sm: 24 } }} />
+            </IconButton>
+          )}
           <Link
             component={RouterLink}
             to="/"
@@ -84,8 +109,8 @@ export default function Layout() {
               src={appLogo}
               alt="AeroFind Logo"
               sx={{
-                width: 150,
-                maxWidth: "80%",
+                width: { xs: 120, sm: 200 },
+                maxWidth: "100%",
                 height: "auto",
               }}
             />
@@ -102,6 +127,7 @@ export default function Layout() {
               }}
               size="medium"
               sx={{
+                fontSize: { xs: 10, sm: 16 },
                 color: "white",
                 borderRadius: 3,
                 background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
