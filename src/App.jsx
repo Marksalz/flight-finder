@@ -1,13 +1,15 @@
-import "./styles/App.css";
-import { Routes, Route } from "react-router";
-import Layout from "./components/Layout";
-import SearchPage from "./pages/SearchPage";
-import ResultsPage from "./pages/ResultsPage";
+import { fetchAirports } from "./features/airports/airportsSlice";
 import FlightDetailsPage from "./pages/FlightDetailsPage";
+import ResultsPage from "./pages/ResultsPage";
+import SearchPage from "./pages/SearchPage";
+import AdminPage from "./pages/AdminPage";
+import Layout from "./components/Layout";
+
+import { Routes, Route } from "react-router";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchAirports } from "./features/airports/airportsSlice";
-import AdminPage from "./pages/AdminPage";
+
+import "./styles/App.css";
 
 function App() {
   const dispatch = useDispatch();
