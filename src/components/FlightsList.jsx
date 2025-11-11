@@ -43,18 +43,6 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
     handleClose();
   };
 
-  if (flights.length === 0) {
-    return (
-      <Box
-        sx={{ display: "flex", justifyContent: "center", m: 2, color: "red" }}
-      >
-        <Typography variant="h4">
-          No flights found for the selected route and date.
-        </Typography>
-      </Box>
-    );
-  }
-
   return (
     <>
       <Stack
@@ -104,6 +92,15 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
           flight={selectedFlight}
           onSave={handleSave}
         />
+      )}
+      {flights.length === 0 && (
+        <Box
+          sx={{ display: "flex", justifyContent: "center", m: 2, color: "red" }}
+        >
+          <Typography variant="h4">
+            No flights found for the selected route and date.
+          </Typography>
+        </Box>
       )}
     </>
   );
