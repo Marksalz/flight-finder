@@ -6,10 +6,13 @@ import {
   TextField,
   Button,
   Grid,
+  Typography,
+  Box,
+  Divider,
 } from "@mui/material";
 import { useState, useEffect } from "react";
-import SelectField from "./SelectField";
 import { useSelector } from "react-redux";
+import SelectField from "./SelectField";
 import { selectAirportById } from "../features/airports/airportsSlice";
 import { toISOString, toLocalInputValue } from "../utils/helpFunctions";
 
@@ -99,185 +102,218 @@ export default function EditCreateFlightDialog({
       slotProps={{
         paper: {
           sx: {
-            bgcolor: "#cfdef3",
-            backdropFilter: "blur(20px)",
+            bgcolor: "white",
             borderRadius: "20px",
-            boxShadow: "0 8px 32px 0 rgba(207, 222, 243, 0.45)",
-            p: 2,
+            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.15)",
+            p: { xs: 1.5, sm: 3 },
           },
         },
       }}
     >
-      <DialogTitle fontWeight="600">
+      <DialogTitle
+        fontWeight="600"
+        textAlign="center"
+        sx={{ pb: 1, fontSize: "1.5rem" }}
+      >
         {isEdit ? "Edit Flight" : "Add Flight"}
       </DialogTitle>
 
       <DialogContent>
-        <Grid container spacing={2} mt={1}>
-          {/* Airline */}
-          <Grid xs={6}>
-            <SelectField
-              name="airline"
-              label="Airline"
-              value={formData.airline || ""}
-              options={airlines}
-              onChange={handleChange}
-              autoFocus
-            />
-          </Grid>
+        {/* --- Airline Info --- */}
+        <Section title="Airline Information">
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6, lg: 3.5 }}>
+              <SelectField
+                name="airline"
+                label="Airline"
+                value={formData.airline || ""}
+                options={airlines}
+                onChange={handleChange}
+                autoFocus
+                fullWidth
+              />
+            </Grid>
 
-          {/* Flight Number */}
-          <Grid xs={6}>
-            <TextField
-              label="Flight Number"
-              name="flightNumber"
-              value={formData.flightNumber || ""}
-              onChange={handleChange}
-              fullWidth
-            />
+            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+              <TextField
+                label="Flight Number"
+                name="flightNumber"
+                value={formData.flightNumber || ""}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
           </Grid>
+        </Section>
 
-          {/* Origin */}
-          <Grid xs={6}>
-            <SelectField
-              name="origin"
-              options={airports}
-              label="Origin"
-              value={originAirport?.code || ""}
-              onChange={handleChange}
-            />
-          </Grid>
+        {/* --- Route --- */}
+        <Section title="Route">
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6, lg: 3.5 }}>
+              <SelectField
+                name="origin"
+                options={airports}
+                label="Origin"
+                value={originAirport?.code || ""}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
 
-          {/* Destination */}
-          <Grid xs={6}>
-            <SelectField
-              name="destination"
-              options={airports}
-              label="Destination"
-              value={destinationAirport?.code || ""}
-              onChange={handleChange}
-            />
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <SelectField
+                name="destination"
+                options={airports}
+                label="Destination"
+                value={destinationAirport?.code || ""}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
           </Grid>
+        </Section>
 
-          {/* Departure Time */}
-          <Grid xs={6}>
-            <TextField
-              label="Departure Time"
-              name="departureTime"
-              type="datetime-local"
-              value={toLocalInputValue(formData.departureTime)}
-              onChange={(e) => {
-                setFormData((prev) => ({
-                  ...prev,
-                  departureTime: e.target.value,
-                }));
-              }}
-              slotProps={{
-                inputLabel: { shrink: true },
-              }}
-              fullWidth
-            />
-          </Grid>
+        {/* --- Timing --- */}
+        <Section title="Timing">
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+              <TextField
+                label="Departure Time"
+                name="departureTime"
+                type="datetime-local"
+                value={toLocalInputValue(formData.departureTime)}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    departureTime: e.target.value,
+                  }))
+                }
+                fullWidth
+                slotProps={{ inputLabel: { shrink: true } }}
+              />
+            </Grid>
 
-          {/* Arrival Time */}
-          <Grid xs={6}>
-            <TextField
-              label="Arrival Time"
-              name="arrivalTime"
-              type="datetime-local"
-              value={toLocalInputValue(formData.arrivalTime)}
-              onChange={(e) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  arrivalTime: e.target.value,
-                }))
-              }
-              slotProps={{
-                inputLabel: { shrink: true },
-              }}
-              fullWidth
-            />
-          </Grid>
+            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+              <TextField
+                label="Arrival Time"
+                name="arrivalTime"
+                type="datetime-local"
+                value={toLocalInputValue(formData.arrivalTime)}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    arrivalTime: e.target.value,
+                  }))
+                }
+                fullWidth
+                slotProps={{ inputLabel: { shrink: true } }}
+              />
+            </Grid>
 
-          {/* Duration */}
-          <Grid xs={6}>
-            <TextField
-              label="Duration (minutes)"
-              name="durationMinutes"
-              type="number"
-              value={formData.durationMinutes || ""}
-              onChange={handleChange}
-              fullWidth
-            />
+            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+              <TextField
+                label="Duration (minutes)"
+                name="durationMinutes"
+                type="number"
+                value={formData.durationMinutes || ""}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
           </Grid>
+        </Section>
 
-          {/* Price */}
-          <Grid xs={6}>
-            <TextField
-              label="Price (USD)"
-              name="price.amount"
-              type="number"
-              value={formData.price?.amount || ""}
-              onChange={(e) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  price: {
-                    ...prev.price,
-                    amount: Number(e.target.value),
-                    currency: "USD",
-                  },
-                }))
-              }
-              fullWidth
-            />
-          </Grid>
+        {/* --- Additional Details --- */}
+        <Section title="Additional Details">
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+              <TextField
+                label="Price (USD)"
+                name="price.amount"
+                type="number"
+                value={formData.price?.amount || ""}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    price: {
+                      ...prev.price,
+                      amount: Number(e.target.value),
+                      currency: "USD",
+                    },
+                  }))
+                }
+                fullWidth
+              />
+            </Grid>
 
-          {/* Aircraft */}
-          <Grid xs={6}>
-            <TextField
-              label="Aircraft"
-              name="aircraft"
-              value={formData.aircraft || ""}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
+            <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
+              <TextField
+                label="Aircraft"
+                name="aircraft"
+                value={formData.aircraft || ""}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
 
-          {/* Terminal */}
-          <Grid xs={6}>
-            <TextField
-              label="Terminal"
-              name="terminal"
-              value={formData.terminal || ""}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
+            <Grid size={{ xs: 12, sm: 6, lg: 2 }}>
+              <TextField
+                label="Terminal"
+                name="terminal"
+                value={formData.terminal || ""}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
 
-          {/* Baggage Allowance */}
-          <Grid xs={12}>
-            <TextField
-              label="Baggage Allowance"
-              name="baggageAllowance"
-              value={formData.baggageAllowance || ""}
-              onChange={handleChange}
-              fullWidth
-            />
+            <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
+              <TextField
+                label="Baggage Allowance"
+                name="baggageAllowance"
+                value={formData.baggageAllowance || ""}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
           </Grid>
-        </Grid>
+        </Section>
       </DialogContent>
 
-      <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+      <DialogActions sx={{ justifyContent: "space-between", pt: 2 }}>
+        <Button
+          onClick={onClose}
+          color="inherit"
+          variant="outlined"
+          sx={{ fontSize: { xs: 12, md: 16 }, borderRadius: "10px" }}
+        >
+          Cancel
+        </Button>
         <Button
           onClick={handleSubmit}
           variant="contained"
+          sx={{ fontSize: { xs: 12, md: 16 }, borderRadius: "10px", px: 3 }}
           disabled={!formData.flightNumber || !formData.airline}
         >
           {isEdit ? "Save Changes" : "Add Flight"}
         </Button>
       </DialogActions>
     </Dialog>
+  );
+}
+
+// Helper component for section headings of the form
+function Section({ title, children }) {
+  return (
+    <Box sx={{ mt: 2, mb: 3 }}>
+      <Typography
+        variant="subtitle1"
+        sx={{ fontWeight: 600, mb: 1, color: "text.secondary" }}
+      >
+        {title}
+      </Typography>
+      <Divider sx={{ mb: 2, opacity: 0.5 }} />
+      {children}
+    </Box>
   );
 }
 
