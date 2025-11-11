@@ -1,13 +1,15 @@
 import { Box, Card, Divider, Grid, Typography } from "@mui/material";
-import "../styles/flightCard.css";
-import LongArrow from "./LongArrow";
-import OriginDestination from "./OriginDestination";
-import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFlight } from "../features/flights/flightsSlice";
+
+import { toLocalInputValue, durationInHours } from "../utils/helpFunctions";
 import { selectAirportById } from "../features/airports/airportsSlice";
+import { selectFlight } from "../features/flights/flightsSlice";
+import OriginDestination from "./OriginDestination";
 import FlightActions from "./FlightActions";
-import { toLocalInputValue } from "../utils/helpFunctions";
+import LongArrow from "./LongArrow";
+import "../styles/flightCard.css";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 export default function FlightCard({
   flightInfo,
@@ -265,10 +267,4 @@ function formatPrice(amount, currency) {
   }
 
   return formattedPrice;
-}
-
-function durationInHours(durationMinutes) {
-  const hours = Math.floor(durationMinutes / 60);
-  const minutes = durationMinutes % 60;
-  return `${hours}h ${minutes}`;
 }
