@@ -1,26 +1,14 @@
-import { Card, Container, Typography, Box } from "@mui/material";
-
-const formatDate = (dateStr) => {
-  if (!dateStr) return "";
-  const [year, month, day] = dateStr.split("-");
-  return `${day}/${month}/${year}`;
-};
+import { Card, Typography, Box } from "@mui/material";
 
 export default function SearchSummaryBar({ from, to, date }) {
   return (
-    <Card
-      elevation={0}
+    <Box
       sx={{
         p: 2,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        gap: 2,
-        backgroundColor: "#cfdef3",
         width: "100%",
-        borderRadius: 0,
-        border: 0,
-        boxShadow: "none",
+        bgcolor: "#cfdef3",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
       <Card
@@ -32,19 +20,16 @@ export default function SearchSummaryBar({ from, to, date }) {
           bgcolor: "#9dc2f4ff",
           borderRadius: 4,
           padding: 2,
-          minWidth: { xs: "100%", sm: "80%" },
-          margin: "auto",
+          width: "100%",
+          maxWidth: "900px",
           gap: { xs: 2, sm: 0 },
         }}
       >
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center",
             gap: 2,
-            mb: { xs: 1, sm: 0 },
           }}
         >
           <Typography
@@ -60,12 +45,11 @@ export default function SearchSummaryBar({ from, to, date }) {
             {from} &rarr; {to}
           </Typography>
         </Box>
+
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center",
             gap: 2,
           }}
         >
@@ -84,6 +68,12 @@ export default function SearchSummaryBar({ from, to, date }) {
           </Typography>
         </Box>
       </Card>
-    </Card>
+    </Box>
   );
 }
+
+const formatDate = (dateStr) => {
+  if (!dateStr) return "";
+  const [year, month, day] = dateStr.split("-");
+  return `${day}/${month}/${year}`;
+};
