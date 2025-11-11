@@ -2,6 +2,7 @@ import { Grid, Box, Divider, Typography, Container } from "@mui/material";
 import { useSelector } from "react-redux";
 import OriginDestination from "./OriginDestination";
 import TimelapseIcon from "@mui/icons-material/Timelapse";
+import { toLocalInputValue } from "../utils/helpFunctions";
 
 export default function DetailedFlightInfo({
   flightInfo,
@@ -11,8 +12,12 @@ export default function DetailedFlightInfo({
   destinationAirportName,
 }) {
   const airlineCode = String(flightInfo?.flightNumber ?? "").slice(0, 2);
-  const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
-  const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
+  const depTime = toLocalInputValue(flightInfo.departureTime)
+    .split("T")[1]
+    .slice(0, 5);
+  const arrTime = toLocalInputValue(flightInfo.arrivalTime)
+    .split("T")[1]
+    .slice(0, 5);
 
   return (
     <Box

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectFlight } from "../features/flights/flightsSlice";
 import { selectAirportById } from "../features/airports/airportsSlice";
 import FlightActions from "./FlightActions";
+import { toLocalInputValue } from "../utils/helpFunctions";
 
 export default function FlightCard({
   flightInfo,
@@ -17,8 +18,12 @@ export default function FlightCard({
   onDelete,
 }) {
   const airlineCode = String(flightInfo?.flightNumber ?? "").slice(0, 2);
-  const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
-  const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
+  const depTime = toLocalInputValue(flightInfo.departureTime)
+    .split("T")[1]
+    .slice(0, 5);
+  const arrTime = toLocalInputValue(flightInfo.arrivalTime)
+    .split("T")[1]
+    .slice(0, 5);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
