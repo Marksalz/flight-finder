@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import AdminFilterForm from "../components/adminFliterForm";
 import { fetchFlights } from "../features/flights/flightsSlice";
 import FlightsList from "../components/FlightsList";
-import { useState } from "react";
 import { setAdminSearchParams } from "../features/search/searchSlice";
+import { Box, Typography } from "@mui/material";
 
 export default function AdminPage() {
   const dispatch = useDispatch();
@@ -24,7 +24,17 @@ export default function AdminPage() {
   return (
     <>
       <AdminFilterForm handeleSubmit={handeleSubmit} />
-      {flights.length > 0 && <FlightsList flights={flights} isAdmin={true} />}
+      {flights.length > 0 ? (
+        <FlightsList flights={flights} isAdmin={true} />
+      ) : (
+        <Box
+          sx={{ display: "flex", justifyContent: "center", m: 2, color: "red" }}
+        >
+          <Typography variant="h4">
+            No flights found for the selected route and dates range
+          </Typography>
+        </Box>
+      )}
     </>
   );
 }
