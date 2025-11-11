@@ -119,7 +119,6 @@ export default function SearchPage() {
                 label="Return Date"
                 value={returnDate}
                 onChange={setReturnDate}
-                required
                 minDate={departDate}
               />
             </Grid>
