@@ -24,7 +24,6 @@ export default function AdminPage() {
   };
 
   const flights = useSelector((state) => state.flights.flights);
-  console.log("AdminPage flights:", flights);
   return (
     <>
       <AdminFilterForm handeleSubmit={handeleSubmit} />

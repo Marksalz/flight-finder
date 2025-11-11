@@ -226,7 +226,7 @@ export default function FlightCard({
           sx={{
             width: { xs: "100%", sm: "auto" },
             display: "flex",
-            flexDirection: "column",
+            flexDirection: { xs: "row", sm: "column" },
             justifyContent: { xs: "flex-end", sm: "flex-start" },
             alignItems: "center",
             mt: { xs: 1, sm: 0 },
