@@ -13,21 +13,36 @@ import dayjs from "dayjs";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const userSearchParams = useSelector((state) => state.search.userSearch);
   const [formData, setFormData] = useState({
     origin: userSearchParams.origin,
     destination: userSearchParams.destination,
     depDate:
-      userSearchParams.depDate !== "" ? dayjs(userSearchParams.depDate) : null,
+      userSearchParams.depDate !== "" && userSearchParams.depDate != null
+        ? dayjs(userSearchParams.depDate)
+        : null,
     retDate:
-      userSearchParams.retDate !== "" ? dayjs(userSearchParams.retDate) : null,
+      userSearchParams.retDate !== "" && userSearchParams.retDate != null
+        ? dayjs(userSearchParams.retDate)
+        : null,
   });
 
-  // const [from, setFrom] = useState("");
-  // const [to, setTo] = useState("");
-  // const [departDate, setDepartDate] = useState(null);
-  // const [returnDate, setReturnDate] = useState(null);
-  const navigate = useNavigate();
+  useEffect(() => {
+    setFormData({
+      origin: userSearchParams.origin,
+      destination: userSearchParams.destination,
+      depDate:
+        userSearchParams.depDate !== "" && userSearchParams.depDate != null
+          ? dayjs(userSearchParams.depDate)
+          : null,
+      retDate:
+        userSearchParams.retDate !== "" && userSearchParams.retDate != null
+          ? dayjs(userSearchParams.retDate)
+          : null,
+    });
+  }, [userSearchParams]);
 
   const airports = useSelector((state) => state.airports.airports);
 
