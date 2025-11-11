@@ -1,13 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { allAirports } from "../../utils/mockAirports";
 
 const baseUrl = "http://localhost:3000";
 
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
   async () => {
-    // return allAirports;
-
     const response = await fetch(`${baseUrl}/airports`);
     if (!response.ok) {
       throw new Error("Failed to fetch airport");
@@ -19,9 +16,6 @@ export const fetchAirports = createAsyncThunk(
 export const fetchAirportById = createAsyncThunk(
   "airports/fetchAirportById",
   async (airportId) => {
-    // const airport = allAirports.find((airport) => airport.id === airportId);
-    // return airport;
-
     const response = await fetch(
       `${baseUrl}/airports/${encodeURIComponent(airportId)}`
     );
@@ -65,11 +59,12 @@ export const createAirport = createAsyncThunk(
   }
 );
 
+// Selectors
 export const selectAirportByCode = (state, code) =>
-  state.airports.airports.find((a) => a.code === code);
+  state.airports.airports.find((airport) => airport.code === code);
 
 export const selectAirportById = (state, id) =>
-  state.airports.airports.find((a) => a.id === String(id));
+  state.airports.airports.find((airport) => airport.id === String(id));
 
 const airportsSlice = createSlice({
   name: "airports",
@@ -93,12 +88,15 @@ const airportsSlice = createSlice({
         state.selectedAirport = action.payload;
       })
       .addCase(modifyAirport.fulfilled, (state, action) => {
-        const idx = state.airports.findIndex((a) => a.id === action.payload.id);
+        const idx = state.airports.findIndex(
+          (airport) => airport.id === action.payload.id
+        );
         if (idx !== -1) state.airports[idx] = action.payload;
       })
       .addCase(createAirport.fulfilled, (state, action) => {
         state.airports.push(action.payload);
       })
+
       .addMatcher(
         (action) => action.type.endsWith("/pending"),
         (state) => {
