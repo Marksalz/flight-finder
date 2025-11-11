@@ -31,7 +31,7 @@ export default function SelectField({
           select: { renderValue: (selected) => selected },
         }}
         helperText={helperText}
-        sx={{ mb: 0, width: { xs: "50vw", md: "25vw" }, maxWidth: 200 }}
+        sx={{ mb: 0, width: { xs: "100%", md: "25vw" }, maxWidth: 200 }}
       >
         {options.map((opt) =>
           opt.code && opt.name ? (

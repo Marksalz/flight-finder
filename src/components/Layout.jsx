@@ -102,7 +102,6 @@ export default function Layout() {
             onClick={() => {
               dispatch(clearFlights());
               dispatch(clearSearchParams());
-              
             }}
           >
             <Box
@@ -121,6 +120,7 @@ export default function Layout() {
             <Button
               onClick={() => {
                 if (location.pathname === "/") {
+                  dispatch(clearFlights());
                   navigate("/admin");
                 } else {
                   setCreateOpen(true);
