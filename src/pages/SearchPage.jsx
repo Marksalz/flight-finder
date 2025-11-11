@@ -78,7 +78,18 @@ export default function SearchPage() {
         py: { xs: 2, sm: 4 },
       }}
     >
-      <img className="app_logo" src="/app_logo4.png" alt="app logo" />
+      <Box
+        component="img"
+        src="/app_logo4.png"
+        alt="app logo"
+        sx={{
+          maxWidth: { xs: 200, sm: 400 },
+          width: "100%",
+          height: "auto",
+          display: "block",
+          margin: "0 auto",
+        }}
+      />
       <Box
         sx={{
           width: "100%",

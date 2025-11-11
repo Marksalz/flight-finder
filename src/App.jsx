@@ -9,8 +9,6 @@ import { Routes, Route } from "react-router";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-import "./styles/App.css";
-
 function App() {
   const dispatch = useDispatch();
 
