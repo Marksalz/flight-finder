@@ -1,9 +1,9 @@
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import "@elfalem/leaflet-curve";
+import L from "leaflet";
 
 import { Card } from "@mui/material";
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
-import L from "leaflet";
-import "@elfalem/leaflet-curve";
 
 import { useEffect } from "react";
 
@@ -20,8 +20,6 @@ function FlightRoute({ origin, destination }) {
 
     const distance = Math.sqrt(lngDiff * lngDiff + latDiff * latDiff);
 
-    // Dynamic curve height based on distance
-    // For short flights: minimal curve, for long flights: more pronounced curve
     const curveFactor = Math.min(Math.max(distance * 0.3, 2), 20);
 
     const controlPoint = [
@@ -46,7 +44,6 @@ function FlightRoute({ origin, destination }) {
 
     map.fitBounds([origin, destination], { padding: [50, 50] });
 
-    // Cleanup only the curve layer
     return () => {
       if (curve) {
         map.removeLayer(curve);
