@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react";
-import "../styles/searchPage.css";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { setUserSearchParams } from "../features/search/searchSlice";
+import SubmitButton from "../components/SubmitButton";
 import SelectField from "../components/SelectField";
 import DateField from "../components/DateField";
-import SubmitButton from "../components/SubmitButton";
+import "../styles/searchPage.css";
+
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
-import { useNavigate } from "react-router";
+
 import { useDispatch, useSelector } from "react-redux";
-import { setUserSearchParams } from "../features/search/searchSlice";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+
 import dayjs from "dayjs";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const airports = useSelector((state) => state.airports.airports);
   const userSearchParams = useSelector((state) => state.search.userSearch);
+
   const [formData, setFormData] = useState({
     origin: userSearchParams.origin,
     destination: userSearchParams.destination,
@@ -43,8 +48,6 @@ export default function SearchPage() {
           : null,
     });
   }, [userSearchParams]);
-
-  const airports = useSelector((state) => state.airports.airports);
 
   const handleSubmit = (e) => {
     e.preventDefault();
