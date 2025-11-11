@@ -10,11 +10,13 @@ import {
   Box,
   Divider,
 } from "@mui/material";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import SelectField from "./SelectField";
+
 import { selectAirportById } from "../features/airports/airportsSlice";
 import { toISOString, toLocalInputValue } from "../utils/helpFunctions";
+import SelectField from "./SelectField";
+
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function EditCreateFlightDialog({
   open,
@@ -38,9 +40,9 @@ export default function EditCreateFlightDialog({
     "United Airlines": "UA",
   };
 
-  const [formData, setFormData] = useState(flight);
-
   const airports = useSelector((state) => state.airports.airports);
+
+  const [formData, setFormData] = useState(flight);
 
   useEffect(() => {
     setFormData(flight);
