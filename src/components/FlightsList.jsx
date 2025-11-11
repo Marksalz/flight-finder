@@ -1,14 +1,15 @@
-import { Box, Stack, Typography, Collapse } from "@mui/material";
-import FlightCard from "./FlightCard";
-import EditCreateFlightDialog from "./EditCreateFlightDialog";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
   clearSelectedFlight,
-  createFlight,
   modifyFlight,
   removeFlight,
 } from "../features/flights/flightsSlice";
+import EditCreateFlightDialog from "./EditCreateFlightDialog";
+import FlightCard from "./FlightCard";
+
+import { Box, Stack, Typography, Collapse } from "@mui/material";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 export default function FlightsList({ flights = [], isAdmin = false }) {
   const dispatch = useDispatch();
