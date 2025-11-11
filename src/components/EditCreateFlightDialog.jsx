@@ -12,7 +12,7 @@ import SelectField from "./SelectField";
 import { useSelector } from "react-redux";
 import { selectAirportById } from "../features/airports/airportsSlice";
 
-export default function EditFlightDialog({
+export default function EditCreateFlightDialog({
   open,
   onClose,
   flight = {},

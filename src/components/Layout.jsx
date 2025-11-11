@@ -8,7 +8,7 @@ import appLogo from "../assets/app_logo2.png";
 import { useDispatch } from "react-redux";
 import { clearFlights, createFlight } from "../features/flights/flightsSlice";
 import { useState, useEffect } from "react";
-import EditFlightDialog from "./EditFlightDialog";
+import EditCreateFlightDialog from "./EditCreateFlightDialog";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -156,7 +156,7 @@ export default function Layout() {
         </Container>
       </Box>
       {createOpen && (
-        <EditFlightDialog
+        <EditCreateFlightDialog
           open={true}
           onClose={handleClose}
           onSave={handleSave}

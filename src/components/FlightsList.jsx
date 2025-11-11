@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, Collapse } from "@mui/material";
 import FlightCard from "./FlightCard";
-import EditFlightDialog from "./EditFlightDialog";
+import EditCreateFlightDialog from "./EditCreateFlightDialog";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -98,7 +98,7 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
         ))}
       </Stack>
       {editOpen && selectedFlight && (
-        <EditFlightDialog
+        <EditCreateFlightDialog
           open={editOpen}
           onClose={handleClose}
           flight={selectedFlight}
