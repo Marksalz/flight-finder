@@ -1,19 +1,17 @@
-import { useParams } from "react-router";
-import FlightRouteMap from "../components/FlightRouteMap";
-import FlightCard from "../components/FlightCard.jsx";
+import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
+import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import {
-  ExpandMoreRoundedIcon,
-  ExpandLessRoundedIcon,
-} from "@mui/icons-material";
 import Collapse from "@mui/material/Collapse";
 
 import { selectAirportById } from "../features/airports/airportsSlice.js";
 import { fetchFlightById } from "../features/flights/flightsSlice.js";
 import DetailedFlightInfo from "../components/DetailedFlightInfo.jsx";
+import FlightRouteMap from "../components/FlightRouteMap";
+import FlightCard from "../components/FlightCard.jsx";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 export default function FlightDetailsPage() {
   const { flightId } = useParams();
