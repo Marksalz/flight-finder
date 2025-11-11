@@ -2,6 +2,7 @@ import { Grid, Box, Divider, Typography, Container } from "@mui/material";
 import { useSelector } from "react-redux";
 import OriginDestination from "./OriginDestination";
 import TimelapseIcon from "@mui/icons-material/Timelapse";
+import { toLocalInputValue } from "../utils/helpFunctions";
 
 export default function DetailedFlightInfo({
   flightInfo,
@@ -10,14 +11,18 @@ export default function DetailedFlightInfo({
   originAirportName,
   destinationAirportName,
 }) {
-  const airlineCode = String(flightInfo?.id ?? "").slice(0, 2);
-  const depTime = flightInfo.departureTime.split("T")[1].slice(0, 5);
-  const arrTime = flightInfo.arrivalTime.split("T")[1].slice(0, 5);
+  const airlineCode = String(flightInfo?.flightNumber ?? "").slice(0, 2);
+  const depTime = toLocalInputValue(flightInfo.departureTime)
+    .split("T")[1]
+    .slice(0, 5);
+  const arrTime = toLocalInputValue(flightInfo.arrivalTime)
+    .split("T")[1]
+    .slice(0, 5);
 
   return (
     <Box
       sx={{
-        bgcolor: "lightblue",
+        bgcolor: "#b6ccecff",
         width: "100%",
         minHeight: 300,
         p: 2,
@@ -28,7 +33,11 @@ export default function DetailedFlightInfo({
       <Grid
         container
         spacing={1}
-        sx={{ flexDirection: "row", alignItems: "center", mb: 3 }}
+        sx={{
+          flexDirection: "row",
+          alignItems: "center",
+          mb: 3,
+        }}
       >
         <Box
           component="img"
@@ -49,6 +58,7 @@ export default function DetailedFlightInfo({
         sx={{
           flexDirection: "row",
           alignItems: "flex-start",
+          flexWrap: "nowrap",
         }}
       >
         <Grid>

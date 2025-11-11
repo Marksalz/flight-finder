@@ -1,7 +1,7 @@
-import React from "react";
 import { TextField, MenuItem, Tooltip, InputAdornment } from "@mui/material";
 
-export default function GenericSelectField({
+export default function SelectField({
+  name,
   label,
   value,
   onChange,
@@ -15,6 +15,7 @@ export default function GenericSelectField({
     <Tooltip title={tooltip} arrow>
       <TextField
         select
+        name={name}
         label={label}
         value={value}
         onChange={onChange}
@@ -25,16 +26,24 @@ export default function GenericSelectField({
             startAdornment: icon ? (
               <InputAdornment position="start">{icon}</InputAdornment>
             ) : null,
+            sx: { fontSize: 16 },
           },
+          select: { renderValue: (selected) => selected },
         }}
         helperText={helperText}
-        sx={{ mb: 0, width: 200 }}
+        sx={{ mb: 0, width: { xs: "100%", md: "25vw" }, maxWidth: 200 }}
       >
-        {options.map((opt) => (
-          <MenuItem key={opt.code} value={opt.code} sx={{ width: "100%" }}>
-            {`${opt.name} (${opt.code})`}
-          </MenuItem>
-        ))}
+        {options.map((opt) =>
+          opt.code && opt.name ? (
+            <MenuItem key={opt.code} value={opt.code} sx={{ width: "100%" }}>
+              {`${opt.name} (${opt.code})`}
+            </MenuItem>
+          ) : (
+            <MenuItem key={opt} value={opt} sx={{ width: "100%" }}>
+              {`${opt}`}
+            </MenuItem>
+          )
+        )}
       </TextField>
     </Tooltip>
   );

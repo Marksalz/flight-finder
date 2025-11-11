@@ -1,50 +1,62 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { allFlights } from "../../utils/mockFlights";
-import LongArrow from "../../components/LongArrow";
+import { selectAirportByCode } from "../airports/airportsSlice";
 
 const baseUrl = "http://localhost:3000";
 
+//Fetching the flights by date range for now before backend
 export const fetchFlights = createAsyncThunk(
   "flights/fetchFlights",
   async ({ searchParams }, { getState }) => {
     const state = getState();
 
     const airports = state.airports.airports;
-    const originId = airports.find((a) => a.code === searchParams.origin).id;
-
+    const originId = airports.find((a) => a.code === searchParams.origin)?.id;
     const destinationId = airports.find(
       (a) => a.code === searchParams.destination
-    ).id;
+    )?.id;
 
-    // const filtered = [];
-    // for (const flight of allFlights) {
-    //   const originAirport = airports.find((a) => a.id === flight.origin);
-    //   const destinationAirport = airports.find(
-    //     (a) => a.id === flight.destination
-    //   );
+    let query = `origin=${encodeURIComponent(
+      originId
+    )}&destination=${encodeURIComponent(destinationId)}`;
 
-    //   if (
-    //     originAirport?.code === searchParams.origin &&
-    //     destinationAirport?.code === searchParams.destination &&
-    //     String(flight.date) === String(searchParams.depDate)
-    //   ) {
-    //     filtered.push(flight);
-    //   }
-    // }
+    //     // Add date or date range to query
+    //     if (searchParams.startDate && searchParams.endDate) {
+    //       const start = searchParams.startDate.format("YYYY-MM-DD");
+    //       const end = searchParams.endDate.format("YYYY-MM-DD");
+    //       query += `&date_gte=${encodeURIComponent(
+    //         start
+    //       )}&date_lte=${encodeURIComponent(end)}`;
+    //     }
 
-    // return filtered;
+    // If search came from search form params state
+    if (searchParams.depDate) {
+      query += `&date=${encodeURIComponent(searchParams.depDate)}`;
+      const response = await fetch(`${baseUrl}/flights?${query}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch flights");
+      }
+      return await response.json();
+    } else {
+      // Fetch everything from json-server (no date filtering yet)
+      const response = await fetch(`${baseUrl}/flights?${query}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch flights");
+      }
+      let flights = await response.json();
 
-    const response = await fetch(
-      `${baseUrl}/flights?origin=${encodeURIComponent(
-        originId
-      )}&destination=${encodeURIComponent(
-        destinationId
-      )}&date=${encodeURIComponent(searchParams.depDate)}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch flights");
+      // Manual filtering by date or date range (client-side)
+      if (searchParams.startDate && searchParams.endDate) {
+        const start = searchParams.startDate;
+        const end = searchParams.endDate;
+        //.format("YYYY-MM-DD")
+
+        flights = flights.filter((f) => {
+          const flightDate = f.date.slice(0, 10);
+          return flightDate >= start && flightDate <= end;
+        });
+      }
+      return flights;
     }
-    return await response.json();
   }
 );
 
@@ -80,7 +92,7 @@ export const createFlight = createAsyncThunk(
 
 export const modifyFlight = createAsyncThunk(
   "flights/modifyFlight",
-  async ({ flightId, flightData }) => {
+  async ({ flightId, flightData }, { getState }) => {
     const response = await fetch(
       `${baseUrl}/flights/${encodeURIComponent(flightId)}`,
       {
@@ -92,7 +104,19 @@ export const modifyFlight = createAsyncThunk(
     if (!response.ok) {
       throw new Error("Failed to modify flight");
     }
-    return await response.json();
+
+    const updatedFlight = await response.json();
+    const state = getState();
+    const adminSearch = state.search.adminSearch;
+
+    const searchOriginId = selectAirportByCode(state, adminSearch.origin)?.id;
+    const searchDestinationId = selectAirportByCode(
+      state,
+      adminSearch.destination
+    )?.id;
+
+    // Add it to the payload
+    return { updatedFlight, searchOriginId, searchDestinationId, adminSearch };
   }
 );
 
@@ -124,6 +148,12 @@ const flightsSlice = createSlice({
     selectFlight(state, action) {
       state.selectedFlight = action.payload;
     },
+    clearSelectedFlight(state) {
+      state.selectedFlight = null;
+    },
+    clearFlights(state) {
+      state.flights = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -134,14 +164,31 @@ const flightsSlice = createSlice({
         state.selectedFlight = action.payload;
       })
       .addCase(modifyFlight.fulfilled, (state, action) => {
-        const idx = state.flights.findIndex((f) => f.id === action.payload.id);
-        if (idx !== -1) state.flights[idx] = action.payload;
+        const {
+          updatedFlight,
+          searchOriginId,
+          searchDestinationId,
+          adminSearch,
+        } = action.payload;
+
+        if (
+          matchesFilters(
+            updatedFlight,
+            adminSearch,
+            searchOriginId,
+            searchDestinationId
+          )
+        ) {
+          const idx = state.flights.findIndex((f) => f.id === updatedFlight.id);
+          if (idx !== -1) state.flights[idx] = updatedFlight;
+        } else {
+          state.flights = state.flights.filter(
+            (f) => f.id !== updatedFlight.id
+          );
+        }
       })
       .addCase(removeFlight.fulfilled, (state, action) => {
         state.flights = state.flights.filter((f) => f.id !== action.payload.id);
-      })
-      .addCase(createFlight.fulfilled, (state, action) => {
-        state.flights.push(action.payload);
       })
       .addMatcher(
         (action) => action.type.endsWith("/pending"),
@@ -154,10 +201,6 @@ const flightsSlice = createSlice({
         (action) => action.type.endsWith("/fulfilled"),
         (state) => {
           state.status = "succeeded";
-
-          setTimeout(() => {
-            state.status = "idle";
-          }, 0);
         }
       )
       .addMatcher(
@@ -165,14 +208,32 @@ const flightsSlice = createSlice({
         (state, action) => {
           state.status = "failed";
           state.error = action.error.message;
-
-          setTimeout(() => {
-            state.status = "idle";
-          }, 0);
         }
       );
   },
 });
 
-export const { selectFlight } = flightsSlice.actions;
+// Helper function to check if flight matches current filters
+const matchesFilters = (
+  updatedFlight,
+  adminSearch,
+  searchOriginId,
+  searchDestinationId
+) => {
+  if (!adminSearch) return true;
+
+  const originMatch = String(updatedFlight.origin) === searchOriginId;
+  const destMatch = String(updatedFlight.destination) === searchDestinationId;
+
+  let dateMatch = true;
+  if (adminSearch.startDate && adminSearch.endDate) {
+    const date = updatedFlight.date;
+    dateMatch = date >= adminSearch.startDate && date <= adminSearch.endDate;
+  }
+
+  return originMatch && destMatch && dateMatch;
+};
+
+export const { selectFlight, clearSelectedFlight, clearFlights } =
+  flightsSlice.actions;
 export default flightsSlice.reducer;

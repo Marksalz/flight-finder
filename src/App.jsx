@@ -8,6 +8,7 @@ import AirportDetailsPage from "./pages/AirportDetailsPage";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAirports } from "./features/airports/airportsSlice";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<SearchPage />} />
           <Route path="results" element={<ResultsPage />} />
           <Route path="flight/:flightId" element={<FlightDetailsPage />} />
+          <Route path="admin" element={<AdminPage />} />
           <Route path="airport/:code" element={<AirportDetailsPage />} />
         </Route>
       </Routes>

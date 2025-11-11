@@ -8,31 +8,52 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchParams } from "../features/search/searchSlice";
-import { fetchAirports } from "../features/airports/airportsSlice";
+import { setUserSearchParams } from "../features/search/searchSlice";
+import dayjs from "dayjs";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-  const [departDate, setDepartDate] = useState(null);
-  const [returnDate, setReturnDate] = useState(null);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(fetchAirports());
-  // }, [dispatch]);
+  const userSearchParams = useSelector((state) => state.search.userSearch);
+  const [formData, setFormData] = useState({
+    origin: userSearchParams.origin,
+    destination: userSearchParams.destination,
+    depDate:
+      userSearchParams.depDate !== "" && userSearchParams.depDate != null
+        ? dayjs(userSearchParams.depDate)
+        : null,
+    retDate:
+      userSearchParams.retDate !== "" && userSearchParams.retDate != null
+        ? dayjs(userSearchParams.retDate)
+        : null,
+  });
+
+  useEffect(() => {
+    setFormData({
+      origin: userSearchParams.origin,
+      destination: userSearchParams.destination,
+      depDate:
+        userSearchParams.depDate !== "" && userSearchParams.depDate != null
+          ? dayjs(userSearchParams.depDate)
+          : null,
+      retDate:
+        userSearchParams.retDate !== "" && userSearchParams.retDate != null
+          ? dayjs(userSearchParams.retDate)
+          : null,
+    });
+  }, [userSearchParams]);
 
   const airports = useSelector((state) => state.airports.airports);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      setSearchParams({
-        origin: from,
-        destination: to,
-        depDate: departDate ? departDate.format("YYYY-MM-DD") : "",
-        retDate: returnDate ? returnDate.format("YYYY-MM-DD") : "",
+      setUserSearchParams({
+        origin: formData.origin,
+        destination: formData.destination,
+        depDate: formData.depDate ? formData.depDate.format("YYYY-MM-DD") : "",
+        retDate: formData.retDate ? formData.retDate.format("YYYY-MM-DD") : "",
       })
     );
     navigate("/results");
@@ -43,7 +64,6 @@ export default function SearchPage() {
       maxWidth="md"
       sx={{
         width: "90%",
-        minHeight: { xs: "87.8vh", sm: "100vh" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -70,80 +90,82 @@ export default function SearchPage() {
         }}
       >
         <Typography
-          variant="h4"
           align="center"
           gutterBottom
-          sx={{ fontWeight: 700, color: "primary.main" }}
+          sx={{
+            fontSize: { xs: 18, md: 36 },
+            fontWeight: 700,
+            color: "primary.main",
+          }}
         >
           ✈️ Find Your Perfect Flight
         </Typography>
         <Typography
           variant="subtitle1"
           align="center"
-          gutterBottom
-          sx={{ color: "#555" }}
+          sx={{ color: "#555", mb: 2 }}
         >
           Search and compare flights
         </Typography>
-        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
           <Grid container spacing={3} justifyContent="center">
             {/* First row: From and To selectors */}
             <Grid container spacing={3} justifyContent="center">
-              <Grid size={{ xs: 8, sm: 6 }}>
-                <SelectField
-                  label="From"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                  options={airports}
-                  icon={<FlightTakeoffIcon color="primary" />}
-                  tooltip="Select your departure airport"
-                  required
-                  helperText="Where are you flying from?"
-                />
-              </Grid>
-              <Grid size={{ xs: 8, sm: 6 }}>
-                <SelectField
-                  label="To"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                  options={airports}
-                  icon={<FlightLandIcon color="primary" />}
-                  tooltip="Select your destination airport"
-                  required
-                  helperText="Where are you flying to?"
-                />
-              </Grid>
+              <SelectField
+                label="From"
+                value={formData.origin}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, origin: e.target.value }))
+                }
+                options={airports}
+                icon={<FlightTakeoffIcon color="primary" />}
+                tooltip="Select your departure airport"
+                required
+                helperText="Where are you flying from?"
+              />
+              <SelectField
+                label="To"
+                value={formData.destination}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    destination: e.target.value,
+                  }))
+                }
+                options={airports}
+                icon={<FlightLandIcon color="primary" />}
+                tooltip="Select your destination airport"
+                required
+                helperText="Where are you flying to?"
+              />
             </Grid>
 
             {/* Second row: Date selectors */}
             <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
-              <Grid size={{ xs: 8, sm: 6 }}>
-                <DateField
-                  label="Departure Date"
-                  value={departDate}
-                  onChange={setDepartDate}
-                  required
-                />
-              </Grid>
-              <Grid size={{ xs: 8, sm: 6 }}>
-                <DateField
-                  label="Return Date"
-                  value={returnDate}
-                  onChange={setReturnDate}
-                  required
-                  minDate={departDate}
-                />
-              </Grid>
+              <DateField
+                label="Departure Date"
+                value={formData.depDate}
+                onChange={(newValue) =>
+                  setFormData((prev) => ({ ...prev, depDate: newValue }))
+                }
+                required
+              />
+              <DateField
+                label="Return Date"
+                value={formData.retDate}
+                onChange={(newValue) =>
+                  setFormData((prev) => ({ ...prev, retDate: newValue }))
+                }
+                minDate={formData.depDate}
+              />
             </Grid>
 
             {/* Third row: Search button */}
             <Grid container justifyContent="center" sx={{ mt: 2 }}>
-              <Grid size={{ xs: 12 }}>
-                <SubmitButton>🔍 Search Flights</SubmitButton>
-              </Grid>
+              <SubmitButton>🔍 Search Flights</SubmitButton>
             </Grid>
           </Grid>
-        </form>
+        </Box>
       </Box>
     </Container>
   );
