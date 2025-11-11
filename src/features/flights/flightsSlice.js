@@ -63,10 +63,6 @@ export const fetchFlights = createAsyncThunk(
 export const fetchFlightById = createAsyncThunk(
   "flights/fetchFlightById",
   async (flightId) => {
-    // const flight = allFlights.find((flight) => flight.id === flightId);
-
-    // return flight;
-
     const response = await fetch(`${baseUrl}/flights/${flightId}`);
     if (!response.ok) {
       throw new Error("Failed to fetch flight");
@@ -109,13 +105,13 @@ export const modifyFlight = createAsyncThunk(
     const state = getState();
     const adminSearch = state.search.adminSearch;
 
+    // find the ids of the origin and destination from the admin search form
     const searchOriginId = selectAirportByCode(state, adminSearch.origin)?.id;
     const searchDestinationId = selectAirportByCode(
       state,
       adminSearch.destination
     )?.id;
 
-    // Add it to the payload
     return { updatedFlight, searchOriginId, searchDestinationId, adminSearch };
   }
 );
