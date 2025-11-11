@@ -102,7 +102,7 @@ export default function EditCreateFlightDialog({
       slotProps={{
         paper: {
           sx: {
-            bgcolor: "white",
+            bgcolor: "#cfdef3",
             borderRadius: "20px",
             boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.15)",
             p: { xs: 1.5, sm: 3 },
