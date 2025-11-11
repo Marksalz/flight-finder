@@ -9,9 +9,9 @@ import Link from "@mui/material/Link";
 import appLogo from "../assets/app_logo2.png";
 import { useDispatch } from "react-redux";
 import { clearFlights, createFlight } from "../features/flights/flightsSlice";
+import { clearSearchParams } from "../features/search/searchSlice";
 import { useState, useEffect } from "react";
 import EditCreateFlightDialog from "./EditCreateFlightDialog";
-import { Grid } from "@mui/material";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -102,6 +102,7 @@ export default function Layout() {
             onClick={() => {
               dispatch(clearFlights());
               dispatch(clearSearchParams());
+              
             }}
           >
             <Box
