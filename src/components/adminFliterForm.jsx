@@ -30,8 +30,8 @@ export default function AdminFilterForm({ handeleSubmit }) {
   return (
     <Box
       component="form"
-      onSubmit={(e) => {
-        e.preventDefault();
+      onSubmit={(event) => {
+        event.preventDefault();
         handeleSubmit(formData);
       }}
       sx={{
@@ -49,8 +49,8 @@ export default function AdminFilterForm({ handeleSubmit }) {
       <SelectField
         label="origin"
         value={formData.origin}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, origin: e.target.value }))
+        onChange={({ target: { value } }) =>
+          setFormData((prev) => ({ ...prev, origin: value }))
         }
         options={airports}
         icon={<FlightTakeoffIcon color="primary" />}
@@ -59,8 +59,8 @@ export default function AdminFilterForm({ handeleSubmit }) {
       <SelectField
         label="destination"
         value={formData.destination}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, destination: e.target.value }))
+        onChange={({ target: { value } }) =>
+          setFormData((prev) => ({ ...prev, destination: value }))
         }
         options={airports}
         icon={<FlightLandIcon color="primary" />}

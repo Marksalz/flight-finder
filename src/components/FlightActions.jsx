@@ -7,29 +7,29 @@ export default function FlightActions({ onEdit, onDelete, onClick }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleOpen = (e) => {
-    e.stopPropagation();
+  const handleOpen = (event) => {
+    event.stopPropagation();
     onClick && onClick();
-    setAnchorEl(e.currentTarget);
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleMouseDown = (e) => {
-    e.stopPropagation();
+  const handleMouseDown = (event) => {
+    event.stopPropagation();
   };
 
-  const handleClose = (e) => {
-    e?.stopPropagation();
+  const handleClose = (event) => {
+    event?.stopPropagation();
     setAnchorEl(null);
   };
 
-  const handleEdit = (e) => {
-    e.stopPropagation();
+  const handleEdit = (event) => {
+    event.stopPropagation();
     setAnchorEl(null);
     onEdit && onEdit();
   };
 
-  const handleDelete = (e) => {
-    e.stopPropagation();
+  const handleDelete = (event) => {
+    event.stopPropagation();
     setAnchorEl(null);
     onDelete && onDelete();
   };
@@ -44,7 +44,7 @@ export default function FlightActions({ onEdit, onDelete, onClick }) {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
       >
         <MenuItem onClick={handleEdit}>Edit</MenuItem>
         <MenuItem onClick={handleDelete}>Delete</MenuItem>

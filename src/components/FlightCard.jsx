@@ -48,8 +48,8 @@ export default function FlightCard({
       <Card
         onClick={
           isClickable
-            ? (e) => {
-                e.stopPropagation();
+            ? (event) => {
+                event.stopPropagation();
                 dispatch(selectFlight(flightInfo));
                 navigate(`/flight/${flightInfo.id}`);
               }

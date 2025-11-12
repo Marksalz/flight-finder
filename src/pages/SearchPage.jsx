@@ -2,7 +2,6 @@ import { setUserSearchParams } from "../features/search/searchSlice";
 import SubmitButton from "../components/SubmitButton";
 import SelectField from "../components/SelectField";
 import DateField from "../components/DateField";
-import "../styles/searchPage.css";
 
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import { Box, Container, Grid, Typography } from "@mui/material";
@@ -49,8 +48,8 @@ export default function SearchPage() {
     });
   }, [userSearchParams]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     dispatch(
       setUserSearchParams({
         origin: formData.origin,
@@ -128,8 +127,8 @@ export default function SearchPage() {
               <SelectField
                 label="From"
                 value={formData.origin}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, origin: e.target.value }))
+                onChange={({ target: { value } }) =>
+                  setFormData((prev) => ({ ...prev, origin: value }))
                 }
                 options={airports}
                 icon={<FlightTakeoffIcon color="primary" />}
@@ -140,10 +139,10 @@ export default function SearchPage() {
               <SelectField
                 label="To"
                 value={formData.destination}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
-                    destination: e.target.value,
+                    destination: value,
                   }))
                 }
                 options={airports}

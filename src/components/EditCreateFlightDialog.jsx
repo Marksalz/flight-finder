@@ -55,8 +55,7 @@ export default function EditCreateFlightDialog({
     selectAirportById(state, formData.destination)
   );
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = ({ target: { name, value } }) => {
     let updatedValue = value;
 
     if (name === "origin" || name === "destination") {
@@ -184,10 +183,10 @@ export default function EditCreateFlightDialog({
                 name="departureTime"
                 type="datetime-local"
                 value={toLocalInputValue(formData.departureTime)}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
-                    departureTime: e.target.value,
+                    departureTime: value,
                   }))
                 }
                 fullWidth
@@ -201,10 +200,10 @@ export default function EditCreateFlightDialog({
                 name="arrivalTime"
                 type="datetime-local"
                 value={toLocalInputValue(formData.arrivalTime)}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
-                    arrivalTime: e.target.value,
+                    arrivalTime: value,
                   }))
                 }
                 fullWidth
@@ -234,12 +233,12 @@ export default function EditCreateFlightDialog({
                 name="price.amount"
                 type="number"
                 value={formData.price?.amount || ""}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
                     price: {
                       ...prev.price,
-                      amount: Number(e.target.value),
+                      amount: Number(value),
                       currency: "USD",
                     },
                   }))
