@@ -10,11 +10,13 @@ import {
   Box,
   Divider,
 } from "@mui/material";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import SelectField from "./SelectField";
+
 import { selectAirportById } from "../features/airports/airportsSlice";
 import { toISOString, toLocalInputValue } from "../utils/helpFunctions";
+import SelectField from "./SelectField";
+
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function EditCreateFlightDialog({
   open,
@@ -38,9 +40,9 @@ export default function EditCreateFlightDialog({
     "United Airlines": "UA",
   };
 
-  const [formData, setFormData] = useState(flight);
-
   const airports = useSelector((state) => state.airports.airports);
+
+  const [formData, setFormData] = useState(flight);
 
   useEffect(() => {
     setFormData(flight);
@@ -53,8 +55,7 @@ export default function EditCreateFlightDialog({
     selectAirportById(state, formData.destination)
   );
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = ({ target: { name, value } }) => {
     let updatedValue = value;
 
     if (name === "origin" || name === "destination") {
@@ -182,10 +183,10 @@ export default function EditCreateFlightDialog({
                 name="departureTime"
                 type="datetime-local"
                 value={toLocalInputValue(formData.departureTime)}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
-                    departureTime: e.target.value,
+                    departureTime: value,
                   }))
                 }
                 fullWidth
@@ -199,10 +200,10 @@ export default function EditCreateFlightDialog({
                 name="arrivalTime"
                 type="datetime-local"
                 value={toLocalInputValue(formData.arrivalTime)}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
-                    arrivalTime: e.target.value,
+                    arrivalTime: value,
                   }))
                 }
                 fullWidth
@@ -232,12 +233,12 @@ export default function EditCreateFlightDialog({
                 name="price.amount"
                 type="number"
                 value={formData.price?.amount || ""}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
                     price: {
                       ...prev.price,
-                      amount: Number(e.target.value),
+                      amount: Number(value),
                       currency: "USD",
                     },
                   }))

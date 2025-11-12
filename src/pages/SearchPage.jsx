@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
-import "../styles/searchPage.css";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { setUserSearchParams } from "../features/search/searchSlice";
+import SubmitButton from "../components/SubmitButton";
 import SelectField from "../components/SelectField";
 import DateField from "../components/DateField";
-import SubmitButton from "../components/SubmitButton";
+
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
-import { useNavigate } from "react-router";
+
 import { useDispatch, useSelector } from "react-redux";
-import { setUserSearchParams } from "../features/search/searchSlice";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+
 import dayjs from "dayjs";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const airports = useSelector((state) => state.airports.airports);
   const userSearchParams = useSelector((state) => state.search.userSearch);
+
   const [formData, setFormData] = useState({
     origin: userSearchParams.origin,
     destination: userSearchParams.destination,
@@ -44,10 +48,8 @@ export default function SearchPage() {
     });
   }, [userSearchParams]);
 
-  const airports = useSelector((state) => state.airports.airports);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     dispatch(
       setUserSearchParams({
         origin: formData.origin,
@@ -75,7 +77,18 @@ export default function SearchPage() {
         py: { xs: 2, sm: 4 },
       }}
     >
-      <img className="app_logo" src="/app_logo4.png" alt="app logo" />
+      <Box
+        component="img"
+        src="/app_logo4.png"
+        alt="app logo"
+        sx={{
+          maxWidth: { xs: 200, sm: 400 },
+          width: "100%",
+          height: "auto",
+          display: "block",
+          margin: "0 auto",
+        }}
+      />
       <Box
         sx={{
           width: "100%",
@@ -114,8 +127,8 @@ export default function SearchPage() {
               <SelectField
                 label="From"
                 value={formData.origin}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, origin: e.target.value }))
+                onChange={({ target: { value } }) =>
+                  setFormData((prev) => ({ ...prev, origin: value }))
                 }
                 options={airports}
                 icon={<FlightTakeoffIcon color="primary" />}
@@ -126,10 +139,10 @@ export default function SearchPage() {
               <SelectField
                 label="To"
                 value={formData.destination}
-                onChange={(e) =>
+                onChange={({ target: { value } }) =>
                   setFormData((prev) => ({
                     ...prev,
-                    destination: e.target.value,
+                    destination: value,
                   }))
                 }
                 options={airports}

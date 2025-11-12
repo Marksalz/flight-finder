@@ -1,22 +1,26 @@
-import { Outlet, useNavigate, useLocation } from "react-router";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
+import { Container, Box, Button, IconButton, Link } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Link as RouterLink } from "react-router";
-import Link from "@mui/material/Link";
-import appLogo from "../assets/app_logo2.png";
+
+import {
+  Outlet,
+  useNavigate,
+  useLocation,
+  Link as RouterLink,
+} from "react-router";
 import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+
 import { clearFlights, createFlight } from "../features/flights/flightsSlice";
 import { clearSearchParams } from "../features/search/searchSlice";
-import { useState, useEffect } from "react";
 import EditCreateFlightDialog from "./EditCreateFlightDialog";
+import appLogo from "../assets/app_logo2.png";
 
 export default function Layout() {
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
+
+  const location = useLocation();
+
   const [createOpen, setCreateOpen] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -193,11 +197,11 @@ export default function Layout() {
       {message && (
         <Box
           sx={{
+            bgcolor: message.type === "success" ? "#4caf50" : "#f44336",
             position: "fixed",
             top: 20,
             left: "50%",
             transform: "translateX(-50%)",
-            bgcolor: message.type === "success" ? "#4caf50" : "#f44336",
             color: "white",
             px: 3,
             py: 1,

@@ -1,14 +1,13 @@
-import "./styles/App.css";
-import { Routes, Route } from "react-router";
-import Layout from "./components/Layout";
-import SearchPage from "./pages/SearchPage";
-import ResultsPage from "./pages/ResultsPage";
+import { fetchAirports } from "./features/airports/airportsSlice";
 import FlightDetailsPage from "./pages/FlightDetailsPage";
-import AirportDetailsPage from "./pages/AirportDetailsPage";
+import ResultsPage from "./pages/ResultsPage";
+import SearchPage from "./pages/SearchPage";
+import AdminPage from "./pages/AdminPage";
+import Layout from "./components/Layout";
+
+import { Routes, Route } from "react-router";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchAirports } from "./features/airports/airportsSlice";
-import AdminPage from "./pages/AdminPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +24,6 @@ function App() {
           <Route path="results" element={<ResultsPage />} />
           <Route path="flight/:flightId" element={<FlightDetailsPage />} />
           <Route path="admin" element={<AdminPage />} />
-          <Route path="airport/:code" element={<AirportDetailsPage />} />
         </Route>
       </Routes>
     </>

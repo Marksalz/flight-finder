@@ -1,8 +1,8 @@
-import { Grid, Box, Divider, Typography, Container } from "@mui/material";
-import { useSelector } from "react-redux";
-import OriginDestination from "./OriginDestination";
+import { Grid, Box, Divider, Typography } from "@mui/material";
 import TimelapseIcon from "@mui/icons-material/Timelapse";
-import { toLocalInputValue } from "../utils/helpFunctions";
+
+import { toLocalInputValue, durationInHours } from "../utils/helpFunctions";
+import OriginDestination from "./OriginDestination";
 
 export default function DetailedFlightInfo({
   flightInfo,
@@ -115,10 +115,4 @@ export default function DetailedFlightInfo({
       </Grid>
     </Box>
   );
-}
-
-function durationInHours(durationMinutes) {
-  const hours = Math.floor(durationMinutes / 60);
-  const minutes = durationMinutes % 60;
-  return `${hours}h ${minutes}`;
 }

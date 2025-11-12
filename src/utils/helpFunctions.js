@@ -19,3 +19,11 @@ export function toISOString(localValue) {
   const date = new Date(localValue);
   return date.toISOString();
 }
+
+// Helper function for calculating time given in minutes to hours
+export function durationInHours(durationMinutes) {
+  const hours = Math.floor(durationMinutes / 60);
+  const minutes = durationMinutes % 60;
+  return `${hours}h ${minutes}`;
+}
+

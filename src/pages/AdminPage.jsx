@@ -1,13 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import AdminFilterForm from "../components/adminFliterForm";
-import { fetchFlights } from "../features/flights/flightsSlice";
-import FlightsList from "../components/FlightsList";
 import { setAdminSearchParams } from "../features/search/searchSlice";
-import { Box, Typography } from "@mui/material";
+import { fetchFlights } from "../features/flights/flightsSlice";
+import AdminFilterForm from "../components/adminFliterForm";
+import FlightsList from "../components/FlightsList";
+
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+
+import { Box, Typography } from "@mui/material";
 
 export default function AdminPage() {
   const dispatch = useDispatch();
+
   const [filterClicked, setFilterClicked] = useState(false);
 
   const handeleSubmit = (formData) => {
@@ -24,6 +27,7 @@ export default function AdminPage() {
   };
 
   const flights = useSelector((state) => state.flights.flights);
+
   return (
     <>
       <AdminFilterForm handeleSubmit={handeleSubmit} />

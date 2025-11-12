@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import searchReducer from "../features/search/searchSlice";
-import flightsReducer from "../features/flights/flightsSlice";
 import airportsReducer from "../features/airports/airportsSlice";
+import flightsReducer from "../features/flights/flightsSlice";
+import searchReducer from "../features/search/searchSlice";
+import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
   reducer: {
