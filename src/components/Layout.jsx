@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import { clearFlights, createFlight } from "../features/flights/flightsSlice";
 import { clearSearchParams } from "../features/search/searchSlice";
 import EditCreateFlightDialog from "./EditCreateFlightDialog";
-import appLogo from "../assets/app_logo2.png";
+import appLogo from "../../public/images/app_logo2.png";
 
 export default function Layout() {
   const navigate = useNavigate();
