@@ -9,13 +9,15 @@ export default function DateField({
   required,
   minDate,
 }) {
+  const DATE_FORMAT = "DD/MM/YYYY";
+
   return (
     <DatePicker
       label={label}
       value={value}
       onChange={onChange}
       minDate={minDate}
-      format="DD/MM/YYYY"
+      format={DATE_FORMAT}
       slotProps={{
         textField: {
           required,
