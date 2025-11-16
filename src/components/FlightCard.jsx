@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { Box, Card, Divider, Grid, Typography } from "@mui/material";
+import { Box, Card, Divider, Grid } from "@mui/material";
 
 import {
   durationInHours,
@@ -12,8 +12,9 @@ import {
 import { selectAirportById } from "../features/airports/airportsSlice";
 import { selectFlight } from "../features/flights/flightsSlice";
 import OriginDestination from "./OriginDestination";
-import FlightActions from "./FlightActions";
-import LongArrow from "./LongArrow";
+import FlightCardImage from "./FlightCard/FlightCardImage";
+import FlightCardRoute from "./FlightCard/FlightCardRoute";
+import FlightCardActionsPrice from "./FlightCard/FlightCardActionsPrice";
 import "../styles/flightCard.css";
 
 export default function FlightCard({
@@ -43,212 +44,99 @@ export default function FlightCard({
   };
 
   return (
-    <>
-      <Card
-        onClick={
-          isClickable
-            ? (event) => {
-                event.stopPropagation();
-                dispatch(selectFlight(flightInfo));
-                navigate(`/flight/${flightInfo.id}`);
-              }
-            : undefined
-        }
-        sx={{
-          p: 1,
-          display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          alignItems: { xs: "stretch", sm: "center" },
-          justifyContent: { xs: "stretch", sm: "space-evenly" },
-          gap: { xs: 0, sm: 4.5 },
-          backgroundColor: "#b6ccecff",
-          boxShadow: "none",
-          width: { xs: "100%", sm: "100%", md: "90%" },
-          minHeight: 100,
-          height: { xs: "auto", sm: "auto" },
+    <Card
+      onClick={
+        isClickable
+          ? (event) => {
+              event.stopPropagation();
+              dispatch(selectFlight(flightInfo));
+              navigate(`/flight/${flightInfo.id}`);
+            }
+          : undefined
+      }
+      sx={{
+        p: 1,
+        display: "flex",
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: { xs: "stretch", sm: "center" },
+        justifyContent: { xs: "stretch", sm: "space-evenly" },
+        gap: { xs: 0, sm: 4.5 },
+        backgroundColor: "#b6ccecff",
+        boxShadow: "none",
+        width: { xs: "100%", sm: "100%", md: "90%" },
+        minHeight: 100,
+        height: { xs: "auto", sm: "auto" },
+        transition: "transform 200ms ease, box-shadow 200ms ease",
+        ...(isClickable && {
+          borderRadius: 4,
+          "&:hover": {
+            cursor: "pointer",
+            transform: "scale(1.03)",
+            boxShadow: 6,
+            zIndex: 2,
+          },
+        }),
+        ...(!isClickable && {
+          borderTopLeftRadius: 16,
+          borderBottomLeftRadius: { xs: 0, sm: 0, md: 16 },
+          borderTopRightRadius: { xs: 16, md: 0 },
+          borderBottomRightRadius: { xs: 0, sm: 0, md: 0 },
+          cursor: "default",
+        }),
+        ...(isExpanded && {
+          borderBottomLeftRadius: 0,
+          transition: "border-radius 0.4s",
+        }),
+      }}
+    >
+      <FlightCardImage airlineCode={airlineCode} />
 
-          transition: "transform 200ms ease, box-shadow 200ms ease",
-          ...(isClickable && {
-            borderRadius: 4,
-            "&:hover": {
-              cursor: "pointer",
-              transform: "scale(1.03)",
-              boxShadow: 6,
-              zIndex: 2,
-            },
-          }),
-          ...(!isClickable && {
-            borderTopLeftRadius: 16,
-            borderBottomLeftRadius: { xs: 0, sm: 0, md: 16 },
-            borderTopRightRadius: { xs: 16, md: 0 },
-            borderBottomRightRadius: { xs: 0, sm: 0, md: 0 },
-            cursor: "default",
-          }),
-          ...(isExpanded && {
-            borderBottomLeftRadius: 0,
-            transition: "border-radius 0.4s",
-          }),
-        }}
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="row"
+        flexWrap={"nowrap"}
+        spacing={2}
+        width={{ xs: "100%", sm: "60%" }}
+        sx={{ textAlign: "left" }}
       >
-        <Box
-          component="img"
-          src={`/images/${airlineCode}.png`}
-          alt={`${airlineCode} logo`}
-          sx={{
-            width: { xs: 80, sm: "10%" },
-            maxWidth: 80,
-            alignSelf: { xs: "center", sm: "auto" },
-            objectFit: "contain",
-          }}
+        <FlightCardRoute
+          depTime={depTime}
+          arrTime={arrTime}
+          originCode={originCode}
+          destinationCode={destinationCode}
+          duration={durationInHours(flightInfo.durationMinutes)}
+          date={new Date(flightInfo.date).toLocaleDateString("en-GB")}
+          isClickable={isClickable}
+          OriginDestination={OriginDestination}
         />
+      </Grid>
 
-        <Grid
-          container
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="row"
-          flexWrap={"nowrap"}
-          spacing={2}
-          width={{ xs: "100%", sm: "60%" }}
-          sx={{ textAlign: "left" }}
-        >
-          <Grid size="auto">
-            <OriginDestination
-              time={depTime}
-              airportCode={originCode}
-              isColumn={true}
-              timeV={"body1"}
-              airportV={"h5"}
-            />
-          </Grid>
-          <Grid size="auto">
-            <Box
-              sx={{
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                height: {
-                  xs: "4vh",
-                  sm: isClickable ? "4.5vh" : "10vh",
-                  md: isClickable ? "8vh" : "4.5vh",
-                  lg: "8vh",
-                },
-              }}
-            >
-              {/* Arrow line */}
-              <LongArrow />
+      <Divider
+        orientation="horizontal"
+        flexItem
+        sx={{
+          display: { xs: "block", sm: "none" },
+          my: 1,
+          borderColor: "grey.600",
+        }}
+      />
 
-              {/* Duration badge centered on the arrow */}
-              <Box
-                sx={{
-                  width: "100px",
-                  position: "absolute",
-                  top: { xs: "20%", sm: "0%", md: "30%" },
-                  ...(!isClickable && {
-                    top: { xs: "20%", sm: "30%", md: "20%", lg: "30%" },
-                  }),
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  bgcolor: "transparent",
-                  px: 1,
-                  py: 0.25,
-                  borderRadius: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{ color: "#8f8f8fff", fontWeight: 600 }}
-                >
-                  {durationInHours(flightInfo.durationMinutes)}
-                </Typography>
-              </Box>
+      <Divider
+        orientation="vertical"
+        flexItem
+        sx={{ display: { xs: "none", sm: "block" }, borderColor: "grey.600" }}
+      />
 
-              {/* Flight date under the arrow*/}
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: { xs: "90%", sm: "100%", md: "75%" },
-                  ...(!isClickable && {
-                    top: { xs: "90%", sm: "75%", md: "90%", lg: "75%" },
-                  }),
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  bgcolor: "transparent",
-                  px: 1,
-                  py: 0.25,
-                  borderRadius: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{ color: "#8f8f8fff", fontWeight: 600 }}
-                >
-                  {new Date(flightInfo.date).toLocaleDateString("en-GB")}
-                </Typography>
-              </Box>
-            </Box>
-          </Grid>
-          <Grid size="auto">
-            <OriginDestination
-              time={arrTime}
-              airportCode={destinationCode}
-              isColumn={true}
-              timeV={"body1"}
-              airportV={"h5"}
-            />
-          </Grid>
-        </Grid>
-
-        <Divider
-          orientation="horizontal"
-          flexItem
-          sx={{
-            display: { xs: "block", sm: "none" },
-            my: 1,
-            borderColor: "grey.600",
-          }}
-        />
-
-        <Divider
-          orientation="vertical"
-          flexItem
-          sx={{ display: { xs: "none", sm: "block" }, borderColor: "grey.600" }}
-        />
-
-        <Box
-          sx={{
-            width: { xs: "100%", sm: "auto" },
-            display: "flex",
-            flexDirection: { xs: "row", sm: "column" },
-            justifyContent: { xs: "flex-end", sm: "flex-start" },
-            alignItems: "center",
-            mt: { xs: 1, sm: 0 },
-          }}
-        >
-          {isAdmin && (
-            <FlightActions
-              onEdit={onEdit}
-              onDelete={onDelete}
-              onClick={handleClick}
-            />
-          )}
-          <Typography
-            variant="body1"
-            sx={{ color: "#4caf50", fontWeight: 800 }}
-          >
-            {formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
-          </Typography>
-        </Box>
-      </Card>
-    </>
+      <FlightCardActionsPrice
+        isAdmin={isAdmin}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        onClick={handleClick}
+        price={formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
+      />
+    </Card>
   );
 }
 
