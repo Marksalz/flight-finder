@@ -1,6 +1,12 @@
 import { Box, Card, Divider, Grid, Typography } from "@mui/material";
 
-import { toLocalInputValue, durationInHours } from "../utils/helpFunctions";
+import {
+  toLocalInputValue,
+  durationInHours,
+  getAirlineCode,
+  getDepTime,
+  getArrTime,
+} from "../utils/helpFunctions";
 import { selectAirportById } from "../features/airports/airportsSlice";
 import { selectFlight } from "../features/flights/flightsSlice";
 import OriginDestination from "./OriginDestination";
@@ -19,13 +25,10 @@ export default function FlightCard({
   onEdit,
   onDelete,
 }) {
-  const airlineCode = String(flightInfo?.flightNumber ?? "").slice(0, 2);
-  const depTime = toLocalInputValue(flightInfo.departureTime)
-    .split("T")[1]
-    .slice(0, 5);
-  const arrTime = toLocalInputValue(flightInfo.arrivalTime)
-    .split("T")[1]
-    .slice(0, 5);
+  const airlineCode = getAirlineCode(flightInfo?.flightNumber);
+  const depTime = getDepTime(flightInfo.departureTime);
+  const arrTime = getArrTime(flightInfo.arrivalTime);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

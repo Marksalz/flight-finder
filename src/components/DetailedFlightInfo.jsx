@@ -42,7 +42,7 @@ export default function DetailedFlightInfo({
       >
         <Box
           component="img"
-          src={`/${airlineCode}.png`}
+          src={`/images/${airlineCode}.png`}
           alt={`${airlineCode} logo`}
           sx={{
             width: 48,
