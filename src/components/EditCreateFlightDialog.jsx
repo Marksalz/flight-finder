@@ -46,7 +46,9 @@ export default function EditCreateFlightDialog({
     let updatedValue = value;
 
     if (name === "origin" || name === "destination") {
-      updatedValue = Number(airports.find((ap) => ap.code === value)?.id || 0);
+      updatedValue = Number(
+        airports.find((airport) => airport.code === value)?.id || 0
+      );
     } else if (name === "airline") {
       const code = airlineCodes[value] || "";
       const flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
