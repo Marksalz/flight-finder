@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
 import { Box, Card, Divider, Grid, Typography } from "@mui/material";
 
 import {
@@ -12,9 +15,6 @@ import OriginDestination from "./OriginDestination";
 import FlightActions from "./FlightActions";
 import LongArrow from "./LongArrow";
 import "../styles/flightCard.css";
-
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 
 export default function FlightCard({
   flightInfo,
