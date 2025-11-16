@@ -1,7 +1,7 @@
+import { useState } from "react";
+
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
-import { useState } from "react";
 
 export default function FlightActions({ onEdit, onDelete, onClick }) {
   const [anchorEl, setAnchorEl] = useState(null);
