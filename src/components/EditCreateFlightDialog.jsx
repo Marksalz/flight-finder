@@ -15,9 +15,12 @@ import {
 } from "@mui/material";
 
 import { selectAirportById } from "../features/airports/airportsSlice";
-import { toISOString, toLocalInputValue } from "../utils/helpFunctions";
+import { toISOString } from "../utils/helpFunctions";
 import { airlines, airlineCodes } from "../utils/consts";
-import SelectField from "./SelectField";
+import AirlineInfoSection from "./editCreateDialogSections/AirlineInfoSection";
+import RouteSection from "./editCreateDialogSections/RouteSection";
+import TimingSection from "./editCreateDialogSections/TimingSection";
+import AdditionalDetailsSection from "./editCreateDialogSections/AdditionalDetailsSection";
 
 export default function EditCreateFlightDialog({
   open,
@@ -123,161 +126,40 @@ export default function EditCreateFlightDialog({
       <DialogContent>
         {/* --- Airline Info --- */}
         <Section title="Airline Information">
-          <Grid container spacing={2}>
-            <Grid size={{ xs: 12, sm: 6, lg: 3.5 }}>
-              <SelectField
-                name="airline"
-                label="Airline"
-                value={formData.airline || ""}
-                options={airlines}
-                onChange={handleChange}
-                autoFocus
-                fullWidth
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-              <TextField
-                label="Flight Number"
-                name="flightNumber"
-                value={formData.flightNumber || ""}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
+          <AirlineInfoSection
+            formData={formData}
+            handleChange={handleChange}
+            airlines={airlines}
+          />
         </Section>
 
         {/* --- Route --- */}
         <Section title="Route">
-          <Grid container spacing={2}>
-            <Grid size={{ xs: 12, sm: 6, lg: 3.5 }}>
-              <SelectField
-                name="origin"
-                options={airports}
-                label="Origin"
-                value={originAirport?.code || ""}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <SelectField
-                name="destination"
-                options={airports}
-                label="Destination"
-                value={destinationAirport?.code || ""}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
+          <RouteSection
+            formData={formData}
+            handleChange={handleChange}
+            airports={airports}
+            originAirport={originAirport}
+            destinationAirport={destinationAirport}
+          />
         </Section>
 
         {/* --- Timing --- */}
         <Section title="Timing">
-          <Grid container spacing={2}>
-            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-              <TextField
-                label="Departure Time"
-                name="departureTime"
-                type="datetime-local"
-                value={toLocalInputValue(formData.departureTime)}
-                onChange={({ target: { value } }) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    departureTime: value,
-                  }))
-                }
-                fullWidth
-                slotProps={{ inputLabel: { shrink: true } }}
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-              <TextField
-                label="Arrival Time"
-                name="arrivalTime"
-                type="datetime-local"
-                value={toLocalInputValue(formData.arrivalTime)}
-                onChange={({ target: { value } }) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    arrivalTime: value,
-                  }))
-                }
-                fullWidth
-                slotProps={{ inputLabel: { shrink: true } }}
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-              <TextField
-                label="Duration (minutes)"
-                name="durationMinutes"
-                type="number"
-                value={formData.durationMinutes || ""}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
+          <TimingSection
+            formData={formData}
+            setFormData={setFormData}
+            handleChange={handleChange}
+          />
         </Section>
 
         {/* --- Additional Details --- */}
         <Section title="Additional Details">
-          <Grid container spacing={2}>
-            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-              <TextField
-                label="Price (USD)"
-                name="price.amount"
-                type="number"
-                value={formData.price?.amount || ""}
-                onChange={({ target: { value } }) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    price: {
-                      ...prev.price,
-                      amount: Number(value),
-                      currency: "USD",
-                    },
-                  }))
-                }
-                fullWidth
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
-              <TextField
-                label="Aircraft"
-                name="aircraft"
-                value={formData.aircraft || ""}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, lg: 2 }}>
-              <TextField
-                label="Terminal"
-                name="terminal"
-                value={formData.terminal || ""}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
-              <TextField
-                label="Baggage Allowance"
-                name="baggageAllowance"
-                value={formData.baggageAllowance || ""}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
+          <AdditionalDetailsSection
+            formData={formData}
+            setFormData={setFormData}
+            handleChange={handleChange}
+          />
         </Section>
       </DialogContent>
 
