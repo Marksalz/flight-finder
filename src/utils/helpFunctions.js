@@ -27,3 +27,17 @@ export function durationInHours(durationMinutes) {
   return `${hours}h ${minutes}`;
 }
 
+//Extracts airline code (first two chars) from flight number
+export function getAirlineCode(flightNumber) {
+  return String(flightNumber ?? "").slice(0, 2);
+}
+
+//Returns departure time in HH:mm format from ISO string.
+export function getDepTime(departureTime) {
+  return toLocalInputValue(departureTime).split("T")[1].slice(0, 5);
+}
+
+//Returns arrival time in HH:mm format from ISO string.
+export function getArrTime(arrivalTime) {
+  return toLocalInputValue(arrivalTime).split("T")[1].slice(0, 5);
+}

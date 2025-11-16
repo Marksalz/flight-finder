@@ -1,7 +1,12 @@
 import { Grid, Box, Divider, Typography } from "@mui/material";
 import TimelapseIcon from "@mui/icons-material/Timelapse";
 
-import { toLocalInputValue, durationInHours } from "../utils/helpFunctions";
+import {
+  durationInHours,
+  getAirlineCode,
+  getDepTime,
+  getArrTime,
+} from "../utils/helpFunctions";
 import OriginDestination from "./OriginDestination";
 
 export default function DetailedFlightInfo({
@@ -11,13 +16,9 @@ export default function DetailedFlightInfo({
   originAirportName,
   destinationAirportName,
 }) {
-  const airlineCode = String(flightInfo?.flightNumber ?? "").slice(0, 2);
-  const depTime = toLocalInputValue(flightInfo.departureTime)
-    .split("T")[1]
-    .slice(0, 5);
-  const arrTime = toLocalInputValue(flightInfo.arrivalTime)
-    .split("T")[1]
-    .slice(0, 5);
+  const airlineCode = getAirlineCode(flightInfo?.flightNumber);
+  const depTime = getDepTime(flightInfo.departureTime);
+  const arrTime = getArrTime(flightInfo.arrivalTime);
 
   return (
     <Box
