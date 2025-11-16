@@ -12,9 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function FlightsList({ flights = [], isAdmin = false }) {
+  const ANIMATION_MS = 300;
   const dispatch = useDispatch();
+
   const [editOpen, setEditOpen] = useState(false);
   const [closingIds, setClosingIds] = useState([]);
+
   const selectedFlight = useSelector((state) => state.flights.selectedFlight);
 
   const handleEdit = () => {
@@ -23,15 +26,16 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
 
   const handleDelete = (idParam) => {
     const id = idParam ?? selectedFlight?.id;
-    if (!id) return;
-    if (closingIds.includes(id)) return;
-    const ANIM_MS = 300;
-    setClosingIds((prev) => [...prev, id]);
-    setTimeout(() => {
-      dispatch(removeFlight(id));
-      if (selectedFlight?.id === id) dispatch(clearSelectedFlight());
-      setClosingIds((prev) => prev.filter((x) => x !== id));
-    }, ANIM_MS);
+    if (id) {
+      if (closingIds.includes(id)) return;
+
+      setClosingIds((prev) => [...prev, id]);
+      setTimeout(() => {
+        dispatch(removeFlight(id));
+        if (selectedFlight?.id === id) dispatch(clearSelectedFlight());
+        setClosingIds((prev) => prev.filter((x) => x !== id));
+      }, ANIMATION_MS);
+    }
   };
 
   const handleClose = () => {
@@ -64,8 +68,12 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
           borderRadius: 4,
         }}
       >
-        {flights.map((f) => (
-          <Collapse key={f.id} in={!closingIds.includes(f.id)} timeout={300}>
+        {flights.map((flight) => (
+          <Collapse
+            key={flight.id}
+            in={!closingIds.includes(flight.id)}
+            timeout={300}
+          >
             <Box
               sx={{
                 width: "100%",
@@ -75,12 +83,12 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
               }}
             >
               <FlightCard
-                key={f.id}
-                flightInfo={f}
+                key={flight.id}
+                flightInfo={flight}
                 isClickable={true}
                 isAdmin={isAdmin}
                 onEdit={() => handleEdit()}
-                onDelete={() => handleDelete(f.id)}
+                onDelete={() => handleDelete(flight.id)}
               />
             </Box>
           </Collapse>
