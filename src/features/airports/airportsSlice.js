@@ -59,13 +59,6 @@ export const createAirport = createAsyncThunk(
   }
 );
 
-// Selectors
-export const selectAirportByCode = (state, code) =>
-  state.airports.airports.find((airport) => airport.code === code);
-
-export const selectAirportById = (state, id) =>
-  state.airports.airports.find((airport) => airport.id === String(id));
-
 const airportsSlice = createSlice({
   name: "airports",
   initialState: {
@@ -77,6 +70,14 @@ const airportsSlice = createSlice({
   reducers: {
     selectAirport(state, action) {
       state.selectedAirport = action.payload;
+    },
+  },
+  selectors: {
+    selectAirportByCode(state, code) {
+      return state.airports.find((airport) => airport.code === code);
+    },
+    selectAirportById(state, id) {
+      return state.airports.find((airport) => airport.id === String(id));
     },
   },
   extraReducers: (builder) => {
@@ -119,6 +120,9 @@ const airportsSlice = createSlice({
       );
   },
 });
+
+export const { selectAirportByCode, selectAirportById } =
+  airportsSlice.selectors;
 
 export const { selectAirport, setOriginAirport, setDestinationAirport } =
   airportsSlice.actions;

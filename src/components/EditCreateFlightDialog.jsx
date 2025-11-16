@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import {
   Dialog,
   DialogTitle,
@@ -13,10 +16,8 @@ import {
 
 import { selectAirportById } from "../features/airports/airportsSlice";
 import { toISOString, toLocalInputValue } from "../utils/helpFunctions";
+import { airlines, airlineCodes } from "../utils/consts";
 import SelectField from "./SelectField";
-
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 
 export default function EditCreateFlightDialog({
   open,
@@ -25,20 +26,6 @@ export default function EditCreateFlightDialog({
   onSave,
 }) {
   const isEdit = !!flight.id;
-
-  const airlines = [
-    "United Airlines",
-    "Delta Airlines",
-    "El Al Israel Airlines",
-    "American Airlines",
-  ];
-
-  const airlineCodes = {
-    "El Al Israel Airlines": "LY",
-    "Delta Airlines": "DL",
-    "American Airlines": "AA",
-    "United Airlines": "UA",
-  };
 
   const airports = useSelector((state) => state.airports.airports);
 
