@@ -38,8 +38,17 @@ const searchSlice = createSlice({
       };
     },
   },
+  selectors: {
+    selectAllUserParams: (state) => {
+      state.userSearch;
+    },
+    selectAllAdminParams: (state) => {
+      state.adminSearch;
+    },
+  },
 });
-
+export const { selectAllUserParams, selectAllAdminParams } =
+  searchSlice.selectors;
 export const { setUserSearchParams, setAdminSearchParams, clearSearchParams } =
   searchSlice.actions;
 export default searchSlice.reducer;
