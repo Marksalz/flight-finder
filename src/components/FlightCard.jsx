@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { Box, Card, Divider, Grid } from "@mui/material";
+import { Box, Card, Grid } from "@mui/material";
 
 import {
   durationInHours,
@@ -15,6 +15,7 @@ import OriginDestination from "./OriginDestination";
 import FlightCardImage from "./FlightCard/FlightCardImage";
 import FlightCardRoute from "./FlightCard/FlightCardRoute";
 import FlightCardActionsPrice from "./FlightCard/FlightCardActionsPrice";
+import FlightCardDivider from "./FlightCard/FlightCardDivider";
 import "../styles/flightCard.css";
 
 export default function FlightCard({
@@ -113,9 +114,8 @@ export default function FlightCard({
         />
       </Grid>
 
-      <Divider
+      <FlightCardDivider
         orientation="horizontal"
-        flexItem
         sx={{
           display: { xs: "block", sm: "none" },
           my: 1,
@@ -123,9 +123,8 @@ export default function FlightCard({
         }}
       />
 
-      <Divider
+      <FlightCardDivider
         orientation="vertical"
-        flexItem
         sx={{ display: { xs: "none", sm: "block" }, borderColor: "grey.600" }}
       />
 
