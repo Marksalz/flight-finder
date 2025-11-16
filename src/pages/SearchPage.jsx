@@ -79,7 +79,7 @@ export default function SearchPage() {
     >
       <Box
         component="img"
-        src="/app_logo4.png"
+        src="/images/app_logo4.png"
         alt="app logo"
         sx={{
           maxWidth: { xs: 200, sm: 400 },
