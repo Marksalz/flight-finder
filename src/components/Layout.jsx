@@ -157,7 +157,7 @@ export default function Layout() {
         sx={{
           flexGrow: 1,
           minHeight: "70vh",
-          backgroundImage: 'url("/background.jpg")',
+          backgroundImage: 'url("/images/background.jpg")',
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}

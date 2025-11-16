@@ -93,7 +93,7 @@ export default function FlightCard({
       >
         <Box
           component="img"
-          src={`/${airlineCode}.png`}
+          src={`/images/${airlineCode}.png`}
           alt={`${airlineCode} logo`}
           sx={{
             width: { xs: 80, sm: "10%" },
