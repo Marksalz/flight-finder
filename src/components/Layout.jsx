@@ -18,7 +18,6 @@ import appLogo from "../../public/images/app_logo2.png";
 export default function Layout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const location = useLocation();
 
   const [createOpen, setCreateOpen] = useState(false);
