@@ -41,3 +41,10 @@ export function getDepTime(departureTime) {
 export function getArrTime(arrivalTime) {
   return toLocalInputValue(arrivalTime).split("T")[1].slice(0, 5);
 }
+
+//Formats a date string 'YYYY-MM-DD' to 'DD/MM/YYYY'.
+export function formatDate(dateStr) {
+  if (!dateStr) return "";
+  const [year, month, day] = dateStr.split("-");
+  return `${day}/${month}/${year}`;
+}

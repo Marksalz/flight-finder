@@ -1,5 +1,7 @@
 import { Card, Typography, Box } from "@mui/material";
 
+import { formatDate } from "../utils/helpFunctions";
+
 export default function SearchSummaryBar({ from, to, date }) {
   return (
     <Box
@@ -71,9 +73,3 @@ export default function SearchSummaryBar({ from, to, date }) {
     </Box>
   );
 }
-
-const formatDate = (dateStr) => {
-  if (!dateStr) return "";
-  const [year, month, day] = dateStr.split("-");
-  return `${day}/${month}/${year}`;
-};
