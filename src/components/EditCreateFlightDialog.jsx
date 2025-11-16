@@ -42,6 +42,25 @@ export default function EditCreateFlightDialog({
     selectAirportById(state, formData.destination)
   );
 
+  function updateAirline(value, formData) {
+    const code = airlineCodes[value] || "";
+    const flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
+    setFormData((prev) => ({
+      ...prev,
+      airline: value,
+      flightNumber: code + flightNumber,
+    }));
+  }
+
+  function updateFlightNumber(value, formData) {
+    const code = airlineCodes[formData.airline] || "";
+    const updatedValue = code + value.replace(/[^0-9]/g, "");
+    setFormData((prev) => ({
+      ...prev,
+      flightNumber: updatedValue,
+    }));
+  }
+
   const handleChange = ({ target: { name, value } }) => {
     let updatedValue = value;
 
@@ -50,18 +69,11 @@ export default function EditCreateFlightDialog({
         airports.find((airport) => airport.code === value)?.id || 0
       );
     } else if (name === "airline") {
-      const code = airlineCodes[value] || "";
-      const flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
-      updatedValue = value;
-      setFormData((prev) => ({
-        ...prev,
-        airline: value,
-        flightNumber: code + flightNumber,
-      }));
+      updateAirline(value, formData);
       return;
     } else if (name === "flightNumber") {
-      const code = airlineCodes[formData.airline] || "";
-      updatedValue = code + value.replace(/[^0-9]/g, "");
+      updateFlightNumber(value, formData);
+      return;
     } else if (name === "price.amount" || name === "durationMinutes") {
       updatedValue = Number(updatedValue);
     }
