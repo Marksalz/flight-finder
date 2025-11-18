@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const baseUrl = "http://localhost:3000";
+import { BASE_URL } from "../../utils/consts";
 
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
   async () => {
-    const response = await fetch(`${baseUrl}/airports`);
+    const response = await fetch(`${BASE_URL}/airports`);
     if (!response.ok) {
       throw new Error("Failed to fetch airport");
     }
@@ -17,7 +17,7 @@ export const fetchAirportById = createAsyncThunk(
   "airports/fetchAirportById",
   async (airportId) => {
     const response = await fetch(
-      `${baseUrl}/airports/${encodeURIComponent(airportId)}`
+      `${BASE_URL}/airports/${encodeURIComponent(airportId)}`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch airport");
@@ -30,7 +30,7 @@ export const modifyAirport = createAsyncThunk(
   "airports/modifyAirport",
   async ({ airportId, airportData }) => {
     const response = await fetch(
-      `${baseUrl}/airports/${encodeURIComponent(airportId)}`,
+      `${BASE_URL}/airports/${encodeURIComponent(airportId)}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -47,7 +47,7 @@ export const modifyAirport = createAsyncThunk(
 export const createAirport = createAsyncThunk(
   "airports/createAirport",
   async (airportData) => {
-    const response = await fetch(`${baseUrl}/airports`, {
+    const response = await fetch(`${BASE_URL}/airports`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(airportData),
@@ -90,7 +90,7 @@ const airportsSlice = createSlice({
       })
       .addCase(modifyAirport.fulfilled, (state, action) => {
         const idx = state.airports.findIndex(
-          (airport) => airport.id === action.payload.id
+          ({ id }) => id === action.payload.id
         );
         if (idx !== -1) state.airports[idx] = action.payload;
       })
