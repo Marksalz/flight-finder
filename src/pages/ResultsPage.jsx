@@ -11,6 +11,7 @@ export default function ResultsPage() {
   const dispatch = useDispatch();
 
   const searchParams = useSelector((state) => state.search.userSearch);
+
   useEffect(() => {
     dispatch(fetchFlights({ searchParams }));
   }, [dispatch, searchParams]);
