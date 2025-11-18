@@ -10,8 +10,6 @@ import { StrictMode } from "react";
 import store from "./app/store";
 import App from "./App.jsx";
 
-import "./styles/index.css";
-
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
