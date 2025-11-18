@@ -1,60 +1,60 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { selectAirportByCode } from "../airports/airportsSlice";
+import { BASE_URL } from "../../utils/consts";
 
-const baseUrl = "http://localhost:3000";
-
-//Fetching the flights by date range for now before backend
+//Fetching the flights by date range, or specific date if searching for a flight.
 export const fetchFlights = createAsyncThunk(
   "flights/fetchFlights",
   async ({ searchParams }, { getState }) => {
     const state = getState();
 
     const airports = state.airports.airports;
-    const originId = airports.find((a) => a.code === searchParams.origin)?.id;
+    const originId = airports.find(
+      ({ code }) => code === searchParams.origin
+    )?.id;
     const destinationId = airports.find(
-      (a) => a.code === searchParams.destination
+      ({ code }) => code === searchParams.destination
     )?.id;
 
     let query = `origin=${encodeURIComponent(
       originId
     )}&destination=${encodeURIComponent(destinationId)}`;
 
-    //     // Add date or date range to query
-    //     if (searchParams.startDate && searchParams.endDate) {
-    //       const start = searchParams.startDate.format("YYYY-MM-DD");
-    //       const end = searchParams.endDate.format("YYYY-MM-DD");
-    //       query += `&date_gte=${encodeURIComponent(
-    //         start
-    //       )}&date_lte=${encodeURIComponent(end)}`;
-    //     }
-
     // If search came from search form params state
     if (searchParams.depDate) {
       query += `&date=${encodeURIComponent(searchParams.depDate)}`;
-      const response = await fetch(`${baseUrl}/flights?${query}`);
+      const response = await fetch(`${BASE_URL}/flights?${query}`);
       if (!response.ok) {
         throw new Error("Failed to fetch flights");
       }
       return await response.json();
-    } else {
+
+      // else if search came from admin filtering by start-end date range
+    } else if (searchParams.startDate && searchParams.endDate) {
+      // when working with backend the date filtering will happen there, for now the filtering is local in the frontend.
+      //
+      //       const start = searchParams.startDate.format("YYYY-MM-DD");
+      //       const end = searchParams.endDate.format("YYYY-MM-DD");
+      //       query += `&date_gte=${encodeURIComponent(
+      //         start
+      //       )}&date_lte=${encodeURIComponent(end)}`;
+
       // Fetch everything from json-server (no date filtering yet)
-      const response = await fetch(`${baseUrl}/flights?${query}`);
+      const response = await fetch(`${BASE_URL}/flights?${query}`);
       if (!response.ok) {
         throw new Error("Failed to fetch flights");
       }
       let flights = await response.json();
 
       // Manual filtering by date or date range (client-side)
-      if (searchParams.startDate && searchParams.endDate) {
-        const start = searchParams.startDate;
-        const end = searchParams.endDate;
-        //.format("YYYY-MM-DD")
+      const start = searchParams.startDate;
+      const end = searchParams.endDate;
 
-        flights = flights.filter((f) => {
-          const flightDate = f.date.slice(0, 10);
-          return flightDate >= start && flightDate <= end;
-        });
-      }
+      flights = flights.filter((flight) => {
+        const flightDate = flight.date.slice(0, 10);
+        return flightDate >= start && flightDate <= end;
+      });
+
       return flights;
     }
   }
@@ -63,7 +63,7 @@ export const fetchFlights = createAsyncThunk(
 export const fetchFlightById = createAsyncThunk(
   "flights/fetchFlightById",
   async (flightId) => {
-    const response = await fetch(`${baseUrl}/flights/${flightId}`);
+    const response = await fetch(`${BASE_URL}/flights/${flightId}`);
     if (!response.ok) {
       throw new Error("Failed to fetch flight");
     }
@@ -74,7 +74,7 @@ export const fetchFlightById = createAsyncThunk(
 export const createFlight = createAsyncThunk(
   "flights/createFlight",
   async (flightData) => {
-    const response = await fetch(`${baseUrl}/flights`, {
+    const response = await fetch(`${BASE_URL}/flights`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(flightData),
@@ -90,7 +90,7 @@ export const modifyFlight = createAsyncThunk(
   "flights/modifyFlight",
   async ({ flightId, flightData }, { getState }) => {
     const response = await fetch(
-      `${baseUrl}/flights/${encodeURIComponent(flightId)}`,
+      `${BASE_URL}/flights/${encodeURIComponent(flightId)}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -120,7 +120,7 @@ export const removeFlight = createAsyncThunk(
   "flights/removeFlight",
   async (flightId) => {
     const response = await fetch(
-      `${baseUrl}/flights/${encodeURIComponent(flightId)}`,
+      `${BASE_URL}/flights/${encodeURIComponent(flightId)}`,
       {
         method: "DELETE",
       }
@@ -175,16 +175,20 @@ const flightsSlice = createSlice({
             searchDestinationId
           )
         ) {
-          const idx = state.flights.findIndex((f) => f.id === updatedFlight.id);
+          const idx = state.flights.findIndex(
+            ({ id }) => id === updatedFlight.id
+          );
           if (idx !== -1) state.flights[idx] = updatedFlight;
         } else {
           state.flights = state.flights.filter(
-            (f) => f.id !== updatedFlight.id
+            ({ id }) => id !== updatedFlight.id
           );
         }
       })
       .addCase(removeFlight.fulfilled, (state, action) => {
-        state.flights = state.flights.filter((f) => f.id !== action.payload.id);
+        state.flights = state.flights.filter(
+          ({ id }) => id !== action.payload.id
+        );
       })
       .addMatcher(
         (action) => action.type.endsWith("/pending"),
