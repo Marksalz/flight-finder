@@ -2,7 +2,7 @@ import {
   clearSelectedFlight,
   modifyFlight,
   removeFlight,
-} from "../features/flights/flightsSlice";
+} from "../../features/flights/flightsSlice";
 import EditCreateFlightDialog from "./EditCreateFlightDialog";
 import FlightCard from "./FlightCard";
 

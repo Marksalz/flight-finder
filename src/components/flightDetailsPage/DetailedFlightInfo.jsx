@@ -6,8 +6,8 @@ import {
   getAirlineCode,
   getDepTime,
   getArrTime,
-} from "../utils/helpFunctions";
-import OriginDestination from "./OriginDestination";
+} from "../../utils/helpFunctions";
+import OriginDestination from "../OriginDestination";
 
 export default function DetailedFlightInfo({
   flightInfo,

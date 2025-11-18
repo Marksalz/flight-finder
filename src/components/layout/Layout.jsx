@@ -10,9 +10,9 @@ import {
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
-import { clearFlights, createFlight } from "../features/flights/flightsSlice";
-import { clearSearchParams } from "../features/search/searchSlice";
-import EditCreateFlightDialog from "./EditCreateFlightDialog";
+import { clearFlights, createFlight } from "../../features/flights/flightsSlice";
+import { clearSearchParams } from "../../features/search/searchSlice";
+import EditCreateFlightDialog from "../EditCreateFlightDialog";
 
 export default function Layout() {
   const TIMER_TIME = 4000;

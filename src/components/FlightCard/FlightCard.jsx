@@ -8,14 +8,14 @@ import {
   getAirlineCode,
   getDepTime,
   getArrTime,
-} from "../utils/helpFunctions";
-import { selectAirportById } from "../features/airports/airportsSlice";
-import { selectFlight } from "../features/flights/flightsSlice";
-import OriginDestination from "./OriginDestination";
-import FlightCardImage from "./FlightCard/FlightCardImage";
-import FlightCardRoute from "./FlightCard/FlightCardRoute";
-import FlightCardActionsPrice from "./FlightCard/FlightCardActionsPrice";
-import FlightCardDivider from "./FlightCard/FlightCardDivider";
+} from "../../utils/helpFunctions";
+import { selectAirportById } from "../../features/airports/airportsSlice";
+import { selectFlight } from "../../features/flights/flightsSlice";
+import OriginDestination from "../OriginDestination";
+import FlightCardImage from "./FlightCardImage";
+import FlightCardRoute from "./FlightCardRoute";
+import FlightCardActionsPrice from "./FlightCardActionsPrice";
+import FlightCardDivider from "./FlightCardDivider";
 import "../styles/flightCard.css";
 
 export default function FlightCard({

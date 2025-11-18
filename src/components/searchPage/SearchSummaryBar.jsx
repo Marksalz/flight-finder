@@ -1,6 +1,6 @@
 import { Card, Typography, Box } from "@mui/material";
 
-import { formatDate } from "../utils/helpFunctions";
+import { formatDate } from "../../utils/helpFunctions";
 
 export default function SearchSummaryBar({ from, to, date }) {
   return (
