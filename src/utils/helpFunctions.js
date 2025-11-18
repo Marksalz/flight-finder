@@ -1,16 +1,14 @@
 // Helper to convert ISO string to 'YYYY-MM-DDTHH:mm'
 export function toLocalInputValue(isoString) {
   if (!isoString) return "";
+
   const date = new Date(isoString);
+  const pad = (numberToPad) => numberToPad.toString().padStart(2, "0");
 
-  // Get local components
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-
-  return `${year}-${month}-${day}T${hours}:${minutes}`;
+  return (
+    `${date.getFullYear()}-${pad(date.getMonth() + 1)}` +
+    `-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`
+  );
 }
 
 // Helper to convert 'YYYY-MM-DDTHH:mm' to ISO string (UTC)
