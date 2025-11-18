@@ -15,6 +15,7 @@ import { clearSearchParams } from "../features/search/searchSlice";
 import EditCreateFlightDialog from "./EditCreateFlightDialog";
 
 export default function Layout() {
+  const TIMER_TIME = 4000;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -40,7 +41,7 @@ export default function Layout() {
 
   useEffect(() => {
     if (message) {
-      const timer = setTimeout(() => setMessage(null), 4000);
+      const timer = setTimeout(() => setMessage(null), TIMER_TIME);
       return () => clearTimeout(timer);
     }
   }, [message]);
