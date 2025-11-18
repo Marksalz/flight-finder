@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 
 export default function AdminPage() {
+  const DATE_FORMAT = "YYYY-MM-DD";
   const dispatch = useDispatch();
 
   const [filterClicked, setFilterClicked] = useState(false);
@@ -18,9 +19,9 @@ export default function AdminPage() {
     const serializableFormData = {
       ...formData,
       startDate: formData.startDate
-        ? formData.startDate.format("YYYY-MM-DD")
+        ? formData.startDate.format(DATE_FORMAT)
         : null,
-      endDate: formData.endDate ? formData.endDate.format("YYYY-MM-DD") : null,
+      endDate: formData.endDate ? formData.endDate.format(DATE_FORMAT) : null,
     };
     dispatch(setAdminSearchParams(serializableFormData));
     dispatch(fetchFlights({ searchParams: serializableFormData }));
