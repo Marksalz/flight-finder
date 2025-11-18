@@ -11,12 +11,12 @@ import {
 } from "../../utils/helpFunctions";
 import { selectAirportById } from "../../features/airports/airportsSlice";
 import { selectFlight } from "../../features/flights/flightsSlice";
-import OriginDestination from "../OriginDestination";
+import OriginDestination from "../generic components/OriginDestination";
 import FlightCardImage from "./FlightCardImage";
 import FlightCardRoute from "./FlightCardRoute";
 import FlightCardActionsPrice from "./FlightCardActionsPrice";
 import FlightCardDivider from "./FlightCardDivider";
-import "../styles/flightCard.css";
+import "../../styles/flightCard.css";
 
 export default function FlightCard({
   flightInfo,

@@ -1,6 +1,6 @@
 import { fetchFlights } from "../features/flights/flightsSlice";
-import SearchSummaryBar from "../components/SearchSummaryBar";
-import FlightsList from "../components/FlightsList";
+import SearchSummaryBar from "../components/searchPage/SearchSummaryBar";
+import FlightsList from "../components/generic components/FlightsList";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";

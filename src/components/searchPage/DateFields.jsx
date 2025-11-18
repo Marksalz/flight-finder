@@ -1,4 +1,4 @@
-import DateField from "../DateField";
+import DateField from "../generic components/DateField";
 import { Grid } from "@mui/material";
 
 export default function DateFields({ formData, setFormData }) {

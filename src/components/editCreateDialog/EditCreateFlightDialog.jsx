@@ -14,13 +14,13 @@ import {
   Divider,
 } from "@mui/material";
 
-import { selectAirportById } from "../features/airports/airportsSlice";
-import { toISOString } from "../utils/helpFunctions";
-import { airlines, airlineCodes } from "../utils/consts";
-import AirlineInfoSection from "./editCreateDialogSections/AirlineInfoSection";
-import RouteSection from "./editCreateDialogSections/RouteSection";
-import TimingSection from "./editCreateDialogSections/TimingSection";
-import AdditionalDetailsSection from "./editCreateDialogSections/AdditionalDetailsSection";
+import { selectAirportById } from "../../features/airports/airportsSlice.js";
+import { toISOString } from "../../utils/helpFunctions.js";
+import { airlines, airlineCodes } from "../../utils/consts.js";
+import AirlineInfoSection from "../editCreateDialog/AirlineInfoSection.jsx";
+import RouteSection from "../editCreateDialog/RouteSection.jsx";
+import TimingSection from "../editCreateDialog/TimingSection";
+import AdditionalDetailsSection from "../editCreateDialog/AdditionalDetailsSection";
 
 export default function EditCreateFlightDialog({
   open,

@@ -7,7 +7,7 @@ import FlightDetailsPage from "./pages/FlightDetailsPage";
 import ResultsPage from "./pages/ResultsPage";
 import SearchPage from "./pages/SearchPage";
 import AdminPage from "./pages/AdminPage";
-import Layout from "./components/Layout";
+import Layout from "./components/layout/Layout";
 
 function App() {
   const dispatch = useDispatch();

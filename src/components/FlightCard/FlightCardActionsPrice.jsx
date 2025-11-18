@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import FlightActions from "../FlightActions";
+import FlightActions from "../flightDetailsPage/FlightActions";
 
 export default function FlightCardActionsPrice({
   isAdmin,

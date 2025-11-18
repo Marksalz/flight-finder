@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import LongArrow from "../LongArrow";
+import LongArrow from "../generic components/LongArrow";
 
 export default function FlightCardRoute({
   depTime,

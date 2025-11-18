@@ -2,8 +2,8 @@ import { Container, Typography } from "@mui/material";
 
 import { selectAirportById } from "../features/airports/airportsSlice.js";
 import { fetchFlightById } from "../features/flights/flightsSlice.js";
-import FlightDetailsMapSide from "../components/flightDetails/FlightDetailsMapSide.jsx";
-import FlightDetailsCardSide from "../components/flightDetails/FlightDetailsCardSide.jsx";
+import FlightDetailsMapSide from "../components/flightDetailsPage/FlightDetailsMapSide.jsx";
+import FlightDetailsCardSide from "../components/flightDetailsPage/FlightDetailsCardSide.jsx";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";

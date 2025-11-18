@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import FlightRouteMap from "../FlightRouteMap";
+import FlightRouteMap from "../flightDetailsPage/FlightRouteMap.jsx";
 
 export default function FlightDetailsMapSide({
   originAirport,

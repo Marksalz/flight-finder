@@ -7,7 +7,7 @@ import {
   getDepTime,
   getArrTime,
 } from "../../utils/helpFunctions";
-import OriginDestination from "../OriginDestination";
+import OriginDestination from "../generic components/OriginDestination.jsx";
 
 export default function DetailedFlightInfo({
   flightInfo,

@@ -5,9 +5,9 @@ import { Box, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-import GenericSubmitButton from "./SubmitButton";
-import SelectField from "./SelectField";
-import DateField from "./DateField";
+import GenericSubmitButton from "../generic components/SubmitButton";
+import SelectField from "../generic components/SelectField";
+import DateField from "../generic components/DateField";
 import dayjs from "dayjs";
 
 export default function AdminFilterForm({ handeleSubmit }) {

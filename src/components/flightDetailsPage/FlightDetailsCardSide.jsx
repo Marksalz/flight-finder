@@ -1,8 +1,8 @@
 import { Grid, Box, Collapse } from "@mui/material";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
-import FlightCard from "../FlightCard.jsx";
-import DetailedFlightInfo from "../DetailedFlightInfo.jsx";
+import FlightCard from "../flightCard/FlightCard.jsx";
+import DetailedFlightInfo from "../flightDetailsPage/DetailedFlightInfo.jsx";
 
 export default function FlightDetailsCardSide({
   flight,
