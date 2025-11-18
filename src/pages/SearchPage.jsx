@@ -1,17 +1,14 @@
-import { setUserSearchParams } from "../features/search/searchSlice";
-import SubmitButton from "../components/SubmitButton";
-import SelectField from "../components/SelectField";
-import DateField from "../components/DateField";
-
-import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import FlightLandIcon from "@mui/icons-material/FlightLand";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import dayjs from "dayjs";
+
+import { Box, Container } from "@mui/material";
+
+import { setUserSearchParams } from "../features/search/searchSlice";
+import SearchPageHeader from "../components/searchPage/SearchPageHeader";
+import SearchFormBox from "../components/searchPage/SearchFormBox";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
@@ -102,83 +99,13 @@ export default function SearchPage() {
           backgroundColor: "#a6c3e9ab",
         }}
       >
-        <Typography
-          align="center"
-          gutterBottom
-          sx={{
-            fontSize: { xs: 18, md: 36 },
-            fontWeight: 700,
-            color: "primary.main",
-          }}
-        >
-          ✈️ Find Your Perfect Flight
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          sx={{ color: "#555", mb: 2 }}
-        >
-          Search and compare flights
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
-          <Grid container spacing={3} justifyContent="center">
-            {/* First row: From and To selectors */}
-            <Grid container spacing={3} justifyContent="center">
-              <SelectField
-                label="From"
-                value={formData.origin}
-                onChange={({ target: { value } }) =>
-                  setFormData((prev) => ({ ...prev, origin: value }))
-                }
-                options={airports}
-                icon={<FlightTakeoffIcon color="primary" />}
-                tooltip="Select your departure airport"
-                required
-                helperText="Where are you flying from?"
-              />
-              <SelectField
-                label="To"
-                value={formData.destination}
-                onChange={({ target: { value } }) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    destination: value,
-                  }))
-                }
-                options={airports}
-                icon={<FlightLandIcon color="primary" />}
-                tooltip="Select your destination airport"
-                required
-                helperText="Where are you flying to?"
-              />
-            </Grid>
-
-            {/* Second row: Date selectors */}
-            <Grid container spacing={3} justifyContent="center" sx={{ mt: 0 }}>
-              <DateField
-                label="Departure Date"
-                value={formData.depDate}
-                onChange={(newValue) =>
-                  setFormData((prev) => ({ ...prev, depDate: newValue }))
-                }
-                required
-              />
-              <DateField
-                label="Return Date"
-                value={formData.retDate}
-                onChange={(newValue) =>
-                  setFormData((prev) => ({ ...prev, retDate: newValue }))
-                }
-                minDate={formData.depDate}
-              />
-            </Grid>
-
-            {/* Third row: Search button */}
-            <Grid container justifyContent="center" sx={{ mt: 2 }}>
-              <SubmitButton>🔍 Search Flights</SubmitButton>
-            </Grid>
-          </Grid>
-        </Box>
+        <SearchPageHeader />
+        <SearchFormBox
+          handleSubmit={handleSubmit}
+          airports={airports}
+          formData={formData}
+          setFormData={setFormData}
+        />
       </Box>
     </Container>
   );
