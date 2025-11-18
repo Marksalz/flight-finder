@@ -13,7 +13,6 @@ import { useState, useEffect } from "react";
 import { clearFlights, createFlight } from "../features/flights/flightsSlice";
 import { clearSearchParams } from "../features/search/searchSlice";
 import EditCreateFlightDialog from "./EditCreateFlightDialog";
-import appLogo from "../../public/images/app_logo2.png";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -109,7 +108,7 @@ export default function Layout() {
           >
             <Box
               component="img"
-              src={appLogo}
+              src={"/images/app_logo2.png"}
               alt="AeroFind Logo"
               sx={{
                 width: { xs: 110, sm: 150 },
