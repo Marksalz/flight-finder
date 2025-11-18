@@ -1,4 +1,4 @@
-import SelectField from "../generic components/SelectField";
+import SelectField from "../genericComponents/SelectField";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import { Grid } from "@mui/material";

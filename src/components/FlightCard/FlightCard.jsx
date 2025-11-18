@@ -11,7 +11,7 @@ import {
 } from "../../utils/helpFunctions";
 import { selectAirportById } from "../../features/airports/airportsSlice";
 import { selectFlight } from "../../features/flights/flightsSlice";
-import OriginDestination from "../generic components/OriginDestination";
+import OriginDestination from "../genericComponents/OriginDestination";
 import FlightCardImage from "./FlightCardImage";
 import FlightCardRoute from "./FlightCardRoute";
 import FlightCardActionsPrice from "./FlightCardActionsPrice";

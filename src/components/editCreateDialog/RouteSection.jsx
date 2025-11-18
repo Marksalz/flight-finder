@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import SelectField from "../generic components/SelectField";
+import SelectField from "../genericComponents/SelectField";
 
 export default function RouteSection({
   formData,

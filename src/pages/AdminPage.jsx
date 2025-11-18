@@ -1,7 +1,7 @@
 import { setAdminSearchParams } from "../features/search/searchSlice";
 import { fetchFlights } from "../features/flights/flightsSlice";
 import AdminFilterForm from "../components/adminPage/adminFliterForm";
-import FlightsList from "../components/generic components/FlightsList";
+import FlightsList from "../components/genericComponents/FlightsList";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
