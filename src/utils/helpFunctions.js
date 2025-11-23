@@ -63,3 +63,9 @@ export function formatPrice(amount, currency) {
 
   return formattedPrice;
 }
+
+// Helper to remove prefix from flight number
+export function prevFlightNumberWithoutPrefix(flightNumber) {
+  if (!flightNumber) return "";
+  return flightNumber.slice(2);
+}

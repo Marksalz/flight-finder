@@ -7,16 +7,17 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Typography,
-  Box,
-  Divider,
 } from "@mui/material";
 
+import Section from "./Section.jsx";
 import {
   selectAirportById,
   selectAirports,
 } from "../../features/airports/airportsSlice.js";
-import { toISOString } from "../../utils/helpFunctions.js";
+import {
+  toISOString,
+  prevFlightNumberWithoutPrefix,
+} from "../../utils/helpFunctions.js";
 import { airlines, airlineCodes } from "../../utils/consts.js";
 import AirlineInfoSection from "../editCreateDialog/AirlineInfoSection.jsx";
 import RouteSection from "../editCreateDialog/RouteSection.jsx";
@@ -96,7 +97,7 @@ export default function EditCreateFlightDialog({
       arrivalTime: toISOString(formData.arrivalTime),
       date: formData.departureTime ? formData.departureTime.slice(0, 10) : "",
     };
-    
+
     onSave(formData.id, updatedFlight);
     onClose();
   };
@@ -186,26 +187,4 @@ export default function EditCreateFlightDialog({
       </DialogActions>
     </Dialog>
   );
-}
-
-// Helper component for section headings of the form
-function Section({ title, children }) {
-  return (
-    <Box sx={{ mt: 2, mb: 3 }}>
-      <Typography
-        variant="subtitle1"
-        sx={{ fontWeight: 600, mb: 1, color: "text.secondary" }}
-      >
-        {title}
-      </Typography>
-      <Divider sx={{ mb: 2, opacity: 0.5 }} />
-      {children}
-    </Box>
-  );
-}
-
-// Helper to remove prefix from flight number
-function prevFlightNumberWithoutPrefix(flightNumber) {
-  if (!flightNumber) return "";
-  return flightNumber.slice(2);
 }
