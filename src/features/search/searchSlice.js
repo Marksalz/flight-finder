@@ -40,10 +40,10 @@ const searchSlice = createSlice({
   },
   selectors: {
     selectAllUserParams: (state) => {
-      state.userSearch;
+      return state.userSearch;
     },
     selectAllAdminParams: (state) => {
-      state.adminSearch;
+      return state.adminSearch;
     },
   },
 });

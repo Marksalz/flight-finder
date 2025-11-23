@@ -9,10 +9,12 @@ import GenericSubmitButton from "../genericComponents/SubmitButton";
 import SelectField from "../genericComponents/SelectField";
 import DateField from "../genericComponents/DateField";
 import dayjs from "dayjs";
+import { selectAirports } from "../../features/airports/airportsSlice";
+import { selectAllAdminParams } from "../../features/search/searchSlice";
 
 export default function AdminFilterForm({ handeleSubmit }) {
-  const airports = useSelector((state) => state.airports.airports);
-  const adminSearchParams = useSelector((state) => state.search.adminSearch);
+  const airports = useSelector(selectAirports);
+  const adminSearchParams = useSelector(selectAllAdminParams);
 
   const [formData, setFormData] = useState({
     origin: adminSearchParams.origin,
