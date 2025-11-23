@@ -4,13 +4,13 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 export default function FlightActions({ onEdit, onDelete, onClick }) {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorElement, setAnchorElement] = useState(null);
+  const open = Boolean(anchorElement);
 
   const handleOpen = (event) => {
     event.stopPropagation();
     onClick && onClick();
-    setAnchorEl(event.currentTarget);
+    setAnchorElement(event.currentTarget);
   };
 
   const handleMouseDown = (event) => {
@@ -19,18 +19,18 @@ export default function FlightActions({ onEdit, onDelete, onClick }) {
 
   const handleClose = (event) => {
     event?.stopPropagation();
-    setAnchorEl(null);
+    setAnchorElement(null);
   };
 
   const handleEdit = (event) => {
     event.stopPropagation();
-    setAnchorEl(null);
+    setAnchorElement(null);
     onEdit && onEdit();
   };
 
   const handleDelete = (event) => {
     event.stopPropagation();
-    setAnchorEl(null);
+    setAnchorElement(null);
     onDelete && onDelete();
   };
 
@@ -41,7 +41,7 @@ export default function FlightActions({ onEdit, onDelete, onClick }) {
       </IconButton>
 
       <Menu
-        anchorEl={anchorEl}
+        anchorElement={anchorElement}
         open={open}
         onClose={handleClose}
         onClick={(event) => event.stopPropagation()}
