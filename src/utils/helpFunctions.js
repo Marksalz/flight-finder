@@ -46,3 +46,20 @@ export function formatDate(dateStr) {
   const [year, month, day] = dateStr.split("-");
   return `${day}/${month}/${year}`;
 }
+
+//Formats a numeric amount as a currency string.
+export function formatPrice(amount, currency) {
+  const numericAmount = Number(amount);
+  let formattedPrice;
+  try {
+    formattedPrice = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 0,
+    }).format(numericAmount);
+  } catch {
+    formattedPrice = `${numericAmount} ${currency || ""}`.trim();
+  }
+
+  return formattedPrice;
+}

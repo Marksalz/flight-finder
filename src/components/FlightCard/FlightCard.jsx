@@ -8,6 +8,7 @@ import {
   getAirlineCode,
   getDepTime,
   getArrTime,
+  formatPrice,
 } from "../../utils/helpFunctions";
 import { selectAirportById } from "../../features/airports/airportsSlice";
 import { selectFlight } from "../../features/flights/flightsSlice";
@@ -134,20 +135,4 @@ export default function FlightCard({
       />
     </Card>
   );
-}
-
-function formatPrice(amount, currency) {
-  const numericAmount = Number(amount);
-  let formattedPrice;
-  try {
-    formattedPrice = new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency,
-      maximumFractionDigits: 0,
-    }).format(numericAmount);
-  } catch {
-    formattedPrice = `${numericAmount} ${currency || ""}`.trim();
-  }
-
-  return formattedPrice;
 }
