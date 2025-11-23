@@ -39,11 +39,9 @@ export default function EditCreateFlightDialog({
     setFormData(flight);
   }, [flight]);
 
-  const originAirport = useSelector((state) =>
-    selectAirportById(state, formData.origin)
-  );
-  const destinationAirport = useSelector((state) =>
-    selectAirportById(state, formData.destination)
+  const originAirport = useSelector(selectAirportById(formData.origin));
+  const destinationAirport = useSelector(
+    selectAirportById(formData.destination)
   );
 
   function updateAirline(value, formData) {
