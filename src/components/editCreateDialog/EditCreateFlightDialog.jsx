@@ -65,6 +65,7 @@ export default function EditCreateFlightDialog({
 
   const handleChange = ({ target: { name, value } }) => {
     let updatedValue = value;
+    let shouldSetFormData = true;
 
     if (name === "origin" || name === "destination") {
       updatedValue = Number(
@@ -72,18 +73,20 @@ export default function EditCreateFlightDialog({
       );
     } else if (name === "airline") {
       updateAirline(value, formData);
-      return;
+      shouldSetFormData = false;
     } else if (name === "flightNumber") {
       updateFlightNumber(value, formData);
-      return;
+      shouldSetFormData = false;
     } else if (name === "price.amount" || name === "durationMinutes") {
       updatedValue = Number(updatedValue);
     }
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: updatedValue,
-    }));
+    if (shouldSetFormData) {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: updatedValue,
+      }));
+    }
   };
 
   const handleSubmit = () => {
@@ -93,6 +96,7 @@ export default function EditCreateFlightDialog({
       arrivalTime: toISOString(formData.arrivalTime),
       date: formData.departureTime ? formData.departureTime.slice(0, 10) : "",
     };
+    
     onSave(formData.id, updatedFlight);
     onClose();
   };
