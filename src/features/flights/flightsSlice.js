@@ -151,6 +151,9 @@ const flightsSlice = createSlice({
       state.flights = [];
     },
   },
+  selectors: {
+    selectedFlight: (state) => state.selectedFlight,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFlights.fulfilled, (state, action) => {
@@ -236,4 +239,5 @@ const matchesFilters = (
 
 export const { selectFlight, clearSelectedFlight, clearFlights } =
   flightsSlice.actions;
+export const { selectedFlight } = flightsSlice.selectors;
 export default flightsSlice.reducer;

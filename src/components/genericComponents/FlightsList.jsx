@@ -1,24 +1,26 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+
+import { Box, Stack, Typography, Collapse } from "@mui/material";
+
 import {
   clearSelectedFlight,
   modifyFlight,
   removeFlight,
+  selectedFlight as selectedFlightSelector,
 } from "../../features/flights/flightsSlice";
 import EditCreateFlightDialog from "../editCreateDialog/EditCreateFlightDialog";
 import FlightCard from "../flightCard/FlightCard";
-
-import { Box, Stack, Typography, Collapse } from "@mui/material";
-
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
 export default function FlightsList({ flights = [], isAdmin = false }) {
   const ANIMATION_MS = 300;
   const dispatch = useDispatch();
 
   const [editOpen, setEditOpen] = useState(false);
+
   const [closingIds, setClosingIds] = useState([]);
 
-  const selectedFlight = useSelector((state) => state.flights.selectedFlight);
+  const selectedFlight = useSelector(selectedFlightSelector);
 
   const handleEdit = () => {
     setEditOpen(true);
@@ -26,13 +28,13 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
 
   const handleDelete = (idParam) => {
     const id = idParam ?? selectedFlight?.id;
-    if (id) {
-      if (closingIds.includes(id)) return;
 
+    if (id && !closingIds.includes(id)) {
       setClosingIds((prev) => [...prev, id]);
       setTimeout(() => {
         dispatch(removeFlight(id));
         if (selectedFlight?.id === id) dispatch(clearSelectedFlight());
+
         setClosingIds((prev) => prev.filter((x) => x !== id));
       }, ANIMATION_MS);
     }
