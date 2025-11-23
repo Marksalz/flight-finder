@@ -39,20 +39,19 @@ export default function FlightCard({
     selectAirportById(flightInfo?.destination)
   ).code;
 
-  const handleClick = () => {
+  const handleClickEditDelete = () => {
     dispatch(selectFlight(flightInfo));
+  };
+
+  const handleClickOnCard = (event) => {
+    event.stopPropagation();
+    dispatch(selectFlight(flightInfo));
+    navigate(`/flight/${flightInfo.id}`);
   };
 
   return (
     <Card
-      onClick={
-        isClickable &&
-        ((event) => {
-          event.stopPropagation();
-          dispatch(selectFlight(flightInfo));
-          navigate(`/flight/${flightInfo.id}`);
-        })
-      }
+      onClick={isClickable ? handleClickOnCard : undefined}
       sx={{
         p: 1,
         display: "flex",
@@ -130,7 +129,7 @@ export default function FlightCard({
         isAdmin={isAdmin}
         onEdit={onEdit}
         onDelete={onDelete}
-        onClick={handleClick}
+        onClick={handleClickEditDelete}
         price={formatPrice(flightInfo.price.amount, flightInfo.price.currency)}
       />
     </Card>
