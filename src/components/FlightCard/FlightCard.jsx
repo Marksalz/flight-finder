@@ -33,12 +33,10 @@ export default function FlightCard({
   const depTime = getDepTime(flightInfo.departureTime);
   const arrTime = getArrTime(flightInfo.arrivalTime);
 
-  const originCode = useSelector(
-    (state) => selectAirportById(state, flightInfo?.origin).code
-  );
+  const originCode = useSelector(selectAirportById(flightInfo?.origin)).code;
   const destinationCode = useSelector(
-    (state) => selectAirportById(state, flightInfo?.destination).code
-  );
+    selectAirportById(flightInfo?.destination)
+  ).code;
 
   const handleClick = () => {
     dispatch(selectFlight(flightInfo));

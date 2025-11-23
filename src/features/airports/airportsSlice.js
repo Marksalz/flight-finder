@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  createSelector,
+} from "@reduxjs/toolkit";
 
 import { BASE_URL } from "../../utils/consts";
 
@@ -59,6 +63,18 @@ export const createAirport = createAsyncThunk(
   }
 );
 
+export const selectAirports = (state) => state.airports.airports;
+
+export const selectAirportById = (airportId) =>
+  createSelector([selectAirports], (airports) =>
+    airports.find(({ id }) => id === String(airportId))
+  );
+
+export const selectAirportByCode = (airportCode) =>
+  createSelector([selectAirports], (airports) =>
+    airports.find(({ code }) => code === airportCode)
+  );
+
 const airportsSlice = createSlice({
   name: "airports",
   initialState: {
@@ -70,14 +86,6 @@ const airportsSlice = createSlice({
   reducers: {
     selectAirport(state, action) {
       state.selectedAirport = action.payload;
-    },
-  },
-  selectors: {
-    selectAirportByCode(state, code) {
-      return state.airports.find((airport) => airport.code === code);
-    },
-    selectAirportById(state, id) {
-      return state.airports.find((airport) => airport.id === String(id));
     },
   },
   extraReducers: (builder) => {
@@ -121,9 +129,6 @@ const airportsSlice = createSlice({
   },
 });
 
-export const { selectAirportByCode, selectAirportById } =
-  airportsSlice.selectors;
-
-export const { selectAirport, setOriginAirport, setDestinationAirport } =
-  airportsSlice.actions;
+// Only export actions from the slice
+export const { selectAirport } = airportsSlice.actions;
 export default airportsSlice.reducer;
