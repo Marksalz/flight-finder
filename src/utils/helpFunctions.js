@@ -31,12 +31,12 @@ export function getAirlineCode(flightNumber) {
 }
 
 //Returns departure time in HH:mm format from ISO string.
-export function getDepTime(departureTime) {
+export function getDepartureTime(departureTime) {
   return toLocalInputValue(departureTime).split("T")[1].slice(0, 5);
 }
 
 //Returns arrival time in HH:mm format from ISO string.
-export function getArrTime(arrivalTime) {
+export function getArrivalTime(arrivalTime) {
   return toLocalInputValue(arrivalTime).split("T")[1].slice(0, 5);
 }
 

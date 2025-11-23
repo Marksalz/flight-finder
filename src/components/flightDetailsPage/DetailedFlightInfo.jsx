@@ -4,8 +4,8 @@ import TimelapseIcon from "@mui/icons-material/Timelapse";
 import {
   durationInHours,
   getAirlineCode,
-  getDepTime,
-  getArrTime,
+  getDepartureTime,
+  getArrivalTime,
 } from "../../utils/helpFunctions";
 import OriginDestination from "../genericComponents/OriginDestination.jsx";
 
@@ -17,8 +17,8 @@ export default function DetailedFlightInfo({
   destinationAirportName,
 }) {
   const airlineCode = getAirlineCode(flightInfo?.flightNumber);
-  const depTime = getDepTime(flightInfo.departureTime);
-  const arrTime = getArrTime(flightInfo.arrivalTime);
+  const departureTime = getDepartureTime(flightInfo.departureTime);
+  const arrivalTime = getArrivalTime(flightInfo.arrivalTime);
 
   return (
     <Box
@@ -83,7 +83,7 @@ export default function DetailedFlightInfo({
           <Grid container flexDirection={"row"} spacing={1}>
             <OriginDestination
               airportCode={originCode}
-              time={depTime}
+              time={departureTime}
               isColumn={false}
               timeV={"body1"}
               airportV={"body1"}
@@ -105,7 +105,7 @@ export default function DetailedFlightInfo({
           <Grid container flexDirection={"row"} spacing={1}>
             <OriginDestination
               airportCode={destinationCode}
-              time={arrTime}
+              time={arrivalTime}
               isColumn={false}
               timeV={"body1"}
               airportV={"body1"}

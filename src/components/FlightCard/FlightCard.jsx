@@ -6,8 +6,8 @@ import { Card, Grid } from "@mui/material";
 import {
   durationInHours,
   getAirlineCode,
-  getDepTime,
-  getArrTime,
+  getDepartureTime,
+  getArrivalTime,
   formatPrice,
 } from "../../utils/helpFunctions";
 import { selectAirportById } from "../../features/airports/airportsSlice";
@@ -31,8 +31,8 @@ export default function FlightCard({
   const dispatch = useDispatch();
 
   const airlineCode = getAirlineCode(flightInfo?.flightNumber);
-  const depTime = getDepTime(flightInfo.departureTime);
-  const arrTime = getArrTime(flightInfo.arrivalTime);
+  const departureTime = getDepartureTime(flightInfo.departureTime);
+  const arrivalTime = getArrivalTime(flightInfo.arrivalTime);
 
   const originCode = useSelector(selectAirportById(flightInfo?.origin)).code;
   const destinationCode = useSelector(
@@ -101,8 +101,8 @@ export default function FlightCard({
         sx={{ textAlign: "left" }}
       >
         <FlightCardRoute
-          depTime={depTime}
-          arrTime={arrTime}
+          departureTime={departureTime}
+          arrivalTime={arrivalTime}
           originCode={originCode}
           destinationCode={destinationCode}
           duration={durationInHours(flightInfo.durationMinutes)}

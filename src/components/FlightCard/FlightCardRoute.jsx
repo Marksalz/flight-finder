@@ -3,8 +3,8 @@ import { Box, Typography } from "@mui/material";
 import LongArrow from "../genericComponents/LongArrow";
 
 export default function FlightCardRoute({
-  depTime,
-  arrTime,
+  departureTime,
+  arrivalTime,
   originCode,
   destinationCode,
   duration,
@@ -15,7 +15,7 @@ export default function FlightCardRoute({
   return (
     <>
       <OriginDestination
-        time={depTime}
+        time={departureTime}
         airportCode={originCode}
         isColumn={true}
         timeV={"body1"}
@@ -90,7 +90,7 @@ export default function FlightCardRoute({
         </Box>
       </Box>
       <OriginDestination
-        time={arrTime}
+        time={arrivalTime}
         airportCode={destinationCode}
         isColumn={true}
         timeV={"body1"}
