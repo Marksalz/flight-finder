@@ -12,7 +12,10 @@ import {
   Divider,
 } from "@mui/material";
 
-import { selectAirportById } from "../../features/airports/airportsSlice.js";
+import {
+  selectAirportById,
+  selectAirports,
+} from "../../features/airports/airportsSlice.js";
 import { toISOString } from "../../utils/helpFunctions.js";
 import { airlines, airlineCodes } from "../../utils/consts.js";
 import AirlineInfoSection from "../editCreateDialog/AirlineInfoSection.jsx";
@@ -28,7 +31,7 @@ export default function EditCreateFlightDialog({
 }) {
   const isEdit = !!flight.id;
 
-  const airports = useSelector((state) => state.airports.airports);
+  const airports = useSelector(selectAirports);
 
   const [formData, setFormData] = useState(flight);
 
