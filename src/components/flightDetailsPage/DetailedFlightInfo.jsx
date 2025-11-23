@@ -85,8 +85,8 @@ export default function DetailedFlightInfo({
               airportCode={originCode}
               time={departureTime}
               isColumn={false}
-              timeV={"body1"}
-              airportV={"body1"}
+              timeVariant={"body1"}
+              airportVariant={"body1"}
             />
             <Typography variant="body1">{originAirportName}</Typography>
           </Grid>
@@ -107,8 +107,8 @@ export default function DetailedFlightInfo({
               airportCode={destinationCode}
               time={arrivalTime}
               isColumn={false}
-              timeV={"body1"}
-              airportV={"body1"}
+              timeVariant={"body1"}
+              airportVariant={"body1"}
             />
             <Typography variant="body1">{destinationAirportName}</Typography>
           </Grid>

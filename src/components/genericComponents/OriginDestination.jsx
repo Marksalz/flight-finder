@@ -4,8 +4,8 @@ export default function OriginDestination({
   airportCode,
   time,
   isColumn,
-  timeV,
-  airportV,
+  timeVariant,
+  airportVariant,
 }) {
   return (
     <Box
@@ -14,8 +14,8 @@ export default function OriginDestination({
       gap={isColumn ? 0 : 1}
       alignItems="center"
     >
-      <Typography variant={timeV}>{time}</Typography>
-      <Typography variant={airportV}>{airportCode}</Typography>
+      <Typography variant={timeVariant}>{time}</Typography>
+      <Typography variant={airportVariant}>{airportCode}</Typography>
     </Box>
   );
 }

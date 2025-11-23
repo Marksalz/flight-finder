@@ -18,8 +18,8 @@ export default function FlightCardRoute({
         time={departureTime}
         airportCode={originCode}
         isColumn={true}
-        timeV={"body1"}
-        airportV={"h5"}
+        timeVariant={"body1"}
+        airportVariant={"h5"}
       />
       <Box
         sx={{
@@ -93,8 +93,8 @@ export default function FlightCardRoute({
         time={arrivalTime}
         airportCode={destinationCode}
         isColumn={true}
-        timeV={"body1"}
-        airportV={"h5"}
+        timeVariant={"body1"}
+        airportVariant={"h5"}
       />
     </>
   );
