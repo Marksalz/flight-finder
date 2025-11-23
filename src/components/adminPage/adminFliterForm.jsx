@@ -1,9 +1,9 @@
+import { useSelector } from "react-redux";
+import { useState } from "react";
+
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import { Box, Typography } from "@mui/material";
-
-import { useSelector } from "react-redux";
-import { useState } from "react";
 
 import GenericSubmitButton from "../genericComponents/SubmitButton";
 import SelectField from "../genericComponents/SelectField";
