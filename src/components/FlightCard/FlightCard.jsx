@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { Box, Card, Grid } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 
 import {
   durationInHours,
