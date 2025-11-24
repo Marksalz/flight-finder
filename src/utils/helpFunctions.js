@@ -77,16 +77,20 @@ export function matchesFilters(
   searchOriginId,
   searchDestinationId
 ) {
-  if (!adminSearch) return true;
+  let result = true;
 
-  const originMatch = String(updatedFlight.origin) === searchOriginId;
-  const destMatch = String(updatedFlight.destination) === searchDestinationId;
+  if (adminSearch) {
+    const originMatch = String(updatedFlight.origin) === searchOriginId;
+    const destMatch = String(updatedFlight.destination) === searchDestinationId;
 
-  let dateMatch = true;
-  if (adminSearch.startDate && adminSearch.endDate) {
-    const date = updatedFlight.date;
-    dateMatch = date >= adminSearch.startDate && date <= adminSearch.endDate;
+    let dateMatch = true;
+    if (adminSearch.startDate && adminSearch.endDate) {
+      const date = updatedFlight.date;
+      dateMatch = date >= adminSearch.startDate && date <= adminSearch.endDate;
+    }
+
+    result = originMatch && destMatch && dateMatch;
   }
 
-  return originMatch && destMatch && dateMatch;
+  return result;
 }
