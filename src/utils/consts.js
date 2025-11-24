@@ -15,6 +15,7 @@ export const airlineCodes = {
 };
 
 export const status = {
+  idle: "idle",
   loading: "loading",
   succeeded: "succeeded",
   failed: "failed",
