@@ -1,12 +1,12 @@
-import { setAdminSearchParams } from "../features/search/searchSlice";
-import { fetchFlights } from "../features/flights/flightsSlice";
-import AdminFilterForm from "../components/adminPage/adminFliterForm";
-import FlightsList from "../components/genericComponents/FlightsList";
-
-import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Box, Typography } from "@mui/material";
+
+import { setAdminSearchParams } from "../features/search/searchSlice";
+import { fetchFlights, selectFlights } from "../features/flights/flightsSlice";
+import AdminFilterForm from "../components/adminPage/adminFliterForm";
+import FlightsList from "../components/genericComponents/FlightsList";
 
 export default function AdminPage() {
   const DATE_FORMAT = "YYYY-MM-DD";
@@ -27,7 +27,7 @@ export default function AdminPage() {
     dispatch(fetchFlights({ searchParams: serializableFormData }));
   };
 
-  const flights = useSelector((state) => state.flights.flights);
+  const flights = useSelector(selectFlights);
 
   return (
     <>
