@@ -156,6 +156,7 @@ const flightsSlice = createSlice({
   selectors: {
     selectedFlight: (state) => state.selectedFlight,
     selectFlights: (state) => state.flights,
+    selectFlightStatus: (state) => state.status,
   },
   extraReducers: (builder) => {
     builder
@@ -221,5 +222,6 @@ const flightsSlice = createSlice({
 
 export const { selectFlight, clearSelectedFlight, clearFlights } =
   flightsSlice.actions;
-export const { selectedFlight, selectFlights } = flightsSlice.selectors;
+export const { selectedFlight, selectFlights, selectFlightStatus } =
+  flightsSlice.selectors;
 export default flightsSlice.reducer;

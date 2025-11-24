@@ -1,13 +1,20 @@
-import { Container, Typography } from "@mui/material";
-
-import { selectAirportById } from "../features/airports/airportsSlice.js";
-import { fetchFlightById } from "../features/flights/flightsSlice.js";
-import FlightDetailsMapSide from "../components/flightDetailsPage/FlightDetailsMapSide.jsx";
-import FlightDetailsCardSide from "../components/flightDetailsPage/FlightDetailsCardSide.jsx";
-
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Container, Typography } from "@mui/material";
+
+import {
+  selectAirportById,
+  selectAirports,
+} from "../features/airports/airportsSlice.js";
+import {
+  fetchFlightById,
+  selectedFlight,
+  selectFlightStatus,
+} from "../features/flights/flightsSlice.js";
+import FlightDetailsMapSide from "../components/flightDetailsPage/FlightDetailsMapSide.jsx";
+import FlightDetailsCardSide from "../components/flightDetailsPage/FlightDetailsCardSide.jsx";
 
 export default function FlightDetailsPage() {
   const { flightId } = useParams();
@@ -15,9 +22,9 @@ export default function FlightDetailsPage() {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const flight = useSelector((state) => state.flights.selectedFlight);
-  const airports = useSelector((state) => state.airports.airports);
-  const { status } = useSelector((state) => state.flights);
+  const flight = useSelector(selectedFlight);
+  const status = useSelector(selectFlightStatus);
+  const airports = useSelector(selectAirports);
 
   useEffect(() => {
     if (airports?.length !== 0 && (!flight || flight.id !== flightId)) {
