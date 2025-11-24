@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet, useLocation } from "react-router";
 import { Container, Box } from "@mui/material";
@@ -17,8 +17,14 @@ export default function Layout() {
   const [createOpen, setCreateOpen] = useState(false);
   const [message, setMessage] = useState(null);
 
-  const showButton =
-    location.pathname === "/" || location.pathname === "/admin";
+  const { pathname, showButton, headerButtonLabel } = useMemo(() => {
+    const path = location.pathname;
+    return {
+      pathname: path,
+      showButton: path === "/" || path === "/admin",
+      headerButtonLabel: path === "/" ? "Admin" : "Add FLight",
+    };
+  }, [location.pathname]);
 
   const handleClose = () => setCreateOpen(false);
 
@@ -65,14 +71,15 @@ export default function Layout() {
             gap: 0,
           }}
         >
-          <GoBackButton />
+          <GoBackButton pathname={pathname} />
           <HomePageButton />
-
           <HeaderRightButton
+            pathname={pathname}
             showButton={showButton}
             setCreateOpen={setCreateOpen}
-            children={location.pathname === "/" ? "Admin" : "Add FLight"}
-          />
+          >
+            {headerButtonLabel}
+          </HeaderRightButton>
         </Container>
       </Box>
 
