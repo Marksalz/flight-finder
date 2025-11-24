@@ -47,6 +47,7 @@ const searchSlice = createSlice({
     },
   },
 });
+
 export const { selectAllUserParams, selectAllAdminParams } =
   searchSlice.selectors;
 export const { setUserSearchParams, setAdminSearchParams, clearSearchParams } =
