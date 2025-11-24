@@ -1,7 +1,7 @@
-import SelectField from "../genericComponents/SelectField";
-import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
-import FlightLandIcon from "@mui/icons-material/FlightLand";
+import { FlightTakeoff, FlightLand } from "@mui/icons-material";
 import { Grid } from "@mui/material";
+
+import SelectField from "../genericComponents/SelectField";
 
 export default function OriginDestinationFields({
   airports,
@@ -17,7 +17,7 @@ export default function OriginDestinationFields({
           setFormData((prev) => ({ ...prev, origin: value }))
         }
         options={airports}
-        icon={<FlightTakeoffIcon color="primary" />}
+        icon={<FlightTakeoff color="primary" />}
         tooltip="Select your departure airport"
         required
         helperText="Where are you flying from?"
@@ -29,7 +29,7 @@ export default function OriginDestinationFields({
           setFormData((prev) => ({ ...prev, destination: value }))
         }
         options={airports}
-        icon={<FlightLandIcon color="primary" />}
+        icon={<FlightLand color="primary" />}
         tooltip="Select your destination airport"
         required
         helperText="Where are you flying to?"
