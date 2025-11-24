@@ -8,7 +8,6 @@ import {
 } from "react-router";
 
 import { Container, Box, Button, IconButton, Link } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import {
   clearFlights,
@@ -17,6 +16,7 @@ import {
 import { clearSearchParams } from "../../features/search/searchSlice";
 import EditCreateFlightDialog from "../editCreateDialog/EditCreateFlightDialog";
 import HomePageButton from "./HomePageButton";
+import GoBackButton from "./GoBackButton";
 
 export default function Layout() {
   const TIMER_TIME = 4000;
@@ -75,28 +75,7 @@ export default function Layout() {
             gap: 0,
           }}
         >
-          {/* Go Back Button*/}
-          {location.pathname !== "/" && (
-            <IconButton
-              aria-label="Go back"
-              onClick={() => navigate(-1)}
-              sx={{
-                color: "white",
-                borderRadius: 3,
-                background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
-                boxShadow: "0 4px 16px 0 rgba(33, 203, 243, 0.15)",
-                transition: "transform 0.2s, box-shadow 0.2s",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0 8px 24px 0 rgba(33, 203, 243, 0.25)",
-                  background:
-                    "linear-gradient(90deg, #21cbf3 0%, #2196f3 100%)",
-                },
-              }}
-            >
-              <ArrowBackIcon sx={{ fontSize: { xs: 16, sm: 24 } }} />
-            </IconButton>
-          )}
+          <GoBackButton />
           <HomePageButton />
 
           {showButton && (
