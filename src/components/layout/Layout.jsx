@@ -1,18 +1,22 @@
-import { Container, Box, Button, IconButton, Link } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import {
   Outlet,
   useNavigate,
   useLocation,
   Link as RouterLink,
 } from "react-router";
-import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
 
-import { clearFlights, createFlight } from "../../features/flights/flightsSlice";
+import { Container, Box, Button, IconButton, Link } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import {
+  clearFlights,
+  createFlight,
+} from "../../features/flights/flightsSlice";
 import { clearSearchParams } from "../../features/search/searchSlice";
 import EditCreateFlightDialog from "../editCreateDialog/EditCreateFlightDialog";
+import HomePageButton from "./HomePageButton";
 
 export default function Layout() {
   const TIMER_TIME = 4000;
@@ -28,7 +32,7 @@ export default function Layout() {
 
   const handleClose = () => setCreateOpen(false);
 
-  const handleSave = (id, flightData) => {
+  const handleSave = (flightData) => {
     setMessage(null);
     try {
       dispatch(createFlight(flightData));
@@ -93,31 +97,7 @@ export default function Layout() {
               <ArrowBackIcon sx={{ fontSize: { xs: 16, sm: 24 } }} />
             </IconButton>
           )}
-          <Link
-            component={RouterLink}
-            to="/"
-            aria-label="Go to homepage"
-            underline="none"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-            }}
-            onClick={() => {
-              dispatch(clearFlights());
-              dispatch(clearSearchParams());
-            }}
-          >
-            <Box
-              component="img"
-              src={"/images/app_logo2.png"}
-              alt="AeroFind Logo"
-              sx={{
-                width: { xs: 110, sm: 150 },
-                maxWidth: "100%",
-                height: "auto",
-              }}
-            />
-          </Link>
+          <HomePageButton />
 
           {showButton && (
             <Button
