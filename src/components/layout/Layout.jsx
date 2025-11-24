@@ -1,26 +1,16 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {
-  Outlet,
-  useNavigate,
-  useLocation,
-  Link as RouterLink,
-} from "react-router";
+import { Outlet, useLocation } from "react-router";
+import { Container, Box } from "@mui/material";
 
-import { Container, Box, Button, IconButton, Link } from "@mui/material";
-
-import {
-  clearFlights,
-  createFlight,
-} from "../../features/flights/flightsSlice";
-import { clearSearchParams } from "../../features/search/searchSlice";
+import { createFlight } from "../../features/flights/flightsSlice";
 import EditCreateFlightDialog from "../editCreateDialog/EditCreateFlightDialog";
 import HomePageButton from "./HomePageButton";
 import GoBackButton from "./GoBackButton";
+import HeaderRightButton from "./HeaderRightButton";
 
 export default function Layout() {
   const TIMER_TIME = 4000;
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -78,35 +68,11 @@ export default function Layout() {
           <GoBackButton />
           <HomePageButton />
 
-          {showButton && (
-            <Button
-              onClick={() => {
-                if (location.pathname === "/") {
-                  dispatch(clearFlights());
-                  navigate("/admin");
-                } else {
-                  setCreateOpen(true);
-                }
-              }}
-              size="medium"
-              sx={{
-                fontSize: { xs: 10, sm: 16 },
-                color: "white",
-                borderRadius: 3,
-                background: "linear-gradient(90deg, #2196f3 0%, #21cbf3 100%)",
-                boxShadow: "0 4px 16px 0 rgba(33, 203, 243, 0.15)",
-                transition: "transform 0.2s, box-shadow 0.2s",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0 8px 24px 0 rgba(33, 203, 243, 0.25)",
-                  background:
-                    "linear-gradient(90deg, #21cbf3 0%, #2196f3 100%)",
-                },
-              }}
-            >
-              {location.pathname === "/" ? "Admin" : "Add FLight"}
-            </Button>
-          )}
+          <HeaderRightButton
+            showButton={showButton}
+            setCreateOpen={setCreateOpen}
+            children={location.pathname === "/" ? "Admin" : "Add FLight"}
+          />
         </Container>
       </Box>
 
