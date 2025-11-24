@@ -4,7 +4,9 @@ import {
   createSelector,
 } from "@reduxjs/toolkit";
 
-import { BASE_URL } from "../../utils/consts";
+import { BASE_URL, status } from "../../utils/consts";
+
+const { loading, succeeded, failed } = status;
 
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
@@ -109,26 +111,25 @@ const airportsSlice = createSlice({
       .addMatcher(
         (action) => action.type.endsWith("/pending"),
         (state) => {
-          state.status = "loading";
+          state.status = loading;
           state.error = null;
         }
       )
       .addMatcher(
         (action) => action.type.endsWith("/fulfilled"),
         (state) => {
-          state.status = "succeeded";
+          state.status = succeeded;
         }
       )
       .addMatcher(
         (action) => action.type.endsWith("/rejected"),
         (state, action) => {
-          state.status = "failed";
+          state.status = failed;
           state.error = action.error.message;
         }
       );
   },
 });
 
-// Only export actions from the slice
 export const { selectAirport } = airportsSlice.actions;
 export default airportsSlice.reducer;

@@ -13,3 +13,9 @@ export const airlineCodes = {
   "American Airlines": "AA",
   "United Airlines": "UA",
 };
+
+export const status = {
+  loading: "loading",
+  succeeded: "succeeded",
+  failed: "failed",
+};
