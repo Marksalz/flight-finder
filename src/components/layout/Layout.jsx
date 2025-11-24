@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
-import { useDispatch } from "react-redux";
 import { Outlet, useLocation } from "react-router";
+import { useDispatch } from "react-redux";
+
 import { Container, Box } from "@mui/material";
 
 import { createFlight } from "../../features/flights/flightsSlice";
@@ -17,6 +18,8 @@ export default function Layout() {
   const [createOpen, setCreateOpen] = useState(false);
   const [message, setMessage] = useState(null);
 
+  // only update these fields when the location changes. 
+  // Using reacts useMemo to store the path related fields.
   const { pathname, showButton, headerButtonLabel } = useMemo(() => {
     const path = location.pathname;
     return {
