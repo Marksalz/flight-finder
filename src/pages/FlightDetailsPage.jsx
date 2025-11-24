@@ -13,10 +13,12 @@ import {
   selectedFlight,
   selectFlightStatus,
 } from "../features/flights/flightsSlice.js";
+import { status as statusOptions } from "../utils/consts.js";
 import FlightDetailsMapSide from "../components/flightDetailsPage/FlightDetailsMapSide.jsx";
 import FlightDetailsCardSide from "../components/flightDetailsPage/FlightDetailsCardSide.jsx";
 
 export default function FlightDetailsPage() {
+  const { idle, loading, succeeded, failed } = statusOptions;
   const { flightId } = useParams();
   const dispatch = useDispatch();
 
@@ -32,14 +34,9 @@ export default function FlightDetailsPage() {
     }
   }, [dispatch, flightId, flight, airports]);
 
-  const originAirport =
-    useSelector((state) =>
-      flight ? selectAirportById(state, flight?.origin) : null
-    ) || {};
+  const originAirport = useSelector(selectAirportById(flight?.origin)) || {};
   const destinationAirport =
-    useSelector((state) =>
-      flight ? selectAirportById(state, flight?.destination) : null
-    ) || {};
+    useSelector(selectAirportById(flight?.destination)) || {};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,11 +58,11 @@ export default function FlightDetailsPage() {
         p: { xs: 1, sm: 2, md: 3 },
       }}
     >
-      {(status === "loading" || status === "idle") && (
+      {(status === loading || status === idle) && (
         <Typography>Loading flight...</Typography>
       )}
-      {status === "failed" && <Typography>Error loading flight.</Typography>}
-      {status === "succeeded" && flight && (
+      {status === failed && <Typography>Error loading flight.</Typography>}
+      {status === succeeded && flight && (
         <>
           <FlightDetailsMapSide
             originAirport={originAirport}
