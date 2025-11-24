@@ -1,15 +1,14 @@
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { IconButton } from "@mui/material";
 
-export default function GoBackButton() {
+export default function GoBackButton({ pathname }) {
   const navigate = useNavigate();
-  const location = useLocation();
 
   return (
     <>
-      {location.pathname !== "/" && (
+      {pathname !== "/" && (
         <IconButton
           aria-label="Go back"
           onClick={() => navigate(-1)}

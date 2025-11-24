@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 
 import { Button } from "@mui/material";
@@ -6,12 +6,12 @@ import { Button } from "@mui/material";
 import { clearFlights } from "../../features/flights/flightsSlice";
 
 export default function HeaderRightButton({
+  pathname,
   showButton,
   setCreateOpen,
   children,
 }) {
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
 
   return (
@@ -19,7 +19,7 @@ export default function HeaderRightButton({
       {showButton && (
         <Button
           onClick={() => {
-            if (location.pathname === "/") {
+            if (pathname === "/") {
               dispatch(clearFlights());
               navigate("/admin");
             } else {
