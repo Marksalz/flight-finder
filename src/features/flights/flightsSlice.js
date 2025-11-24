@@ -3,7 +3,7 @@ import { selectAirportByCode } from "../airports/airportsSlice";
 import { BASE_URL, status } from "../../utils/consts";
 import { matchesFilters } from "../../utils/helpFunctions";
 
-const { loading, succeeded, failed } = status;
+const { idle, loading, succeeded, failed } = status;
 
 //Fetching the flights by date range, or specific date if searching for a flight.
 export const fetchFlights = createAsyncThunk(
@@ -139,7 +139,7 @@ const flightsSlice = createSlice({
   initialState: {
     flights: [],
     selectedFlight: null,
-    status: "idle",
+    status: idle,
     error: null,
   },
   reducers: {

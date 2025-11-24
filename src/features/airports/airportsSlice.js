@@ -6,7 +6,7 @@ import {
 
 import { BASE_URL, status } from "../../utils/consts";
 
-const { loading, succeeded, failed } = status;
+const { idle, loading, succeeded, failed } = status;
 
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
@@ -82,7 +82,7 @@ const airportsSlice = createSlice({
   initialState: {
     airports: [],
     selectedAirport: null,
-    status: "idle",
+    status: idle,
     error: null,
   },
   reducers: {
