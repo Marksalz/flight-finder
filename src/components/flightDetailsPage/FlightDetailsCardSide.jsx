@@ -1,6 +1,6 @@
 import { Grid, Box, Collapse } from "@mui/material";
-import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
-import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
+import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material";
+
 import FlightCard from "../flightCard/FlightCard.jsx";
 import DetailedFlightInfo from "../flightDetailsPage/DetailedFlightInfo.jsx";
 
@@ -42,7 +42,7 @@ export default function FlightDetailsCardSide({
           }}
         >
           {!isExpanded ? (
-            <ExpandMoreRoundedIcon
+            <ExpandMoreRounded
               sx={{
                 fontSize: { xs: "2rem", md: "3rem" },
                 "&:hover": {
@@ -51,10 +51,10 @@ export default function FlightDetailsCardSide({
                 },
                 color: "blue",
               }}
-              onClick={() => setIsExpanded((t) => !t)}
+              onClick={() => setIsExpanded((prevExpanded) => !prevExpanded)}
             />
           ) : (
-            <ExpandLessRoundedIcon
+            <ExpandLessRounded
               sx={{
                 fontSize: { xs: "2rem", md: "3rem" },
                 "&:hover": {
@@ -63,7 +63,7 @@ export default function FlightDetailsCardSide({
                 },
                 color: "blue",
               }}
-              onClick={() => setIsExpanded((t) => !t)}
+              onClick={() => setIsExpanded((prevExpanded) => !prevExpanded)}
             />
           )}
         </Box>
