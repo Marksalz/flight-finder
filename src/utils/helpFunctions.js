@@ -69,3 +69,24 @@ export function prevFlightNumberWithoutPrefix(flightNumber) {
   if (!flightNumber) return "";
   return flightNumber.slice(2);
 }
+
+// Function to check if flight matches current filters of search form.
+export function matchesFilters(
+  updatedFlight,
+  adminSearch,
+  searchOriginId,
+  searchDestinationId
+) {
+  if (!adminSearch) return true;
+
+  const originMatch = String(updatedFlight.origin) === searchOriginId;
+  const destMatch = String(updatedFlight.destination) === searchDestinationId;
+
+  let dateMatch = true;
+  if (adminSearch.startDate && adminSearch.endDate) {
+    const date = updatedFlight.date;
+    dateMatch = date >= adminSearch.startDate && date <= adminSearch.endDate;
+  }
+
+  return originMatch && destMatch && dateMatch;
+}

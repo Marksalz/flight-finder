@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { selectAirportByCode } from "../airports/airportsSlice";
-import { BASE_URL } from "../../utils/consts";
+import { BASE_URL, status } from "../../utils/consts";
+import { matchesFilters } from "../../utils/helpFunctions";
+
+const { loading, succeeded, failed } = status;
 
 //Fetching the flights by date range, or specific date if searching for a flight.
 export const fetchFlights = createAsyncThunk(
@@ -106,9 +109,8 @@ export const modifyFlight = createAsyncThunk(
     const adminSearch = state.search.adminSearch;
 
     // find the ids of the origin and destination from the admin search form
-    const searchOriginId = selectAirportByCode(state, adminSearch.origin)?.id;
+    const searchOriginId = selectAirportByCode(adminSearch.origin)?.id;
     const searchDestinationId = selectAirportByCode(
-      state,
       adminSearch.destination
     )?.id;
 
@@ -196,46 +198,25 @@ const flightsSlice = createSlice({
       .addMatcher(
         (action) => action.type.endsWith("/pending"),
         (state) => {
-          state.status = "loading";
+          state.status = loading;
           state.error = null;
         }
       )
       .addMatcher(
         (action) => action.type.endsWith("/fulfilled"),
         (state) => {
-          state.status = "succeeded";
+          state.status = succeeded;
         }
       )
       .addMatcher(
         (action) => action.type.endsWith("/rejected"),
         (state, action) => {
-          state.status = "failed";
+          state.status = failed;
           state.error = action.error.message;
         }
       );
   },
 });
-
-// Helper function to check if flight matches current filters
-const matchesFilters = (
-  updatedFlight,
-  adminSearch,
-  searchOriginId,
-  searchDestinationId
-) => {
-  if (!adminSearch) return true;
-
-  const originMatch = String(updatedFlight.origin) === searchOriginId;
-  const destMatch = String(updatedFlight.destination) === searchDestinationId;
-
-  let dateMatch = true;
-  if (adminSearch.startDate && adminSearch.endDate) {
-    const date = updatedFlight.date;
-    dateMatch = date >= adminSearch.startDate && date <= adminSearch.endDate;
-  }
-
-  return originMatch && destMatch && dateMatch;
-};
 
 export const { selectFlight, clearSelectedFlight, clearFlights } =
   flightsSlice.actions;
