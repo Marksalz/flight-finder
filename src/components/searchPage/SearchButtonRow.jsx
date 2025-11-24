@@ -1,5 +1,6 @@
-import SubmitButton from "../genericComponents/SubmitButton";
 import { Grid } from "@mui/material";
+
+import SubmitButton from "../genericComponents/SubmitButton";
 
 export default function SearchButtonRow() {
   return (
