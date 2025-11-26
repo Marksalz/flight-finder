@@ -39,12 +39,11 @@ export default function FlightCard({
     selectAirportById(flightInfo?.destination)
   ).code;
 
-  const handleClickEditDelete = () => {
-    dispatch(selectFlight(flightInfo));
-  };
+  const handleClickEditDelete = () => dispatch(selectFlight(flightInfo));
 
   const handleClickOnCard = (event) => {
     event.stopPropagation();
+
     dispatch(selectFlight(flightInfo));
     navigate(`/flight/${flightInfo.id}`);
   };
