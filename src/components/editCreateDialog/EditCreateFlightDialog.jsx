@@ -128,7 +128,6 @@ export default function EditCreateFlightDialog({
       </DialogTitle>
 
       <DialogContent>
-        {/* --- Airline Info --- */}
         <Section title="Airline Information">
           <AirlineInfoSection
             formData={formData}
@@ -137,7 +136,6 @@ export default function EditCreateFlightDialog({
           />
         </Section>
 
-        {/* --- Route --- */}
         <Section title="Route">
           <RouteSection
             formData={formData}
@@ -148,7 +146,6 @@ export default function EditCreateFlightDialog({
           />
         </Section>
 
-        {/* --- Timing --- */}
         <Section title="Timing">
           <TimingSection
             formData={formData}
@@ -157,7 +154,6 @@ export default function EditCreateFlightDialog({
           />
         </Section>
 
-        {/* --- Additional Details --- */}
         <Section title="Additional Details">
           <AdditionalDetailsSection
             formData={formData}
