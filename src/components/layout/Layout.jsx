@@ -8,7 +8,8 @@ import { createFlight } from "../../features/flights/flightsSlice";
 import EditCreateFlightDialog from "../editCreateDialog/EditCreateFlightDialog";
 import HomePageButton from "./HomePageButton";
 import GoBackButton from "./GoBackButton";
-import HeaderRightButton from "./HeaderRightButton";
+import AdminButton from "./AdminButton";
+import AddFlightButton from "./AddFlightButton";
 
 export default function Layout() {
   const TIMER_TIME = 4000;
@@ -18,14 +19,14 @@ export default function Layout() {
   const [createOpen, setCreateOpen] = useState(false);
   const [message, setMessage] = useState(null);
 
-  // only update these fields when the location changes. 
+  // only update these fields when the location changes.
   // Using reacts useMemo to store the path related fields.
-  const { pathname, showButton, headerButtonLabel } = useMemo(() => {
+  const { pathname, showAdminButton, showAddFlightButton } = useMemo(() => {
     const path = location.pathname;
     return {
       pathname: path,
-      showButton: path === "/" || path === "/admin",
-      headerButtonLabel: path === "/" ? "Admin" : "Add FLight",
+      showAdminButton: path === "/",
+      showAddFlightButton: path === "/admin",
     };
   }, [location.pathname]);
 
@@ -76,13 +77,13 @@ export default function Layout() {
         >
           <GoBackButton pathname={pathname} />
           <HomePageButton />
-          <HeaderRightButton
-            pathname={pathname}
-            showButton={showButton}
+          <AdminButton show={showAdminButton}>Admin</AdminButton>
+          <AddFlightButton
+            show={showAddFlightButton}
             setCreateOpen={setCreateOpen}
           >
-            {headerButtonLabel}
-          </HeaderRightButton>
+            Add Flight
+          </AddFlightButton>
         </Container>
       </Box>
 
