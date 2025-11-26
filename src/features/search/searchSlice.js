@@ -39,12 +39,8 @@ const searchSlice = createSlice({
     },
   },
   selectors: {
-    selectAllUserParams: (state) => {
-      return state.userSearch;
-    },
-    selectAllAdminParams: (state) => {
-      return state.adminSearch;
-    },
+    selectAllUserParams: (state) => state.userSearch,
+    selectAllAdminParams: (state) => state.adminSearch,
   },
 });
 
