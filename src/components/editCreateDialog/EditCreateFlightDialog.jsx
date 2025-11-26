@@ -18,7 +18,7 @@ import {
   toISOString,
   prevFlightNumberWithoutPrefix,
 } from "../../utils/helpFunctions.js";
-import { airlines, airlineCodes } from "../../utils/consts.js";
+import { AIRLINES, AIRLINECODES } from "../../utils/consts.js";
 import AirlineInfoSection from "../editCreateDialog/AirlineInfoSection.jsx";
 import RouteSection from "../editCreateDialog/RouteSection.jsx";
 import TimingSection from "../editCreateDialog/TimingSection";
@@ -46,7 +46,7 @@ export default function EditCreateFlightDialog({
   );
 
   const updateAirline = (value, formData) => {
-    const code = airlineCodes[value] || "";
+    const code = AIRLINECODES[value] || "";
     const flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
     setFormData((prev) => ({
       ...prev,
@@ -56,7 +56,7 @@ export default function EditCreateFlightDialog({
   };
 
   const updateFlightNumber = (value, formData) => {
-    const code = airlineCodes[formData.airline] || "";
+    const code = AIRLINECODES[formData.airline] || "";
     const updatedValue = code + value.replace(/[^0-9]/g, "");
     setFormData((prev) => ({
       ...prev,
@@ -132,7 +132,7 @@ export default function EditCreateFlightDialog({
           <AirlineInfoSection
             formData={formData}
             handleChange={handleChange}
-            airlines={airlines}
+            airlines={AIRLINES}
           />
         </Section>
 

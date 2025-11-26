@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { selectAirportByCode } from "../airports/airportsSlice";
-import { BASE_URL, status } from "../../utils/consts";
+import { BASE_URL, STATUSES } from "../../utils/consts";
 import { matchesFilters } from "../../utils/helpFunctions";
 
-const { idle, loading, succeeded, failed } = status;
+const { idle, loading, succeeded, failed } = STATUSES;
 
 //Fetching the flights by date range, or specific date if searching for a flight.
 export const fetchFlights = createAsyncThunk(

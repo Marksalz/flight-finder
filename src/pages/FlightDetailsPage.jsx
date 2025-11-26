@@ -13,12 +13,12 @@ import {
   selectedFlight,
   selectFlightStatus,
 } from "../features/flights/flightsSlice.js";
-import { status as statusOptions } from "../utils/consts.js";
+import { STATUSES } from "../utils/consts.js";
 import FlightDetailsMapSide from "../components/flightDetailsPage/FlightDetailsMapSide.jsx";
 import FlightDetailsCardSide from "../components/flightDetailsPage/FlightDetailsCardSide.jsx";
 
 export default function FlightDetailsPage() {
-  const { idle, loading, succeeded, failed } = statusOptions;
+  const { idle, loading, succeeded, failed } = STATUSES;
   const { flightId } = useParams();
   const dispatch = useDispatch();
 

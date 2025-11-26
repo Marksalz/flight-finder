@@ -1,20 +1,20 @@
 export const BASE_URL = "http://localhost:3000";
 
-export const airlines = [
+export const AIRLINES = [
   "United Airlines",
   "Delta Airlines",
   "El Al Israel Airlines",
   "American Airlines",
 ];
 
-export const airlineCodes = {
+export const AIRLINECODES = {
   "El Al Israel Airlines": "LY",
   "Delta Airlines": "DL",
   "American Airlines": "AA",
   "United Airlines": "UA",
 };
 
-export const status = {
+export const STATUSES = {
   idle: "idle",
   loading: "loading",
   succeeded: "succeeded",

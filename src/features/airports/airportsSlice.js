@@ -4,9 +4,9 @@ import {
   createSelector,
 } from "@reduxjs/toolkit";
 
-import { BASE_URL, status } from "../../utils/consts";
+import { BASE_URL, STATUSES } from "../../utils/consts";
 
-const { idle, loading, succeeded, failed } = status;
+const { idle, loading, succeeded, failed } = STATUSES;
 
 export const fetchAirports = createAsyncThunk(
   "airports/fetchAirports",
