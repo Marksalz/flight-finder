@@ -22,9 +22,7 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
 
   const selectedFlight = useSelector(selectedFlightSelector);
 
-  const handleEdit = () => {
-    setEditOpen(true);
-  };
+  const handleEdit = () => setEditOpen(true);
 
   const handleDelete = (idParam) => {
     const id = idParam ?? selectedFlight?.id;
@@ -35,7 +33,7 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
         dispatch(removeFlight(id));
         if (selectedFlight?.id === id) dispatch(clearSelectedFlight());
 
-        setClosingIds((prev) => prev.filter((x) => x !== id));
+        setClosingIds((prev) => prev.filter((closingId) => closingId !== id));
       }, ANIMATION_MS);
     }
   };
