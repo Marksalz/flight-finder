@@ -9,13 +9,12 @@ export default function FlightActions({ onEdit, onDelete, onClick }) {
 
   const handleOpen = (event) => {
     event.stopPropagation();
+
     onClick && onClick();
     setAnchorElement(event.currentTarget);
   };
 
-  const handleMouseDown = (event) => {
-    event.stopPropagation();
-  };
+  const handleMouseDown = (event) => event.stopPropagation();
 
   const handleClose = (event) => {
     event?.stopPropagation();
