@@ -45,7 +45,7 @@ export default function EditCreateFlightDialog({
     selectAirportById(formData.destination)
   );
 
-  function updateAirline(value, formData) {
+  const updateAirline = (value, formData) => {
     const code = airlineCodes[value] || "";
     const flightNumber = prevFlightNumberWithoutPrefix(formData.flightNumber);
     setFormData((prev) => ({
@@ -53,16 +53,16 @@ export default function EditCreateFlightDialog({
       airline: value,
       flightNumber: code + flightNumber,
     }));
-  }
+  };
 
-  function updateFlightNumber(value, formData) {
+  const updateFlightNumber = (value, formData) => {
     const code = airlineCodes[formData.airline] || "";
     const updatedValue = code + value.replace(/[^0-9]/g, "");
     setFormData((prev) => ({
       ...prev,
       flightNumber: updatedValue,
     }));
-  }
+  };
 
   const handleChange = ({ target: { name, value } }) => {
     let updatedValue = value;
