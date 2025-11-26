@@ -6,16 +6,20 @@ import dayjs from "dayjs";
 
 import { Box, Container } from "@mui/material";
 
-import { setUserSearchParams } from "../features/search/searchSlice";
+import {
+  selectAllUserParams,
+  setUserSearchParams,
+} from "../features/search/searchSlice";
 import SearchPageHeader from "../components/searchPage/SearchPageHeader";
 import SearchFormBox from "../components/searchPage/SearchFormBox";
+import { selectAirports } from "../features/airports/airportsSlice";
 
 export default function SearchPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const airports = useSelector((state) => state.airports.airports);
-  const userSearchParams = useSelector((state) => state.search.userSearch);
+  const airports = useSelector(selectAirports);
+  const userSearchParams = useSelector(selectAllUserParams);
 
   const [formData, setFormData] = useState({
     origin: userSearchParams.origin,
