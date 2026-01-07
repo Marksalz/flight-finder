@@ -40,7 +40,7 @@ export default function FlightActions({ onEdit, onDelete, onClick }) {
       </IconButton>
 
       <Menu
-        anchorElement={anchorElement}
+        anchorEl={anchorElement}
         open={open}
         onClose={handleClose}
         onClick={(event) => event.stopPropagation()}
