@@ -1904,7 +1904,7 @@
   "airports": [
     {
       "id": "1",
-      "code": "TLV",
+      "code": "TLVI",
       "name": "Ben Gurion Intl Airport",
       "city": "Tel Aviv",
       "country": "Israel",
@@ -1937,6 +1937,15 @@
       "country": "USA",
       "lat": 33.9416,
       "lng": -118.4085
+    },
+    {
+      "id": "5",
+      "code": "CLE",
+      "name": "Cleveland Airport",
+      "city": "Cleveland",
+      "country": "USA",
+      "lat": 32.0114,
+      "lng": 34.8866
     }
   ]
 }
