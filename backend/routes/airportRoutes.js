@@ -12,7 +12,7 @@ const airportRouter = Router();
 
 airportRouter.get("/", async (req, res) => {
   try {
-    res.json({ success: true, airports: airports });
+    res.json(airports);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -33,7 +33,7 @@ airportRouter.get("/:airportId", async (req, res) => {
       });
     }
 
-    res.json({ success: true, airport: airport });
+    res.json(airport);
   } catch (error) {
     res.status(500).json({
       success: false,

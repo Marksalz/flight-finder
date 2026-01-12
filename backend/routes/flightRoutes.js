@@ -35,7 +35,7 @@ flightRouter.get("/", async (req, res) => {
         );
       });
     }
-    res.json({ success: true, flights: filteredFlights });
+    res.json(filteredFlights);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -57,7 +57,7 @@ flightRouter.get("/:flightId", async (req, res) => {
       });
     }
 
-    res.json({ success: true, flight: flight });
+    res.json(flight);
   } catch (error) {
     res.status(500).json({
       success: false,
