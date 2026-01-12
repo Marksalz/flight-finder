@@ -66,7 +66,7 @@ flightRouter.get("/:flightId", async (req, res) => {
   }
 });
 
-flightRouter.post("/create", async (req, res) => {
+flightRouter.post("/", async (req, res) => {
   try {
     const flightData = req.body;
 

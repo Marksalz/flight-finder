@@ -42,7 +42,7 @@ airportRouter.get("/:airportId", async (req, res) => {
   }
 });
 
-airportRouter.post("/create", async (req, res) => {
+airportRouter.post("/", async (req, res) => {
   try {
     const airportData = req.body;
 
