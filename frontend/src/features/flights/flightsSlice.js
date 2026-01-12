@@ -35,28 +35,12 @@ export const fetchFlights = createAsyncThunk(
       // else if search came from admin filtering by start-end date range
     } else if (searchParams.startDate && searchParams.endDate) {
       // when working with backend the date filtering will happen there, for now the filtering is local in the frontend.
-      //
-      //       const start = searchParams.startDate.format("YYYY-MM-DD");
-      //       const end = searchParams.endDate.format("YYYY-MM-DD");
-      //       query += `&date_gte=${encodeURIComponent(
-      //         start
-      //       )}&date_lte=${encodeURIComponent(end)}`;
 
-      // Fetch everything from json-server (no date filtering yet)
-      const response = await fetch(`${BASE_URL}/flights?${query}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch flights");
-      }
-      let flights = await response.json();
-
-      // Manual filtering by date or date range (client-side)
-      const start = searchParams.startDate;
-      const end = searchParams.endDate;
-
-      flights = flights.filter((flight) => {
-        const flightDate = flight.date.slice(0, 10);
-        return flightDate >= start && flightDate <= end;
-      });
+      const start = searchParams.startDate.format("YYYY-MM-DD");
+      const end = searchParams.endDate.format("YYYY-MM-DD");
+      query += `&start_date=${encodeURIComponent(
+        start
+      )}&end_date=${encodeURIComponent(end)}`;
 
       return flights;
     }
