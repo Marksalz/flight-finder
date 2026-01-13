@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { readFile, writeFile } from "fs/promises";
 
+import { findNextId } from "../utils/helperFunctions.js";
+
 const data = JSON.parse(
   await readFile(new URL("../data/db.json", import.meta.url))
 );
