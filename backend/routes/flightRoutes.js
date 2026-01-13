@@ -122,7 +122,7 @@ flightRouter.put("/:flightId", async (req, res) => {
       new URL("../data/db.json", import.meta.url),
       JSON.stringify({ ...data, flights }, null, 2)
     );
-    res.json({ success: true, flight: updatedFlight });
+    res.json(updatedFlight);
   } catch (error) {
     res.status(500).json({
       success: false,
