@@ -97,9 +97,9 @@ export const modifyFlight = createAsyncThunk(
     const adminSearch = state.search.adminSearch;
 
     // find the ids of the origin and destination from the admin search form
-    const searchOriginId = selectAirportByCode(adminSearch.origin)?.id;
-    const searchDestinationId = selectAirportByCode(
-      adminSearch.destination
+    const searchOriginId = selectAirportByCode(adminSearch.origin)(state)?.id;
+    const searchDestinationId = selectAirportByCode(adminSearch.destination)(
+      state
     )?.id;
 
     return { updatedFlight, searchOriginId, searchDestinationId, adminSearch };
@@ -155,6 +155,8 @@ const flightsSlice = createSlice({
         state.selectedFlight = action.payload;
       })
       .addCase(modifyFlight.fulfilled, (state, action) => {
+        console.log(action.payload);
+
         const {
           updatedFlight,
           searchOriginId,
