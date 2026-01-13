@@ -98,7 +98,7 @@ export default function EditCreateFlightDialog({
       date: formData.departureTime ? formData.departureTime.slice(0, 10) : "",
     };
 
-    onSave(formData.id, updatedFlight);
+    isEdit ? onSave(formData.id, updatedFlight) : onSave(updatedFlight);
     onClose();
   };
 
