@@ -2,16 +2,14 @@ import { Router } from "express";
 import { readFile, writeFile } from "fs/promises";
 import { findNextId } from "../utils/helperFunctions.js";
 
-const data = JSON.parse(
-  await readFile(new URL("../data/db.json", import.meta.url))
-);
-
-const { airports } = data;
-
 const airportRouter = Router();
 
 airportRouter.get("/", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { airports } = data;
     res.json(airports);
   } catch (error) {
     res.status(500).json({
@@ -23,6 +21,10 @@ airportRouter.get("/", async (req, res) => {
 
 airportRouter.get("/:airportId", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { airports } = data;
     const { airportId } = req.params;
     const airport = airports.find((airport) => airport.id === airportId);
 
@@ -44,6 +46,10 @@ airportRouter.get("/:airportId", async (req, res) => {
 
 airportRouter.post("/", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { airports } = data;
     const airportData = req.body;
 
     const newId = findNextId(airports);
@@ -65,6 +71,10 @@ airportRouter.post("/", async (req, res) => {
 
 airportRouter.put("/:airportId", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { airports } = data;
     const { airportId } = req.params;
     const airportData = req.body;
 
@@ -94,8 +104,12 @@ airportRouter.put("/:airportId", async (req, res) => {
   }
 });
 
-airportRouter.delete("/airportId", async (req, res) => {
+airportRouter.delete("/:airportId", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { airports } = data;
     const { airportId } = req.params;
 
     const airportToDelete = airports.find(

@@ -3,17 +3,15 @@ import { readFile, writeFile } from "fs/promises";
 
 import { findNextId } from "../utils/helperFunctions.js";
 
-const data = JSON.parse(
-  await readFile(new URL("../data/db.json", import.meta.url))
-);
-
-const { flights } = data;
-
 const flightRouter = Router();
 
 flightRouter.get("/", async (req, res) => {
   try {
     const { origin, destination, date, start_date, end_date } = req.query;
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { flights } = data;
     let filteredFlights;
 
     if (date) {
@@ -48,6 +46,11 @@ flightRouter.get("/", async (req, res) => {
 
 flightRouter.get("/:flightId", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { flights } = data;
+
     const { flightId } = req.params;
 
     const flight = flights.find((flight) => flight.id === flightId);
@@ -70,6 +73,11 @@ flightRouter.get("/:flightId", async (req, res) => {
 
 flightRouter.post("/", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { flights } = data;
+
     const flightData = req.body;
 
     const newId = findNextId(flights);
@@ -91,6 +99,11 @@ flightRouter.post("/", async (req, res) => {
 
 flightRouter.put("/:flightId", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { flights } = data;
+
     const { flightId } = req.params;
     const flightData = req.body;
 
@@ -120,6 +133,11 @@ flightRouter.put("/:flightId", async (req, res) => {
 
 flightRouter.delete("/:flightId", async (req, res) => {
   try {
+    const data = JSON.parse(
+      await readFile(new URL("../data/db.json", import.meta.url))
+    );
+    const { flights } = data;
+
     const { flightId } = req.params;
 
     const flightToDelete = flights.find((flight) => flight.id === flightId);
