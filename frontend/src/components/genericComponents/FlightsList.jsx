@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Added useEffect
 
 import { Box, Stack, Typography, Collapse } from "@mui/material";
 
@@ -8,6 +8,7 @@ import {
   modifyFlight,
   removeFlight,
   selectedFlight as selectedFlightSelector,
+  selectFlights,
 } from "../../features/flights/flightsSlice";
 import EditCreateFlightDialog from "../editCreateDialog/EditCreateFlightDialog";
 import FlightCard from "../flightCard/FlightCard";
@@ -17,10 +18,16 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
   const dispatch = useDispatch();
 
   const [editOpen, setEditOpen] = useState(false);
-
   const [closingIds, setClosingIds] = useState([]);
 
   const selectedFlight = useSelector(selectedFlightSelector);
+  const allFlights = useSelector(selectFlights);
+
+  useEffect(() => {
+    setClosingIds((prev) =>
+      prev.filter((id) => allFlights.some((flight) => flight.id === id))
+    );
+  }, [allFlights]);
 
   const handleEdit = () => setEditOpen(true);
 
@@ -32,8 +39,6 @@ export default function FlightsList({ flights = [], isAdmin = false }) {
       setTimeout(() => {
         dispatch(removeFlight(id));
         if (selectedFlight?.id === id) dispatch(clearSelectedFlight());
-
-        setClosingIds((prev) => prev.filter((closingId) => closingId !== id));
       }, ANIMATION_MS);
     }
   };
