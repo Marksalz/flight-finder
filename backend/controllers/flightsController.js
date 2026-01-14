@@ -66,10 +66,7 @@ export async function getFlightById(req, res) {
       throw error;
     }
 
-    res.json({
-      success: true,
-      data: flight,
-    });
+    res.json(flight);
   } catch (error) {
     res.status(500).json({
       success: false,
