@@ -69,7 +69,7 @@ export const selectAirports = (state) => state.airports.airports;
 
 export const selectAirportById = (airportId) =>
   createSelector([selectAirports], (airports) =>
-    airports.find(({ id }) => id === String(airportId))
+    airports.find(({ id }) => id === airportId)
   );
 
 export const selectAirportByCode = (airportCode) =>
