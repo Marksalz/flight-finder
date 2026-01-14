@@ -29,7 +29,7 @@ export default function FlightDetailsPage() {
   const airports = useSelector(selectAirports);
 
   useEffect(() => {
-    if (airports?.length !== 0 && (!flight || flight.id !== flightId)) {
+    if (airports?.length !== 0 && (!flight || flight.id !== Number(flightId))) {
       dispatch(fetchFlightById(flightId));
     }
   }, [dispatch, flightId, flight, airports]);
