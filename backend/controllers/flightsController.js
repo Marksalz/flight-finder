@@ -42,6 +42,13 @@ export async function getFlightById(req, res) {
   try {
     const { flightId } = req.params;
 
+    if (!flightId) {
+      return res.status(400).json({
+        success: false,
+        message: "Flight ID is required",
+      });
+    }
+
     // Fetch flight from Supabase
     const { data: flight, error } = await supabaseClient
       .from("flights")
