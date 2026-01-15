@@ -91,8 +91,9 @@ export default function EditCreateFlightDialog({
   };
 
   const handleSubmit = () => {
+    const { id, ...flightWithoutId } = formData;
     const updatedFlight = {
-      ...formData,
+      ...flightWithoutId,
       departureTime: toISOString(formData.departureTime),
       arrivalTime: toISOString(formData.arrivalTime),
       date: formData.departureTime ? formData.departureTime.slice(0, 10) : "",
